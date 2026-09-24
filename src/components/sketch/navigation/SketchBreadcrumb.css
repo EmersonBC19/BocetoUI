@@ -1,0 +1,103 @@
+/* ==========================================================================
+   SketchBreadcrumb.css — Migas de Pan Artesanales BocetoUI
+   ========================================================================== */
+
+.sketch-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: var(--font-sketch-title, 'Outfit', sans-serif);
+  font-size: 0.95rem;
+  padding: 8px 14px;
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 1.8px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  box-shadow: 2px 2px 0px var(--sketch-ink, #18181b);
+  width: fit-content;
+  max-width: 100%;
+}
+
+.sketch-breadcrumb__list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 8px;
+}
+
+.sketch-breadcrumb__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--sketch-ink-muted, #52525b);
+  position: relative;
+}
+
+.sketch-breadcrumb__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--sketch-ink, #18181b);
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 2px 6px;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+
+.sketch-breadcrumb__link:hover {
+  color: var(--sketch-pen-blue, #0284c7);
+  background-color: rgba(2, 132, 199, 0.08);
+  transform: translateY(-1px) scale(1.02);
+  text-decoration: underline wavy var(--sketch-pen-blue, #0284c7) 1.5px;
+}
+
+.sketch-breadcrumb__link:focus-visible {
+  outline: 2px dashed var(--sketch-pen-blue, #0284c7);
+  outline-offset: 2px;
+}
+
+.sketch-breadcrumb__item--active .sketch-breadcrumb__current {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 800;
+  color: #18181b;
+  background-color: var(--sketch-accent-yellow, #fef08a);
+  padding: 2px 10px;
+  border: 1.5px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-pill, 255px 25px 225px 25px/25px 225px 25px 255px);
+  box-shadow: 1.5px 1.5px 0px var(--sketch-ink, #18181b);
+  transform: rotate(-0.5deg);
+}
+
+.sketch-breadcrumb__separator {
+  display: inline-flex;
+  align-items: center;
+  color: var(--sketch-ink-muted, #71717a);
+  user-select: none;
+  font-weight: 700;
+}
+
+.sketch-breadcrumb__separator--hand {
+  font-family: var(--font-sketch-cursive, 'Caveat', cursive);
+  font-size: 1.25rem;
+  color: var(--sketch-pen-blue, #0284c7);
+  margin: 0 2px;
+}
+
+.sketch-breadcrumb__icon {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+}
+

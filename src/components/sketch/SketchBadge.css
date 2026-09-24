@@ -1,0 +1,149 @@
+/* ==========================================================================
+   SketchBadge & SketchCircle Styles (Círculos y Elipses - Imagen 1)
+   ========================================================================== */
+
+.sketch-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  position: relative;
+  font-family: var(--font-sketch-title);
+  font-weight: 700;
+  vertical-align: middle;
+  line-height: 1;
+  user-select: none;
+}
+
+/* ==========================================================================
+   Variant 1: Loop Circle (Círculo Trazado en Bucle Múltiple - Imagen 1)
+   ========================================================================== */
+.sketch-badge--loop-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--wobble-radius-round);
+  border: 2px solid var(--sketch-ink);
+  position: relative;
+}
+
+/* Trazo superpuesto en bucle */
+.sketch-badge--loop-circle::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 1px;
+  right: -1px;
+  bottom: 2px;
+  border-radius: 48% 52% 54% 46% / 45% 58% 42% 55%;
+  border: 1.5px solid var(--sketch-ink);
+  pointer-events: none;
+  opacity: 0.85;
+  transform: rotate(4deg);
+}
+
+/* Tercer trazo sutil para realismo de rotulador */
+.sketch-badge--loop-circle::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: -2px;
+  right: 2px;
+  bottom: -1px;
+  border-radius: 54% 46% 47% 53% / 55% 42% 58% 45%;
+  border: 1px solid var(--sketch-ink);
+  pointer-events: none;
+  opacity: 0.55;
+  transform: rotate(-3deg);
+}
+
+/* ==========================================================================
+   Variant 2: Oval (Elipse Rodeando Texto a Mano - Imagen 1)
+   ========================================================================== */
+.sketch-badge--oval {
+  padding: 6px 16px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  border: 2px solid var(--sketch-ink);
+  position: relative;
+}
+
+.sketch-badge--oval::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  bottom: 1px;
+  left: 2px;
+  right: -2px;
+  border-radius: 48% 52% 47% 53% / 55% 45% 55% 45%;
+  border: 1.5px solid var(--sketch-ink);
+  opacity: 0.75;
+  pointer-events: none;
+  transform: rotate(1deg);
+}
+
+/* ==========================================================================
+   Variant 3: Pill (Cápsula de Boceto)
+   ========================================================================== */
+.sketch-badge--pill {
+  padding: 4px 12px;
+  border: 2px solid var(--sketch-ink);
+  border-radius: var(--wobble-radius-pill);
+  box-shadow: 2px 2px 0 var(--sketch-ink);
+  background: var(--sketch-bg-surface);
+}
+
+/* ==========================================================================
+   Variant 4: Marker Highlight (Subrayador fluorescente)
+   ========================================================================== */
+.sketch-badge--highlight {
+  padding: 2px 8px;
+  background: var(--sketch-accent-yellow);
+  color: #18181b !important;
+  font-weight: 800;
+  border-radius: 3px;
+  transform: rotate(-1deg);
+  box-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+}
+
+[data-theme="chalkboard"] .sketch-badge--highlight,
+.paper-chalk .sketch-badge--highlight {
+  background: #facc15;
+  color: #18181b !important;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 1.5px 1.5px 0 rgba(0, 0, 0, 0.7);
+}
+
+/* Sizes */
+.sketch-badge--sm {
+  font-size: 0.85rem;
+}
+.sketch-badge--md {
+  font-size: 1.05rem;
+}
+.sketch-badge--lg {
+  font-size: 1.25rem;
+}
+
+/* Color Accents */
+.sketch-badge--red {
+  color: var(--sketch-pen-red);
+  border-color: var(--sketch-pen-red) !important;
+}
+.sketch-badge--red::before, .sketch-badge--red::after {
+  border-color: var(--sketch-pen-red) !important;
+}
+
+.sketch-badge--blue {
+  color: var(--sketch-pen-blue);
+  border-color: var(--sketch-pen-blue) !important;
+}
+.sketch-badge--blue::before, .sketch-badge--blue::after {
+  border-color: var(--sketch-pen-blue) !important;
+}
+
+.sketch-badge--green {
+  color: var(--sketch-pen-green);
+  border-color: var(--sketch-pen-green) !important;
+}
+.sketch-badge--green::before, .sketch-badge--green::after {
+  border-color: var(--sketch-pen-green) !important;
+}

@@ -1,0 +1,108 @@
+/* ==========================================================================
+   SketchCodeBlock — Hand-Drawn Technical Notebook Code Viewer
+   ========================================================================== */
+
+.sketch-codeblock {
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #1a1a1a);
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  box-shadow: var(--sketch-shadow-hard, 3px 4px 0px var(--sketch-ink, #1a1a1a));
+  overflow: hidden;
+  font-family: var(--font-sketch-code, 'JetBrains Mono', monospace);
+  margin: 12px 0;
+}
+
+.sketch-codeblock__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background: var(--sketch-bg-paper, #fbf9f5);
+  border-bottom: 2px dashed var(--sketch-ink-light, #9ca3af);
+  gap: 12px;
+}
+
+.sketch-codeblock__dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sketch-codeblock__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid var(--sketch-ink);
+}
+
+.sketch-codeblock__dot--red { background-color: #f87171; }
+.sketch-codeblock__dot--yellow { background-color: #fde047; }
+.sketch-codeblock__dot--green { background-color: #4ade80; }
+
+
+.sketch-codeblock__lang-badge {
+  font-family: var(--font-sketch-title, 'Architects Daughter', cursive, sans-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: var(--sketch-accent-yellow, #fef08a);
+  border: 1px solid var(--sketch-ink, #1a1a1a);
+  padding: 2px 8px;
+  border-radius: var(--wobble-radius-pill, 12px);
+  box-shadow: 1px 1px 0px var(--sketch-ink, #1a1a1a);
+}
+
+.sketch-codeblock__copy-btn {
+  background: transparent;
+  border: 1px solid var(--sketch-ink, #1a1a1a);
+  border-radius: 4px;
+  font-family: var(--font-sketch-body, 'Patrick Hand', cursive, sans-serif);
+  font-size: 0.9rem;
+  padding: 3px 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--sketch-ink, #1a1a1a);
+  transition: all 0.15s ease;
+}
+
+.sketch-codeblock__copy-btn:hover {
+  background: var(--sketch-accent-yellow, #fef08a);
+  transform: scale(1.05);
+}
+
+.sketch-codeblock__body {
+  display: flex;
+  overflow-x: auto;
+  padding: 12px 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  background: var(--sketch-bg-surface, #ffffff);
+}
+
+.sketch-codeblock__line-numbers {
+  display: flex;
+  flex-direction: column;
+  padding: 0 12px;
+  color: var(--sketch-ink-light, #9ca3af);
+  text-align: right;
+  user-select: none;
+  border-right: 2px solid var(--sketch-margin-red, rgba(239, 68, 68, 0.3));
+}
+
+.sketch-codeblock__pre {
+  margin: 0;
+  padding: 0 16px;
+  flex: 1;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* Syntax Token Colors */
+.sketch-token--keyword { color: #d946ef; font-weight: bold; }
+.sketch-token--string { color: #16a34a; }
+.sketch-token--comment { color: #9ca3af; font-style: italic; }
+.sketch-token--number { color: #ea580c; }
+.sketch-token--function { color: #2563eb; font-weight: 600; }
+.sketch-token--tag { color: #dc2626; }

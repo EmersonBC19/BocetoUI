@@ -1,0 +1,638 @@
+/* ==========================================================================
+   SketchTornCard.css — Tarjeta de Papel Rasgado y Cupones Perforados
+   ========================================================================== */
+
+/* ==========================================================================
+   SISTEMA DE CUPÓN TICKET AUTÉNTICO (DOS PIEZAS CON CORTE FÍSICO)
+   ========================================================================== */
+
+.sketch-ticket-assembly {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  user-select: none;
+  perspective: 1000px;
+  overflow: visible;
+}
+
+/* 1. TALÓN DEL CUPÓN (STUB DESPRENDIBLE) */
+.sketch-ticket-stub {
+  position: relative;
+  background-color: var(--sketch-accent-yellow, #fef08a);
+  border: 2px solid var(--sketch-ink, #18181b);
+  border-radius: 10px 10px 0 0;
+  box-shadow: 3px 4px 0px var(--sketch-ink, #18181b);
+  padding: 16px 20px 12px 20px;
+  z-index: 5;
+  overflow: visible;
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.45s ease, 
+              border-radius 0.3s ease;
+}
+
+/* Estado Desprendido / Cortado del Talón */
+.sketch-ticket-stub--detached {
+  transform: translateY(-26px) rotate(-3.5deg) scale(1.02) !important;
+  box-shadow: 0px 18px 28px rgba(24, 24, 27, 0.2), 3px 5px 0px var(--sketch-ink, #18181b) !important;
+  border-radius: 10px !important;
+  z-index: 10;
+}
+
+/* Orificios decorativos de troquelado en las esquinas */
+.sketch-ticket-punch-hole {
+  position: absolute;
+  top: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(24, 24, 27, 0.35);
+  background-color: rgba(24, 24, 27, 0.08);
+}
+.sketch-ticket-punch-hole--tl { left: 10px; }
+.sketch-ticket-punch-hole--tr { right: 10px; }
+
+/* Muescas laterales semicirculares de corte */
+.sketch-ticket-notch {
+  position: absolute;
+  bottom: -9px;
+  width: 18px;
+  height: 18px;
+  background-color: var(--sketch-bg-paper, #fdfbf7);
+  border: 2px solid var(--sketch-ink, #18181b);
+  border-radius: 50%;
+  z-index: 8;
+}
+.sketch-ticket-notch--left { left: -10px; }
+.sketch-ticket-notch--right { right: -10px; }
+
+.sketch-ticket-stub__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.sketch-ticket-stub__discount-badge {
+  display: inline-flex;
+  align-items: center;
+}
+
+.sketch-ticket-stub__discount-text {
+  font-family: var(--font-sketch-title, 'Patrick Hand', sans-serif);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #b91c1c;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.sketch-ticket-stub__info {
+  flex: 1;
+}
+
+.sketch-ticket-stub__title {
+  font-family: var(--font-sketch-title, 'Patrick Hand', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--sketch-ink, #18181b);
+  line-height: 1.2;
+}
+
+.sketch-ticket-stub__serial {
+  font-family: var(--font-sketch-code, monospace);
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #71717a;
+  letter-spacing: 0.5px;
+}
+
+.sketch-ticket-stub__stamped-badge {
+  border: 2.5px dashed #b91c1c;
+  color: #b91c1c;
+  font-family: var(--font-sketch-title, 'Patrick Hand', sans-serif);
+  font-size: 1.1rem;
+  font-weight: 900;
+  padding: 3px 10px;
+  border-radius: 6px;
+  transform: rotate(-7deg);
+  background-color: rgba(254, 226, 226, 0.85);
+  box-shadow: 2px 2px 0px rgba(185, 28, 28, 0.2);
+  animation: ticket-stamp-slam 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes ticket-stamp-slam {
+  0% { transform: scale(2) rotate(-20deg); opacity: 0; }
+  100% { transform: scale(1) rotate(-7deg); opacity: 1; }
+}
+
+/* Barra de Perforación y Guía de Corte */
+.sketch-ticket-stub__perf-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 0;
+  margin-top: 6px;
+}
+
+.sketch-ticket-stub__perf-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 0;
+  border-top: 2.5px dashed var(--sketch-ink, #18181b);
+  opacity: 0.85;
+  z-index: 1;
+}
+
+.sketch-ticket-cut-btn {
+  position: relative;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #18181b);
+  border-radius: 9999px;
+  padding: 4px 14px;
+  font-family: var(--font-sketch-title, 'Patrick Hand', sans-serif);
+  font-size: 0.92rem;
+  font-weight: 900;
+  color: var(--sketch-ink, #18181b);
+  cursor: pointer;
+  box-shadow: 2px 2px 0px var(--sketch-ink, #18181b);
+  transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sketch-ticket-cut-btn:hover {
+  transform: scale(1.06) rotate(-1deg);
+  background-color: var(--sketch-accent-yellow, #fef08a);
+  box-shadow: 3px 3px 0px var(--sketch-ink, #18181b);
+}
+
+.sketch-ticket-cut-btn--torn {
+  background-color: #bbf7d0 !important;
+  border-color: #16a34a !important;
+  color: #16a34a !important;
+  box-shadow: 2px 2px 0px #16a34a !important;
+}
+
+.sketch-ticket-cut-btn--torn:hover {
+  background-color: #86efac !important;
+}
+
+/* Tijera Animada que Recorre la Línea de Corte */
+.sketch-ticket-scissors-slide {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  animation: ticket-scissors-slide 0.55s ease forwards;
+  pointer-events: none;
+  z-index: 10;
+  color: #18181b;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sketch-ticket-scissors-snip {
+  animation: ticket-scissors-snip-action 0.14s ease infinite alternate;
+}
+
+.sketch-ticket-cut-sparkle {
+  font-size: 1.1rem;
+  color: #b91c1c;
+}
+
+@keyframes ticket-scissors-slide {
+  0% { right: 10px; opacity: 1; }
+  85% { right: calc(100% - 24px); opacity: 1; }
+  100% { right: calc(100% - 6px); opacity: 0; }
+}
+
+@keyframes ticket-scissors-snip-action {
+  0% { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(1.15) rotate(-30deg); }
+}
+
+/* Sacudida del conjunto durante el corte */
+.sketch-ticket-assembly--cutting {
+  animation: paper-rip-shake 0.5s ease;
+}
+
+/* Dientes de Papel Perforado Rasgado (Jagged SVG Teeth) */
+.sketch-ticket-jagged-wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 10px;
+  pointer-events: none;
+  z-index: 6;
+  overflow: visible;
+}
+
+.sketch-ticket-jagged-wrapper--bottom {
+  bottom: -9px;
+}
+
+.sketch-ticket-jagged-wrapper--top {
+  top: -9px;
+  transform: rotate(180deg);
+}
+
+.sketch-ticket-jagged-svg {
+  width: 100%;
+  height: 10px;
+  display: block;
+}
+
+/* 2. CUERPO PRINCIPAL DEL TICKET */
+.sketch-ticket-body {
+  position: relative;
+  background-color: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #18181b);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 3px 4px 0px var(--sketch-ink, #18181b);
+  transition: all 0.45s ease;
+  overflow: visible;
+  z-index: 2;
+}
+
+.sketch-ticket-body--detached {
+  border-top: 2px solid var(--sketch-ink, #18181b) !important;
+  border-radius: 10px !important;
+  margin-top: 14px;
+}
+
+.sketch-ticket-body__inner {
+  padding: 20px;
+}
+
+/* ==========================================================================
+   VARIANTE CUADERNO / HOJA DE NOTAS RASGADA (TORN NOTEBOOK PAGE)
+   ========================================================================== */
+
+.sketch-torn-card {
+  position: relative;
+  background-color: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-1, 6px);
+  box-shadow: 4px 5px 0px var(--sketch-ink, #18181b);
+  user-select: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sketch-torn-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 5px 7px 0px var(--sketch-ink, #18181b);
+}
+
+.sketch-torn-card__content {
+  padding: 20px;
+}
+
+.sketch-torn-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.sketch-torn-card__title {
+  font-family: var(--font-sketch-title, 'Patrick Hand', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--sketch-ink, #18181b);
+}
+
+.sketch-torn-card__badge {
+  font-family: var(--font-sketch-code, monospace);
+  font-size: 0.76rem;
+  background: var(--sketch-accent-yellow, #fef08a);
+  border: 1px solid var(--sketch-ink, #18181b);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* Eliminación del borde recto en el lado rasgado */
+.sketch-torn-card--edge-right {
+  border-right: none !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.sketch-torn-card--edge-left {
+  border-left: none !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.sketch-torn-card--edge-bottom {
+  border-bottom: none !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.sketch-torn-card--edge-top {
+  border-top: none !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+/* Contenedores de los bordes rasgados en SVG */
+.sketch-torn-paper-edge {
+  position: absolute;
+  pointer-events: none;
+  z-index: 5;
+  overflow: visible;
+}
+
+.sketch-torn-paper-edge--right {
+  top: 0;
+  bottom: 0;
+  right: -15px;
+  width: 16px;
+  height: 100%;
+}
+
+.sketch-torn-paper-edge--left {
+  top: 0;
+  bottom: 0;
+  left: -15px;
+  width: 16px;
+  height: 100%;
+}
+
+.sketch-torn-paper-edge--bottom {
+  left: 0;
+  right: 0;
+  bottom: -15px;
+  height: 16px;
+  width: 100%;
+}
+
+.sketch-torn-paper-edge__svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Guía de corte / rasgado antes de rasgar */
+.sketch-torn-intact-guide {
+  position: absolute;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.sketch-torn-intact-guide--right {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  border-right: 2.2px dashed var(--sketch-ink, #18181b);
+}
+
+.sketch-torn-intact-guide--left {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  border-left: 2.2px dashed var(--sketch-ink, #18181b);
+}
+
+.sketch-torn-intact-guide--bottom {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0;
+  border-bottom: 2.2px dashed var(--sketch-ink, #18181b);
+}
+
+/* Tiras de papel que se desprenden físicamente durante el rasgado */
+.sketch-torn-strip-peel {
+  position: absolute;
+  z-index: 12;
+  pointer-events: none;
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 1.5px solid var(--sketch-ink, #18181b);
+}
+
+.sketch-torn-strip-peel--right {
+  top: 0;
+  right: -8px;
+  bottom: 0;
+  width: 12px;
+  animation: paper-strip-flutter-right 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.sketch-torn-strip-peel--left {
+  top: 0;
+  left: -8px;
+  bottom: 0;
+  width: 12px;
+  animation: paper-strip-flutter-left 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.sketch-torn-strip-peel--bottom {
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 12px;
+  animation: paper-strip-flutter-rip 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes paper-strip-flutter-right {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+  40% { transform: translate(14px, 18px) rotate(8deg); opacity: 0.95; }
+  100% { transform: translate(32px, 55px) rotate(18deg); opacity: 0; }
+}
+
+@keyframes paper-strip-flutter-left {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+  40% { transform: translate(-14px, 18px) rotate(-8deg); opacity: 0.95; }
+  100% { transform: translate(-32px, 55px) rotate(-18deg); opacity: 0; }
+}
+
+/* Código de Barras Bocetado */
+.sketch-torn-card__barcode-container {
+  margin-top: 14px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(24, 24, 27, 0.04);
+  border: 1px dashed rgba(24, 24, 27, 0.25);
+  border-radius: 6px;
+  color: var(--sketch-ink, #18181b);
+}
+
+.sketch-torn-card__barcode-svg {
+  width: 100%;
+  max-width: 220px;
+  height: 40px;
+  display: block;
+}
+
+.sketch-torn-card__code-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  padding: 8px 12px;
+  background: #18181b;
+  border-radius: 6px;
+  border: 1.5px solid var(--sketch-ink, #18181b);
+}
+
+.sketch-torn-card__code-label {
+  font-family: var(--font-sketch-title, sans-serif);
+  font-size: 0.82rem;
+  color: #a1a1aa;
+}
+
+.sketch-torn-card__code {
+  font-family: var(--font-sketch-code, monospace);
+  font-size: 1rem;
+  font-weight: 800;
+  color: #38bdf8;
+  letter-spacing: 2px;
+}
+
+/* Botón y Animación de Rasgado de Hoja (Cuaderno) */
+.sketch-torn-card__tear-action-btn {
+  background: var(--sketch-bg-paper, #fdfbf7);
+  border: 1.8px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-1, 6px);
+  box-shadow: 2px 2px 0px var(--sketch-ink, #18181b);
+  padding: 4px 10px;
+  font-family: var(--font-sketch-title, 'Patrick Hand', sans-serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sketch-torn-card__tear-action-btn:hover {
+  transform: scale(1.05) rotate(-1deg);
+  background: var(--sketch-accent-yellow, #fef08a);
+}
+
+.sketch-torn-card__tear-action-btn--torn {
+  background: #bbf7d0;
+  border-color: #16a34a;
+}
+
+.sketch-torn-card--cutting {
+  animation: paper-rip-shake 0.45s ease;
+}
+
+@keyframes paper-rip-shake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-1.5deg) translateY(-2px); }
+  50% { transform: rotate(1.5deg) translateY(2px); }
+  75% { transform: rotate(-0.8deg) translateY(-1px); }
+}
+
+.sketch-torn-card__bottom-zone { position: relative; }
+
+.sketch-torn-card__falling-strip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 16px;
+  z-index: 10;
+  pointer-events: none;
+  animation: paper-strip-flutter-rip 0.55s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.sketch-torn-card__falling-strip-inner {
+  width: 100%;
+  height: 100%;
+  background-color: var(--sketch-bg-surface, #ffffff);
+  border-bottom: 2px solid var(--sketch-ink, #18181b);
+  clip-path: polygon(0% 0%, 5% 100%, 10% 0%, 15% 100%, 20% 0%, 25% 100%, 30% 0%, 35% 100%, 40% 0%, 45% 100%, 50% 0%, 55% 100%, 60% 0%, 65% 100%, 70% 0%, 75% 100%, 80% 0%, 85% 100%, 90% 0%, 95% 100%, 100% 0%);
+  box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes paper-strip-flutter-rip {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  35% { transform: translateY(8px) rotate(-4deg); }
+  65% { transform: translateY(22px) rotate(6deg); opacity: 0.85; }
+  100% { transform: translateY(42px) rotate(14deg); opacity: 0; }
+}
+
+.sketch-torn-card__jagged-edge--torn { filter: drop-shadow(0 2px 0px #b91c1c); opacity: 0.9; }
+
+.sketch-torn-card__torn-indicator {
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 2px dashed #a1a1aa;
+  background: rgba(254, 240, 138, 0.2);
+  font-family: var(--font-sketch-code, monospace);
+  font-size: 0.74rem;
+  color: #52525b;
+  animation: torn-banner-in 0.3s ease;
+}
+
+@keyframes torn-banner-in {
+  0% { opacity: 0; transform: translateY(-4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   ADAPTACIÓN CHALKBOARD
+   ========================================================================== */
+
+[data-theme="chalkboard"] .sketch-ticket-stub {
+  background-color: #3f3b1e;
+  border-color: #f5f5f4;
+  box-shadow: 3px 4px 0px #f5f5f4;
+}
+
+[data-theme="chalkboard"] .sketch-ticket-body {
+  background-color: #1e2923;
+  border-color: #f5f5f4;
+  box-shadow: 3px 4px 0px #f5f5f4;
+}
+
+[data-theme="chalkboard"] .sketch-ticket-notch {
+  background-color: #17201c;
+  border-color: #f5f5f4;
+}
+
+[data-theme="chalkboard"] .sketch-ticket-stub__discount-text {
+  color: #f87171;
+}
+
+[data-theme="chalkboard"] .sketch-ticket-stub__title {
+  color: #f5f5f4;
+}
+
+[data-theme="chalkboard"] .sketch-ticket-cut-btn {
+  background-color: #27362f;
+  color: #f5f5f4;
+  border-color: #f5f5f4;
+  box-shadow: 2px 2px 0px #f5f5f4;
+}
+
+[data-theme="chalkboard"] .sketch-ticket-stub--detached {
+  box-shadow: 0px 18px 28px rgba(0, 0, 0, 0.5), 3px 5px 0px #f5f5f4 !important;
+}
+
+[data-theme="chalkboard"] .sketch-ticket-stub__perf-line {
+  border-top-color: #f5f5f4;
+}

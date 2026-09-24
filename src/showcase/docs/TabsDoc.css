@@ -1,0 +1,206 @@
+/* ==========================================================================
+   TabsDoc.css - Estilos visuales para las demostraciones temáticas de pestañas
+   (Esquinas de Arquitecto, Cintas Washi, Rendimiento 120 FPS y Lienzos)
+   ========================================================================== */
+
+/* 1. Vista Esquinas de Arquitecto (Blueprint CAD) */
+.architect-demo-frame {
+  position: relative;
+  background-color: #f0f7ff;
+  background-image: 
+    linear-gradient(rgba(14, 165, 233, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 165, 233, 0.15) 1px, transparent 1px);
+  background-size: 16px 16px;
+  border: 2px solid #0369a1;
+  padding: 24px;
+  margin: 12px 6px;
+  color: #0c4a6e;
+  font-family: var(--font-sketch-title, 'Patrick Hand', cursive);
+}
+
+/* Vértices cruzados de dibujo arquitectónico que sobresalen de las esquinas */
+.architect-demo-frame::before,
+.architect-demo-frame::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+}
+
+.architect-corner-tl {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: 16px;
+  height: 16px;
+  border-right: 2px solid #0369a1;
+  border-bottom: 2px solid #0369a1;
+}
+
+.architect-corner-tr {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 16px;
+  height: 16px;
+  border-left: 2px solid #0369a1;
+  border-bottom: 2px solid #0369a1;
+}
+
+.architect-corner-bl {
+  position: absolute;
+  bottom: -8px;
+  left: -8px;
+  width: 16px;
+  height: 16px;
+  border-right: 2px solid #0369a1;
+  border-top: 2px solid #0369a1;
+}
+
+.architect-corner-br {
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  width: 16px;
+  height: 16px;
+  border-left: 2px solid #0369a1;
+  border-top: 2px solid #0369a1;
+}
+
+.architect-meta-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  border-bottom: 1.5px dashed #0284c7;
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+  color: #0284c7;
+}
+
+.architect-stamp {
+  display: inline-block;
+  border: 2px dashed #0284c7;
+  padding: 4px 12px;
+  transform: rotate(-2deg);
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* 2. Vista Cintas y Notas Washi */
+.washi-demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 10px 4px;
+}
+
+.washi-note {
+  position: relative;
+  padding: 28px 18px 18px;
+  border: 2px solid var(--sketch-ink, #23272f);
+  box-shadow: 3px 4px 0 var(--sketch-ink, #23272f);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-family: var(--font-sketch-body, 'Caveat', cursive);
+  font-size: 1.25rem;
+  line-height: 1.35;
+}
+
+.washi-note:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.washi-note--yellow {
+  background-color: #fef08a;
+  transform: rotate(-1deg);
+}
+
+.washi-note--mint {
+  background-color: #bbf7d0;
+  transform: rotate(1.5deg);
+}
+
+.washi-note--rose {
+  background-color: #fed7aa;
+  transform: rotate(-0.5deg);
+}
+
+/* Tiras de Cinta Washi adhesivas */
+.washi-tape-strip {
+  position: absolute;
+  height: 22px;
+  width: 90px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(1px);
+  border: 1px dashed rgba(35, 39, 47, 0.4);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+}
+
+.washi-tape--top-center {
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(1deg);
+}
+
+.washi-tape--top-left {
+  top: -8px;
+  left: -12px;
+  transform: rotate(-30deg);
+}
+
+.washi-tape--top-right {
+  top: -8px;
+  right: -12px;
+  transform: rotate(30deg);
+}
+
+/* 3. Vista 120 FPS GPU */
+.gpu-demo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.gpu-metric-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.gpu-metric-box {
+  background-color: var(--sketch-bg-paper, #fdfbf7);
+  border: 2px solid var(--sketch-ink, #23272f);
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  padding: 12px 16px;
+  box-shadow: 2px 2px 0 var(--sketch-ink, #23272f);
+}
+
+.gpu-metric-val {
+  font-size: 1.8rem;
+  font-weight: 800;
+  font-family: var(--font-sketch-title, 'Patrick Hand', cursive);
+  color: #16a34a;
+}
+
+/* 4. Vista Lienzos de Papel */
+.paper-swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.paper-swatch-card {
+  padding: 18px;
+  border: 2px solid var(--sketch-ink, #23272f);
+  border-radius: var(--wobble-radius-1);
+  box-shadow: 3px 3px 0 var(--sketch-ink, #23272f);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  min-height: 100px;
+}
+
+.paper-swatch-card:hover {
+  transform: translateY(-3px);
+}

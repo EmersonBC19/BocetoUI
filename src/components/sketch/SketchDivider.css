@@ -1,0 +1,97 @@
+/* ==========================================================================
+   SketchDivider Styles (Líneas y Separadores de Boceto - Imagen 5)
+   ========================================================================== */
+
+.sketch-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 24px 0;
+  position: relative;
+  color: var(--sketch-ink);
+}
+
+.sketch-divider__label {
+  font-family: var(--font-sketch-title);
+  font-size: 1.1rem;
+  padding: 0 14px;
+  background-color: var(--sketch-bg-paper);
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.sketch-divider__line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: var(--sketch-ink);
+  position: relative;
+}
+
+/* ==========================================================================
+   Variant 1: Double Line (Dos Líneas Paralelas a Mano - Imagen 5)
+   ========================================================================== */
+.sketch-divider--double .sketch-divider__line {
+  height: 6px;
+  background: transparent;
+  border-top: 1.5px solid var(--sketch-ink);
+  border-bottom: 1.5px solid var(--sketch-ink);
+}
+
+/* ==========================================================================
+   Variant 2: Dashed (Punteado a Mano - Imagen 5)
+   ========================================================================== */
+.sketch-divider--dashed .sketch-divider__line {
+  height: 0;
+  border-top: 2.5px dashed var(--sketch-ink);
+  background: transparent;
+}
+
+/* ==========================================================================
+   Variant 3: Wavy (Onda Dibujada SVG)
+   ========================================================================== */
+.sketch-divider--wavy {
+  height: 16px;
+}
+
+.sketch-divider--wavy svg {
+  width: 100%;
+  height: 100%;
+  stroke: var(--sketch-ink);
+}
+
+/* ==========================================================================
+   Variant 4: Zigzag Doodle
+   ========================================================================== */
+.sketch-divider--zigzag {
+  height: 14px;
+}
+
+.sketch-divider--zigzag svg {
+  width: 100%;
+  height: 100%;
+  stroke: var(--sketch-ink);
+}
+
+/* ==========================================================================
+   Variant 5: Cut (Tijera y Línea de Corte ✂)
+   ========================================================================== */
+.sketch-divider--cut {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.sketch-divider__cut-line {
+  flex: 1;
+  border-top: 2px dashed var(--sketch-ink-muted);
+}
+
+.sketch-divider__scissor-icon {
+  font-size: 1.1rem;
+  color: var(--sketch-ink);
+  transform: rotate(-15deg);
+  line-height: 1;
+}
+

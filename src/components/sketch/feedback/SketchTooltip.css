@@ -1,0 +1,144 @@
+/* ==========================================================================
+   SketchTooltip — Viñeta de cómic con rebote elástico Bungee
+   ========================================================================== */
+
+.sketch-tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.sketch-tooltip {
+  position: absolute;
+  z-index: 1000;
+  pointer-events: none;
+  max-width: min(240px, 80vw);
+  width: max-content;
+  white-space: normal;
+  text-align: center;
+}
+
+/* 1. Posicionamiento sin conflicto con la animación */
+.sketch-tooltip--top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+}
+
+.sketch-tooltip--bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+}
+
+.sketch-tooltip--left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-10px);
+}
+
+.sketch-tooltip--right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(10px);
+}
+
+/* 2. Burbuja de la viñeta con rebote Bungee elástico */
+.sketch-tooltip__bubble {
+  position: relative;
+  background-color: var(--sketch-ink, #23272f);
+  color: #ffffff;
+  padding: 6px 14px;
+  font-family: var(--font-sketch-body, 'Caveat', cursive);
+  font-size: 1.15rem;
+  font-weight: 600;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 2px 3px 0px rgba(0, 0, 0, 0.3);
+  animation: sketch-bubble-pop 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: center;
+}
+
+@keyframes sketch-bubble-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.6) rotate(-2deg);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.08) rotate(1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-0.5deg);
+  }
+}
+
+/* 3. Flechas estilo viñeta dibujada */
+.sketch-tooltip__arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.sketch-tooltip__arrow--top {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0 6px;
+  border-color: var(--sketch-ink, #23272f) transparent transparent transparent;
+}
+
+.sketch-tooltip__arrow--bottom {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 6px 6px 6px;
+  border-color: transparent transparent var(--sketch-ink, #23272f) transparent;
+}
+
+.sketch-tooltip__arrow--left {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px 0 6px 6px;
+  border-color: transparent transparent transparent var(--sketch-ink, #23272f);
+}
+
+.sketch-tooltip__arrow--right {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px 6px 6px 0;
+  border-color: transparent var(--sketch-ink, #23272f) transparent transparent;
+}
+
+/* ==========================================================================
+   Modo Pizarra (Chalkboard Mode) — Viñeta de Tiza
+   ========================================================================== */
+[data-theme="chalkboard"] .sketch-tooltip__bubble,
+.paper-chalk .sketch-tooltip__bubble {
+  background-color: #facc15;
+  color: #18181b;
+  box-shadow: 2px 3px 0px rgba(0, 0, 0, 0.7);
+  border: 1px solid #ffffff;
+}
+
+[data-theme="chalkboard"] .sketch-tooltip__arrow--top,
+.paper-chalk .sketch-tooltip__arrow--top {
+  border-color: #facc15 transparent transparent transparent;
+}
+
+[data-theme="chalkboard"] .sketch-tooltip__arrow--bottom,
+.paper-chalk .sketch-tooltip__arrow--bottom {
+  border-color: transparent transparent #facc15 transparent;
+}
+
+[data-theme="chalkboard"] .sketch-tooltip__arrow--left,
+.paper-chalk .sketch-tooltip__arrow--left {
+  border-color: transparent transparent transparent #facc15;
+}
+
+[data-theme="chalkboard"] .sketch-tooltip__arrow--right,
+.paper-chalk .sketch-tooltip__arrow--right {
+  border-color: transparent #facc15 transparent transparent;
+}

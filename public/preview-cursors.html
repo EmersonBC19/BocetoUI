@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Preview Cursors - Todos los Estados</title>
+  <link rel="stylesheet" href="/src/styles/sketch-cursors.css">
+  <style>
+    body {
+      background: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 30px;
+      color: #0f172a;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .card {
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+    .interactive-area {
+      margin-top: 16px;
+      padding: 24px;
+      background: #f1f5f9;
+      border: 2px solid #cbd5e1;
+      border-radius: 8px;
+      font-weight: bold;
+      user-select: none;
+    }
+    .btn-test {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #fef08a;
+      border: 2px solid #18181b;
+      border-radius: 8px;
+      font-weight: bold;
+      color: #18181b;
+    }
+  </style>
+</head>
+<body data-cursor="comic">
+  <h2 style="text-align: center; margin-bottom: 24px;">Sistema de Punteros Cómic: Flecha & Mano con Efecto Clic</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>1. Flecha en Reposo (Default)</h3>
+      <p style="font-size: 13px; color: #64748b;">Mueve el puntero por el fondo o sobre esta tarjeta sin hacer clic.</p>
+      <div class="interactive-area">
+        Fondo general (Flecha limpia)
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>2. Flecha Clickeando (Active General)</h3>
+      <p style="font-size: 13px; color: #64748b;">Haz clic mantenido en esta caja para ver las ráfagas en la flecha.</p>
+      <div class="interactive-area">
+        ¡Mantén clic aquí! (Verás ráfagas en la flecha)
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>3. Mano al Pasar por Interactivo (Hover)</h3>
+      <p style="font-size: 13px; color: #64748b;">Pasa el cursor por encima del botón sin hacer clic.</p>
+      <div class="interactive-area">
+        <button class="btn-test" type="button">Pasa el cursor sobre mí</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>4. Mano Clickeando (Active Interactivo)</h3>
+      <p style="font-size: 13px; color: #64748b;">Haz clic mantenido en este botón para ver las ráfagas en el dedo.</p>
+      <div class="interactive-area">
+        <button class="btn-test" type="button">¡Haz clic en mí!</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

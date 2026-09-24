@@ -1,0 +1,201 @@
+/* ==========================================================================
+   SketchInput & SketchTextarea Styles
+   ========================================================================== */
+
+.sketch-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+  position: relative;
+  text-align: left;
+}
+
+.sketch-label {
+  font-family: var(--font-sketch-title);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--sketch-ink);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sketch-label__required {
+  color: var(--sketch-pen-red);
+  font-size: 1.2rem;
+}
+
+.sketch-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.sketch-input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--sketch-ink-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 3; /* Asegura visibilidad permanente por encima del fondo y stacking context del input */
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.sketch-input-wrapper--underline .sketch-input-icon {
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.sketch-input-wrapper:focus-within .sketch-input-icon {
+  color: var(--sketch-pen-blue);
+}
+
+.sketch-input-wrapper--boxed:focus-within .sketch-input-icon {
+  transform: translateY(calc(-50% - 1px));
+}
+
+/* ==========================================================================
+   Input Base
+   ========================================================================== */
+.sketch-input,
+.sketch-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--font-sketch-body);
+  font-size: 1.2rem;
+  color: var(--sketch-ink);
+  background-color: var(--sketch-bg-surface);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  outline: none;
+}
+
+.sketch-input::placeholder,
+.sketch-textarea::placeholder {
+  color: var(--sketch-ink-light);
+  font-style: italic;
+}
+
+/* ==========================================================================
+   Variant 1: Boxed (Caja de Boceto Orgánica - Imagen 1 y 5)
+   ========================================================================== */
+.sketch-input--boxed,
+.sketch-textarea--boxed {
+  border: 2px solid var(--sketch-ink);
+  border-radius: var(--wobble-radius-1);
+  padding: 10px 14px;
+  box-shadow: 2px 3px 0px var(--sketch-ink);
+}
+
+.sketch-input--boxed.sketch-input--has-icon {
+  padding-left: 38px;
+}
+
+.sketch-input--boxed:focus,
+.sketch-textarea--boxed:focus {
+  border-color: var(--sketch-pen-blue);
+  box-shadow: 3px 4px 0px var(--sketch-pen-blue);
+  background-color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Variant 2: Underline (Renglón de Cuaderno Dibujado a Mano)
+   ========================================================================== */
+.sketch-input--underline,
+.sketch-textarea--underline {
+  border: none;
+  border-bottom: 2.5px solid var(--sketch-ink);
+  background: transparent;
+  padding: 8px 4px;
+  border-radius: 0;
+}
+
+/* Evita que el texto o placeholder se monte encima del icono de la pluma */
+.sketch-input--underline.sketch-input--has-icon {
+  padding-left: 28px;
+}
+
+.sketch-input--underline:focus,
+.sketch-textarea--underline:focus {
+  border-bottom-color: var(--sketch-pen-blue);
+  border-bottom-width: 3.5px;
+}
+
+/* Error State */
+.sketch-form-group--error .sketch-input,
+.sketch-form-group--error .sketch-textarea {
+  border-color: var(--sketch-pen-red) !important;
+  box-shadow: 2px 3px 0px var(--sketch-pen-red) !important;
+}
+
+.sketch-error-text {
+  font-family: var(--font-sketch-cursive);
+  font-size: 1.15rem;
+  color: var(--sketch-pen-red);
+  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sketch-error-arrow {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.sketch-input-end-adornment {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.sketch-input-eraser {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+}
+
+.sketch-input--has-clear,
+.sketch-input--has-end-adornment {
+  padding-right: 42px;
+}
+
+.sketch-textarea-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.sketch-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.sketch-textarea-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.sketch-char-count {
+  font-family: var(--font-sketch-code);
+  font-size: 0.85rem;
+  color: var(--sketch-ink-muted);
+  letter-spacing: 0.5px;
+}
+

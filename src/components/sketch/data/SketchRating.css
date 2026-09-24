@@ -1,0 +1,95 @@
+/* ==========================================================================
+   SketchRating.css — Calificación con Estrellas Artesanales BocetoUI
+   ========================================================================== */
+
+.sketch-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sketch-title, 'Outfit', sans-serif);
+}
+
+.sketch-rating__stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sketch-rating__star-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sketch-ink-light, #d4d4d8);
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+
+.sketch-rating--read-only .sketch-rating__star-btn {
+  cursor: default;
+}
+
+.sketch-rating:not(.sketch-rating--read-only) .sketch-rating__star-btn:hover {
+  transform: scale(1.2) rotate(-5deg);
+}
+
+.sketch-rating__star-svg {
+  display: block;
+  stroke: var(--sketch-ink, #18181b);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  fill: #f4f4f5;
+  transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+.sketch-rating__star-btn--filled .sketch-rating__star-svg {
+  fill: #facc15;
+  stroke: var(--sketch-ink, #18181b);
+}
+
+.sketch-rating__star-btn--half .sketch-rating__star-svg {
+  fill: url(#sketch-rating-half-grad);
+}
+
+/* Tamaños */
+.sketch-rating--sm .sketch-rating__star-svg {
+  width: 18px;
+  height: 18px;
+}
+
+.sketch-rating--md .sketch-rating__star-svg {
+  width: 26px;
+  height: 26px;
+}
+
+.sketch-rating--lg .sketch-rating__star-svg {
+  width: 36px;
+  height: 36px;
+}
+
+.sketch-rating__label {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--sketch-ink, #18181b);
+  background: var(--sketch-accent-yellow, #fef08a);
+  padding: 1px 8px;
+  border: 1.2px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-pill, 255px 25px 225px 25px/25px 225px 25px 255px);
+  box-shadow: 1px 1px 0px var(--sketch-ink, #18181b);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sketch-rating__feedback {
+  font-family: var(--font-sketch-cursive, 'Caveat', cursive);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--sketch-ink);
+}
+

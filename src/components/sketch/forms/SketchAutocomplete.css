@@ -1,0 +1,118 @@
+/* ==========================================================================
+   SketchAutocomplete — Hand-Drawn Combobox / Autocomplete Dropdown
+   ========================================================================== */
+
+.sketch-autocomplete {
+  position: relative;
+  width: 100%;
+  font-family: var(--font-sketch-body, 'Patrick Hand', cursive, sans-serif);
+}
+
+.sketch-autocomplete__input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sketch-autocomplete__input {
+  width: 100%;
+  padding: 8px 36px 8px 34px;
+  font-family: var(--font-sketch-body, 'Patrick Hand', cursive, sans-serif);
+  font-size: 1.05rem;
+  color: var(--sketch-ink, #1a1a1a);
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #1a1a1a);
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  box-shadow: var(--sketch-shadow-hard, 3px 4px 0px var(--sketch-ink, #1a1a1a));
+  outline: none;
+  transition: all 0.15s ease;
+  box-sizing: border-box;
+}
+
+.sketch-autocomplete__input:focus {
+  transform: translateY(-1px);
+  box-shadow: 4px 5px 0px var(--sketch-ink, #1a1a1a);
+}
+
+.sketch-autocomplete__icon-search {
+  position: absolute;
+  left: 10px;
+  color: var(--sketch-ink-muted, #5e6472);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.sketch-autocomplete__clear-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+}
+
+.sketch-autocomplete__dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  max-height: 240px;
+  overflow-y: auto;
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #1a1a1a);
+  border-radius: var(--wobble-radius-2, 20px 255px 20px 25px/255px 20px 225px 25px);
+  box-shadow: var(--sketch-shadow-deep, 5px 6px 0px var(--sketch-ink, #1a1a1a));
+  z-index: 1000;
+  padding: 6px 0;
+  list-style: none;
+  margin: 0;
+  box-sizing: border-box;
+  animation: sketchPopupIn 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.sketch-autocomplete__item {
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--sketch-ink, #1a1a1a);
+  transition: background 0.1s ease;
+}
+
+.sketch-autocomplete__item:hover,
+.sketch-autocomplete__item--focused {
+  background: var(--sketch-accent-yellow, #fef08a);
+  color: #1a1a1a;
+}
+
+.sketch-autocomplete__item-hint {
+  font-size: 0.85rem;
+  color: var(--sketch-ink-muted, #5e6472);
+  font-family: var(--font-sketch-title, 'Architects Daughter', cursive, sans-serif);
+}
+
+.sketch-autocomplete__match {
+  background: var(--sketch-highlighter-yellow);
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 4px 12px 3px 15px;
+  color: var(--sketch-ink);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+
+.sketch-autocomplete__item:hover .sketch-autocomplete__match,
+.sketch-autocomplete__item--focused .sketch-autocomplete__match {
+  background: #fde047;
+  text-decoration: underline;
+}
+
+.sketch-autocomplete__empty {
+  padding: 12px 14px;
+  text-align: center;
+  color: var(--sketch-ink-muted, #5e6472);
+  font-style: italic;
+}

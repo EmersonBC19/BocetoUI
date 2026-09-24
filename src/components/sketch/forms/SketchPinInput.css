@@ -1,0 +1,72 @@
+/* ==========================================================================
+   SketchPinInput — Hand-Drawn OTP & PIN Digit Boxes
+   ========================================================================== */
+
+.sketch-pin-container {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-sketch-body, 'Patrick Hand', cursive, sans-serif);
+}
+
+.sketch-pin-inputs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sketch-pin-box {
+  width: 46px;
+  height: 52px;
+  text-align: center;
+  font-family: var(--font-sketch-title, 'Architects Daughter', cursive, sans-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--sketch-ink, #1a1a1a);
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #1a1a1a);
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  box-shadow: var(--sketch-shadow-hard, 3px 4px 0px var(--sketch-ink, #1a1a1a));
+  outline: none;
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  caret-color: var(--sketch-pen-blue, #1d4ed8);
+}
+
+.sketch-pin-box:focus {
+  transform: translateY(-2px) scale(1.05) rotate(-1deg);
+  background: var(--sketch-accent-yellow, #fef08a);
+  box-shadow: 4px 6px 0px var(--sketch-ink, #1a1a1a);
+}
+
+.sketch-pin-box--filled {
+  background: var(--sketch-bg-paper, #fbf9f5);
+}
+
+.sketch-pin-box:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.sketch-pin-container--error .sketch-pin-box {
+  border-color: var(--sketch-pen-red, #b91c1c);
+  color: var(--sketch-pen-red, #b91c1c);
+  box-shadow: 3px 4px 0px var(--sketch-pen-red, #b91c1c);
+  animation: sketchShake 0.3s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes sketchShake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-3px, 0, 0); }
+  40%, 60% { transform: translate3d(3px, 0, 0); }
+}
+
+.sketch-pin-error-text {
+  font-family: var(--font-sketch-body, 'Patrick Hand', cursive, sans-serif);
+  font-size: 0.9rem;
+  color: var(--sketch-pen-red, #b91c1c);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

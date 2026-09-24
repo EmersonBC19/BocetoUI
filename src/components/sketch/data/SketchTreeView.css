@@ -1,0 +1,92 @@
+/* ==========================================================================
+   SketchTreeView — Hand-Drawn Hierarchical Tree Component
+   ========================================================================== */
+
+.sketch-tree {
+  font-family: var(--font-sketch-body, 'Patrick Hand', cursive, sans-serif);
+  color: var(--sketch-ink, #1a1a1a);
+  user-select: none;
+  padding: 4px;
+}
+
+.sketch-tree__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sketch-tree__nested {
+  padding-left: 22px;
+  position: relative;
+}
+
+/* Conectores artesanales de rama */
+.sketch-tree__nested::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 12px;
+  left: 9px;
+  width: 1.5px;
+  border-left: 2px dashed var(--sketch-ink-light, #9ca3af);
+}
+
+.sketch-tree__node {
+  position: relative;
+  margin: 2px 0;
+}
+
+.sketch-tree__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  cursor: pointer;
+  font-size: 1.05rem;
+  transition: all 0.12s ease;
+  position: relative;
+}
+
+.sketch-tree__item:hover {
+  background: var(--sketch-accent-yellow, #fef08a);
+  transform: translateX(2px);
+}
+
+.sketch-tree__item--selected {
+  background: var(--sketch-accent-yellow, #fef08a);
+  border: 1.5px solid var(--sketch-ink, #1a1a1a);
+  box-shadow: 2px 2px 0px var(--sketch-ink, #1a1a1a);
+  font-weight: 700;
+}
+
+.sketch-tree__toggle-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: var(--sketch-ink, #1a1a1a);
+  transition: transform 0.15s ease;
+}
+
+.sketch-tree__toggle-btn--expanded {
+  transform: rotate(90deg);
+}
+
+.sketch-tree__icon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--sketch-ink-muted, #5e6472);
+}
+
+.sketch-tree__label {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

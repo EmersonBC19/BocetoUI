@@ -1,0 +1,171 @@
+/* ==========================================================================
+   SketchDatePicker & SketchCalendar — Hand-Drawn Artisan Date Picker
+   ========================================================================== */
+
+.sketch-calendar {
+  display: inline-block;
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #1a1a1a);
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  box-shadow: var(--sketch-shadow-hard, 3px 4px 0px var(--sketch-ink, #1a1a1a));
+  padding: 16px;
+  user-select: none;
+  font-family: var(--font-sketch-body, 'Patrick Hand', cursive, sans-serif);
+  color: var(--sketch-ink, #1a1a1a);
+  width: 290px;
+  box-sizing: border-box;
+}
+
+.sketch-calendar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1.5px dashed var(--sketch-ink-light, #9ca3af);
+}
+
+.sketch-calendar__title {
+  font-family: var(--font-sketch-title, 'Architects Daughter', cursive, sans-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+}
+
+.sketch-calendar__nav-btn {
+  background: transparent;
+  border: 1.5px solid var(--sketch-ink, #1a1a1a);
+  border-radius: var(--wobble-radius-round, 50%);
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--sketch-ink, #1a1a1a);
+  box-shadow: 1px 1px 0px var(--sketch-ink, #1a1a1a);
+  transition: transform 0.15s ease, background 0.15s ease;
+  font-weight: bold;
+}
+
+.sketch-calendar__nav-btn:hover {
+  background: var(--sketch-accent-yellow, #fef08a);
+  transform: scale(1.08) rotate(-3deg);
+}
+
+.sketch-calendar__nav-btn:active {
+  transform: scale(0.95);
+  box-shadow: none;
+}
+
+.sketch-calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  text-align: center;
+}
+
+.sketch-calendar__weekday {
+  font-family: var(--font-sketch-title, 'Architects Daughter', cursive, sans-serif);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--sketch-ink-muted, #5e6472);
+  padding-bottom: 4px;
+}
+
+.sketch-calendar__day {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border-radius: var(--wobble-radius-round, 50%);
+  position: relative;
+  background: transparent;
+  border: none;
+  color: var(--sketch-ink, #1a1a1a);
+  transition: all 0.12s ease;
+}
+
+.sketch-calendar__day:hover:not(.sketch-calendar__day--disabled):not(.sketch-calendar__day--empty) {
+  background: var(--sketch-accent-blue, #bfdbfe);
+  transform: scale(1.1) rotate(2deg);
+}
+
+.sketch-calendar__day--empty {
+  cursor: default;
+}
+
+.sketch-calendar__day--disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.sketch-calendar__day--today {
+  font-weight: bold;
+  color: var(--sketch-pen-red, #b91c1c);
+}
+
+.sketch-calendar__day--today::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border: 1.5px solid var(--sketch-pen-red, #b91c1c);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  pointer-events: none;
+  transform: rotate(-2deg);
+}
+
+.sketch-calendar__day--selected {
+  background: var(--sketch-accent-yellow, #fef08a) !important;
+  color: #1a1a1a !important;
+  font-weight: 700;
+  border: 1.5px solid var(--sketch-ink, #1a1a1a);
+  box-shadow: 2px 2px 0px var(--sketch-ink, #1a1a1a);
+  transform: scale(1.08) rotate(-1.5deg);
+}
+
+/* Fines de semana con sutil tinta roja vintage */
+.sketch-calendar__weekday:first-child,
+.sketch-calendar__weekday:last-child {
+  color: var(--sketch-pen-red, #b91c1c);
+}
+
+
+/* DatePicker Input & Popup */
+.sketch-datepicker-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.sketch-datepicker__popup {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 1000;
+  animation: sketchPopupIn 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes sketchPopupIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.sketch-datepicker__trigger {
+  cursor: pointer;
+  user-select: none;
+}
+
+.sketch-datepicker__clear-btn {
+  z-index: 6;
+}

@@ -1,0 +1,157 @@
+/* ==========================================================================
+   SketchProgress Styles (Barra de Progreso de Boceto Ultra Fluida - 120 FPS)
+   ========================================================================== */
+
+.sketch-progress-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.sketch-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sketch-progress-label {
+  font-family: var(--font-sketch-title, 'Patrick Hand', cursive);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--sketch-ink, #23272f);
+}
+
+.sketch-progress-percentage {
+  font-family: var(--font-sketch-code, 'Fira Code', monospace);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--sketch-ink, #23272f);
+}
+
+.sketch-progress-complete-badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 6px;
+  background: #dcfce7;
+  color: var(--sketch-pen-green, #16a34a);
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 900;
+  animation: sketch-comic-burst 0.28s var(--sketch-spring-bounce);
+  transform: rotate(-2deg);
+}
+
+
+.sketch-progress-track {
+  position: relative;
+  width: 100%;
+  height: 20px;
+  background-color: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #23272f);
+  border-radius: var(--wobble-radius-pill, 255px 15px 225px 15px/15px 225px 15px 255px);
+  box-shadow: 2px 2px 0 var(--sketch-ink, #23272f);
+  overflow: hidden;
+  box-sizing: border-box;
+  contain: paint;
+}
+
+/* Barra interna acelerada 100% por GPU */
+.sketch-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  border-right: 2.5px solid var(--sketch-ink, #23272f);
+  /* Curva de inercia natural ultra reactiva */
+  transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: left center;
+}
+
+/* Modo instantáneo para arrastre de sliders o inputs en tiempo real (0ms lag) */
+.sketch-progress-bar--instant {
+  transition: none !important;
+}
+
+/* Variante Marker Amarillo (Resaltador) */
+.sketch-progress-bar--marker {
+  background-color: var(--sketch-accent-yellow, #fef08a);
+}
+
+/* Variante Marker Azul */
+.sketch-progress-bar--marker-blue {
+  background-color: var(--sketch-accent-blue, #bae6fd);
+}
+
+/* Variante Marker Verde */
+.sketch-progress-bar--marker-green {
+  background-color: var(--sketch-accent-green, #bbf7d0);
+}
+
+/* Variante Marker Rosa */
+.sketch-progress-bar--marker-pink {
+  background-color: var(--sketch-accent-pink, #fbcfe8);
+}
+
+/* Variante Marker Púrpura */
+.sketch-progress-bar--marker-purple {
+  background-color: #e9d5ff;
+}
+
+/* Variante Hatch (Hachurado de lápiz con movimiento fluido) */
+.sketch-progress-bar--hatch {
+  background-color: var(--sketch-accent-yellow, #fef08a);
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--sketch-ink, #23272f) 0,
+    var(--sketch-ink, #23272f) 2px,
+    transparent 2px,
+    transparent 10px
+  );
+  background-size: 20px 20px;
+}
+
+/* Animación de flujo continuo de hachurado */
+.sketch-progress-bar--hatch.sketch-progress-bar--animated {
+  animation: sketch-hatch-flow 0.8s linear infinite;
+}
+
+@keyframes sketch-hatch-flow {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 20px 0;
+  }
+}
+
+/* Contenedor de la nube de velocidad en la punta de avance */
+.sketch-progress-cloud-box {
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: opacity 0.1s ease;
+  z-index: 2;
+}
+
+.sketch-progress-cloud {
+  width: 24px;
+  height: 18px;
+  display: block;
+  animation: sketch-cloud-bob 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes sketch-cloud-bob {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(-1.5px) scale(1.08);
+  }
+}

@@ -1,0 +1,90 @@
+/* ==========================================================================
+   SketchPopover.css — Panel Flotante Artesanal BocetoUI
+   ========================================================================== */
+
+.sketch-popover-container {
+  position: relative;
+  display: inline-block;
+}
+
+.sketch-popover-trigger {
+  display: inline-flex;
+  outline: none;
+}
+
+.sketch-popover-panel {
+  position: absolute;
+  z-index: 60;
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  box-shadow: 4px 5px 0px var(--sketch-ink, #18181b);
+  padding: 14px;
+  animation: sketch-pop-popover 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-sizing: border-box;
+}
+
+@keyframes sketch-pop-popover {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Placements */
+.sketch-popover-panel--bottom {
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.sketch-popover-panel--top {
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.sketch-popover-panel--left {
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.sketch-popover-panel--right {
+  left: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Cabecera y botón de cerrar */
+.sketch-popover-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1.5px dashed var(--sketch-ink-light, #a1a1aa);
+}
+
+.sketch-popover-title {
+  font-family: var(--font-sketch-title, 'Outfit', sans-serif);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--sketch-ink, #18181b);
+}
+
+.sketch-popover-close {
+  margin-left: auto;
+}
+
+/* Contenido */
+.sketch-popover-body {
+  font-family: var(--font-sketch-body, 'Inter', sans-serif);
+  font-size: 0.9rem;
+  color: var(--sketch-ink, #18181b);
+  line-height: 1.45;
+}

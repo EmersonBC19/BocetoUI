@@ -1,0 +1,121 @@
+/* ==========================================================================
+   SketchTabs Styles (Pestañas estilo índice de archivador y resaltador)
+   ========================================================================== */
+
+.sketch-tabs-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.sketch-tabs-list {
+  display: flex;
+  gap: 6px;
+  border-bottom: 2.5px solid var(--sketch-ink, #23272f);
+  padding: 0 4px;
+  margin: 0;
+  list-style: none;
+  overflow-x: auto;
+  /* Eliminar por completo barras de desplazamiento nativas antiestéticas */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE y Edge */
+}
+
+.sketch-tabs-list::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Variante Folder (Pestaña archivador clásica) */
+.sketch-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  background-color: var(--sketch-bg-paper, #fdfbf7);
+  border: 2px solid var(--sketch-ink, #23272f);
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  font-family: var(--font-sketch-title, 'Patrick Hand', cursive);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--sketch-ink-muted, #64748b);
+  cursor: pointer;
+  position: relative;
+  top: 2.5px;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.sketch-tab-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.sketch-tab-btn:hover:not(.sketch-tab-btn--active) {
+  color: var(--sketch-ink, #23272f);
+  background-color: #f3eee6;
+  transform: translateY(-2px);
+}
+
+.sketch-tab-btn--active {
+  color: var(--sketch-ink, #23272f);
+  background-color: var(--sketch-bg-surface, #ffffff);
+  border-bottom: 2.5px solid var(--sketch-bg-surface, #ffffff);
+  box-shadow: 2px -3px 0 var(--sketch-ink, #23272f);
+  z-index: 2;
+  transform: translateY(-1px);
+}
+
+/* Variante Pill (Botones redondeados flotantes) */
+.sketch-tabs--pill .sketch-tabs-list {
+  border-bottom: none;
+  padding: 6px;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  border: 1.5px dashed var(--sketch-ink-light, #e2e8f0);
+}
+
+.sketch-tabs--pill .sketch-tab-btn {
+  border: 1.5px solid transparent;
+  border-radius: var(--wobble-radius-pill, 255px 15px 225px 15px/15px 225px 15px 255px);
+  top: 0;
+  padding: 6px 16px;
+  background: transparent;
+}
+
+.sketch-tabs--pill .sketch-tab-btn--active {
+  background-color: var(--sketch-accent-yellow, #fef08a);
+  border-color: var(--sketch-ink, #23272f);
+  box-shadow: 2px 2px 0 var(--sketch-ink, #23272f);
+  transform: rotate(-0.5deg);
+}
+
+.sketch-tab-panel {
+  padding: 24px;
+  background-color: var(--sketch-bg-surface, #ffffff);
+  border: 2.5px solid var(--sketch-ink, #23272f);
+  border-top: none;
+  border-radius: 0 0 var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px) var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  box-shadow: 3px 4px 0 var(--sketch-ink, #23272f);
+  min-height: 120px;
+  box-sizing: border-box;
+  animation: sketchTabContentFade 0.22s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+@keyframes sketchTabContentFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.sketch-tabs--pill .sketch-tab-panel {
+  border-top: 2.5px solid var(--sketch-ink, #23272f);
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  margin-top: 10px;
+}

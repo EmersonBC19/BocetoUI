@@ -1,0 +1,73 @@
+/* ==========================================================================
+   SketchAvatar Styles (Avatar circular dibujado a mano - Imagen 1)
+   ========================================================================== */
+
+.sketch-avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--wobble-radius-round);
+  border: 2px solid var(--sketch-ink);
+  background-color: var(--sketch-accent-yellow);
+  font-family: var(--font-sketch-title);
+  font-weight: 700;
+  color: var(--sketch-ink);
+  box-shadow: 2px 2px 0 var(--sketch-ink);
+  user-select: none;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Trazo concéntrico superpuesto en bucle */
+.sketch-avatar::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border-radius: 48% 52% 54% 46% / 45% 58% 42% 55%;
+  border: 1.5px solid var(--sketch-ink);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.sketch-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+/* Sizes */
+.sketch-avatar--sm {
+  width: 34px;
+  height: 34px;
+  font-size: 0.9rem;
+}
+
+.sketch-avatar--md {
+  width: 48px;
+  height: 48px;
+  font-size: 1.2rem;
+}
+
+.sketch-avatar--lg {
+  width: 64px;
+  height: 64px;
+  font-size: 1.5rem;
+}
+
+/* Indicador de estado online / offline */
+.sketch-avatar-badge {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--sketch-ink);
+  background-color: var(--sketch-pen-green);
+  box-shadow: 1px 1px 0 var(--sketch-ink);
+}

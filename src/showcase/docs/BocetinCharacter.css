@@ -1,0 +1,188 @@
+/* ==========================================================================
+   BocetinCharacter — Vector Mascot Animations & Styles
+   ========================================================================== */
+
+.bocetin-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: bocetin-float 3.4s ease-in-out infinite;
+}
+
+.bocetin-wrapper:hover {
+  transform: scale(1.08) rotate(2deg);
+}
+
+.bocetin-svg {
+  display: block;
+  filter: drop-shadow(2px 3px 0px rgba(0, 0, 0, 0.18));
+  overflow: visible;
+}
+
+/* 1. Flotación Suave Idle */
+@keyframes bocetin-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(1deg);
+  }
+}
+
+/* 2. Salto Elástico con Impacto (Squash & Stretch) */
+.bocetin-wrapper--bouncing {
+  animation: bocetin-jump 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+@keyframes bocetin-jump {
+  0% {
+    transform: translateY(0) scale(1, 1);
+  }
+  25% {
+    transform: translateY(-16px) scale(0.9, 1.15) rotate(4deg);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.05, 0.95) rotate(-3deg);
+  }
+  75% {
+    transform: translateY(2px) scale(1.12, 0.88);
+  }
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+
+/* Sombra en el suelo interactiva */
+.bocetin-shadow {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.bocetin-wrapper--bouncing .bocetin-shadow {
+  transform-origin: 70px 150px;
+  animation: bocetin-shadow-shrink 0.42s ease-out;
+}
+
+@keyframes bocetin-shadow-shrink {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  40% {
+    opacity: 0.3;
+    transform: scale(0.6);
+  }
+}
+
+/* 3. Parpadeo de Ojos (Blink) */
+.bocetin-eye-group {
+  transform-origin: center;
+  animation: bocetin-blink 4s infinite;
+}
+
+@keyframes bocetin-blink {
+  0%, 94%, 100% {
+    transform: scaleY(1);
+  }
+  97% {
+    transform: scaleY(0.1);
+  }
+}
+
+/* 4. Saludo del Brazo Izquierdo */
+.bocetin-arm-left {
+  transform-origin: 46px 72px;
+  animation: bocetin-wave 2.8s ease-in-out infinite;
+}
+
+@keyframes bocetin-wave {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-14deg);
+  }
+}
+
+/* 5. Trazo de garabato dorado del lápiz derecho */
+.bocetin-drawn-spark {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  animation: bocetin-draw-spiral 2.2s ease-in-out infinite;
+}
+
+@keyframes bocetin-draw-spiral {
+  0% {
+    stroke-dashoffset: 20;
+    opacity: 0.3;
+  }
+  50% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: -20;
+    opacity: 0.3;
+  }
+}
+
+/* 6. Modo Zen: Zzz flotando */
+.bocetin-zzz {
+  font-family: var(--font-sketch-cursive, 'Caveat', cursive);
+  font-size: 14px;
+  font-weight: 700;
+  fill: #64748b;
+  opacity: 0;
+  animation: bocetin-zzz-drift 3s infinite ease-out;
+}
+
+.bocetin-zzz-1 { animation-delay: 0s; }
+.bocetin-zzz-2 { animation-delay: 0.9s; }
+.bocetin-zzz-3 { animation-delay: 1.8s; }
+
+@keyframes bocetin-zzz-drift {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.7);
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(12px, -24px) scale(1.2);
+  }
+}
+
+/* 7. Modo Inspirado: Bombilla pulsante */
+.bocetin-idea-bulb {
+  animation: bocetin-bulb-pulse 2s infinite ease-in-out;
+}
+
+@keyframes bocetin-bulb-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 1px #facc15);
+  }
+  50% {
+    transform: scale(1.1) translateY(-2px);
+    filter: drop-shadow(0 0 6px #facc15);
+  }
+}
+
+/* 8. Modo Cómic: Ráfagas de acción */
+.bocetin-comic-aura {
+  animation: bocetin-aura-shake 0.3s infinite ease-in-out alternate;
+}
+
+@keyframes bocetin-aura-shake {
+  0% {
+    transform: translate(-1px, 0);
+  }
+  100% {
+    transform: translate(1px, -1px);
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "name": "boceto-ui",
+  "version": "1.0.0",
+  "description": "Hand-drawn, wobbly and playful React component library with comic artisan cursors",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "react",
+    "ui",
+    "sketch",
+    "hand-drawn",
+    "wobbly",
+    "comic",
+    "components",
+    "design-system",
+    "boceto"
+  ],
+  "author": "BocetoUI",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --mode lib && node -e \"import('node:fs').then(fs => fs.copyFileSync('src/components/sketch/index.d.ts', 'dist/index.d.ts'))\"",
+    "build:demo": "vite build",
+    "build:lib": "npm run build",
+    "pack:test": "npm run build && npm pack",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "lucide-react": ">=1.0.0"
+  },
+  "dependencies": {
+    "lucide-react": "^1.47.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "oxlint": "^1.81.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "vite": "^8.3.0"
+  }
+}

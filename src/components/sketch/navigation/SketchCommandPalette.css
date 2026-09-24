@@ -1,0 +1,142 @@
+/* ==========================================================================
+   SketchCommandPalette — Hand-Drawn Command Menu (Cmd+K / KBar)
+   ========================================================================== */
+
+.sketch-cmd-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 26, 26, 0.45);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 14vh;
+  z-index: 9999;
+  animation: sketchFadeIn 0.15s ease-out;
+}
+
+@keyframes sketchFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.sketch-cmd-dialog {
+  width: 90%;
+  max-width: 580px;
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 2.5px solid var(--sketch-ink, #1a1a1a);
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  box-shadow: var(--sketch-shadow-deep, 5px 6px 0px var(--sketch-ink, #1a1a1a));
+  overflow: hidden;
+  font-family: var(--font-sketch-body, 'Patrick Hand', cursive, sans-serif);
+  color: var(--sketch-ink, #1a1a1a);
+  animation: sketchCmdPop 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes sketchCmdPop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.sketch-cmd-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 2px dashed var(--sketch-ink-light, #9ca3af);
+  background: var(--sketch-bg-paper, #fbf9f5);
+}
+
+.sketch-cmd-icon {
+  color: var(--sketch-ink-muted, #5e6472);
+  display: flex;
+  align-items: center;
+}
+
+.sketch-cmd-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font-family: var(--font-sketch-body, 'Patrick Hand', cursive, sans-serif);
+  font-size: 1.25rem;
+  color: var(--sketch-ink, #1a1a1a);
+  outline: none;
+}
+
+.sketch-cmd-badge {
+  font-family: var(--font-sketch-code, 'JetBrains Mono', monospace);
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border: 1px solid var(--sketch-ink, #1a1a1a);
+  border-radius: 4px;
+  background: var(--sketch-bg-surface, #ffffff);
+  box-shadow: 1px 1px 0px var(--sketch-ink, #1a1a1a);
+}
+
+.sketch-cmd-list {
+  max-height: 320px;
+  overflow-y: auto;
+  padding: 8px;
+  margin: 0;
+  list-style: none;
+}
+
+.sketch-cmd-group-label {
+  font-family: var(--font-sketch-title, 'Architects Daughter', cursive, sans-serif);
+  font-size: 0.8rem;
+  color: var(--sketch-ink-muted, #5e6472);
+  padding: 8px 10px 4px 10px;
+  letter-spacing: 0.5px;
+}
+
+.sketch-cmd-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  cursor: pointer;
+  font-size: 1.05rem;
+  transition: all 0.1s ease;
+}
+
+.sketch-cmd-item:hover,
+.sketch-cmd-item--selected {
+  background: var(--sketch-accent-yellow, #fef08a);
+  transform: translateX(4px);
+}
+
+.sketch-cmd-item-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sketch-cmd-item-shortcut {
+  font-family: var(--font-sketch-code, 'JetBrains Mono', monospace);
+  font-size: 0.8rem;
+  color: var(--sketch-ink-muted, #5e6472);
+}
+
+.sketch-cmd-footer {
+  padding: 8px 18px;
+  background: var(--sketch-bg-paper, #fbf9f5);
+  border-top: 1.5px dashed var(--sketch-ink-light, #9ca3af);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--sketch-ink-muted, #5e6472);
+}
+
+.sketch-cmd-keys {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

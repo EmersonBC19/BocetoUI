@@ -1,0 +1,330 @@
+/* ==========================================================================
+   Showcase App Styles
+   ========================================================================== */
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 20px 80px 20px;
+  position: relative;
+}
+
+/* ==========================================================================
+   Header & Canvas Switcher
+   ========================================================================== */
+.showcase-header {
+  text-align: center;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.showcase-badge-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.showcase-title {
+  font-size: 3.2rem;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.5px;
+  color: var(--sketch-ink);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.08);
+}
+
+.showcase-subtitle {
+  font-size: 1.35rem;
+  color: var(--sketch-ink-muted);
+  max-width: 720px;
+  margin: 0 auto 28px auto;
+  line-height: 1.5;
+}
+
+/* Theme / Paper Selector Controls */
+.canvas-selector-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background-color: var(--sketch-bg-surface);
+  border: 2px solid var(--sketch-ink);
+  border-radius: var(--wobble-radius-pill);
+  box-shadow: 3px 4px 0px var(--sketch-ink);
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.canvas-selector-title {
+  font-family: var(--font-sketch-title);
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-right: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.canvas-btn {
+  background: transparent;
+  border: 1.5px solid transparent;
+  padding: 6px 14px;
+  font-family: var(--font-sketch-title);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: var(--wobble-radius-1);
+  color: var(--sketch-ink);
+  transition: all 0.15s ease;
+}
+
+.canvas-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.canvas-btn--active {
+  background-color: var(--sketch-accent-yellow);
+  color: #1a1a1a;
+  border-color: var(--sketch-ink);
+  box-shadow: 2px 2px 0px var(--sketch-ink);
+  transform: rotate(-1deg);
+}
+
+.showcase-toolbar-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.cursor-selector-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background-color: var(--sketch-bg-surface);
+  border: 2px solid var(--sketch-ink);
+  border-radius: var(--wobble-radius-pill);
+  box-shadow: 3px 4px 0px var(--sketch-ink);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cursor-btn {
+  background: transparent;
+  border: 1.5px solid transparent;
+  padding: 6px 14px;
+  font-family: var(--font-sketch-title);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: var(--wobble-radius-1);
+  color: var(--sketch-ink);
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cursor-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.cursor-btn--active {
+  background-color: var(--sketch-accent-blue);
+  color: #1e3a8a;
+  border-color: var(--sketch-ink);
+  box-shadow: 2px 2px 0px var(--sketch-ink);
+  transform: rotate(1deg);
+}
+
+/* ==========================================================================
+   Compact Docs Topbar
+   ========================================================================== */
+.docs-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 18px;
+  background-color: var(--sketch-bg-surface);
+  border: 2px solid var(--sketch-ink);
+  border-radius: var(--wobble-radius-pill);
+  box-shadow: 3px 4px 0px var(--sketch-ink);
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.docs-topbar__left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.docs-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--sketch-accent-yellow);
+  border: 1.5px solid var(--sketch-ink);
+  padding: 6px 14px;
+  border-radius: var(--wobble-radius-1);
+  font-family: var(--font-sketch-title);
+  font-size: 0.88rem;
+  font-weight: 800;
+  cursor: pointer;
+  color: var(--sketch-ink);
+  box-shadow: 2px 2px 0px var(--sketch-ink);
+  transition: all 0.15s ease;
+}
+
+.docs-back-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 2px 3px 0px var(--sketch-ink);
+}
+
+.docs-topbar__divider {
+  color: var(--sketch-ink-muted);
+  font-weight: bold;
+}
+
+.docs-topbar__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sketch-code);
+  font-size: 0.84rem;
+  color: var(--sketch-ink-muted);
+}
+
+.docs-topbar__tools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.canvas-selector-bar--compact,
+.cursor-selector-bar--compact {
+  margin-bottom: 0 !important;
+  padding: 4px 8px !important;
+  box-shadow: 2px 2px 0px var(--sketch-ink) !important;
+}
+
+.canvas-selector-bar--compact .canvas-btn,
+.cursor-selector-bar--compact .cursor-btn {
+  padding: 4px 10px !important;
+  font-size: 0.86rem !important;
+}
+
+@media (max-width: 640px) {
+  .docs-tool-label {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Section Layouts
+   ========================================================================== */
+.showcase-section {
+  margin-bottom: 56px;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 450px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin: 0;
+  color: var(--sketch-ink);
+}
+
+.section-ref-tag {
+  font-family: var(--font-sketch-cursive);
+  font-size: 1.2rem;
+  color: var(--sketch-pen-blue);
+  background: var(--sketch-accent-blue);
+  padding: 2px 10px;
+  border-radius: 4px;
+  transform: rotate(1deg);
+}
+
+.section-desc {
+  color: var(--sketch-ink-muted);
+  font-size: 1.2rem;
+  margin-bottom: 24px;
+}
+
+/* Grids */
+.component-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.component-grid--3cols {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.component-box {
+  background-color: var(--sketch-bg-surface);
+  border: 2px dashed var(--sketch-ink-light);
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+  position: relative;
+  text-align: center;
+}
+
+.component-box__label {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-family: var(--font-sketch-code);
+  font-size: 0.8rem;
+  color: var(--sketch-ink-muted);
+}
+
+/* Interactive Demo Showcase Panel */
+.demo-board-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 28px;
+}
+
+@media (max-width: 860px) {
+  .demo-board-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Toast Copy notification */
+.copy-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background-color: var(--sketch-ink);
+  color: var(--sketch-bg-paper);
+  padding: 12px 24px;
+  font-family: var(--font-sketch-title);
+  font-size: 1.15rem;
+  border-radius: var(--wobble-radius-pill);
+  box-shadow: 4px 6px 0px rgba(0, 0, 0, 0.3);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: sketch-pop 0.2s ease-out;
+}

@@ -1,0 +1,144 @@
+/* ==========================================================================
+   SketchUpload.css — Zona de Carga Drag & Drop Artesanal BocetoUI
+   ========================================================================== */
+
+.sketch-upload-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.sketch-dropzone {
+  border: 2.5px dashed var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  background: var(--sketch-bg-surface, #ffffff);
+  padding: 32px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.sketch-dropzone:hover {
+  background: #fdfdfd;
+  border-color: var(--sketch-pen-blue, #0284c7);
+  transform: translateY(-2px) rotate(-0.3deg);
+  box-shadow: 3px 4px 0px var(--sketch-ink, #18181b);
+}
+
+.sketch-dropzone--drag-over {
+  background: var(--sketch-accent-yellow, #fef08a) !important;
+  border-color: var(--sketch-pen-blue, #0284c7) !important;
+  border-style: solid !important;
+  transform: scale(1.02) rotate(-1deg) !important;
+  box-shadow: 4px 6px 0px var(--sketch-ink, #18181b) !important;
+  animation: sketch-boil 0.3s steps(1) infinite !important;
+}
+
+
+.sketch-dropzone__icon {
+  color: var(--sketch-pen-blue, #0284c7);
+  margin-bottom: 8px;
+  transition: transform 0.2s ease;
+}
+
+.sketch-dropzone:hover .sketch-dropzone__icon {
+  transform: translateY(-4px) scale(1.08);
+}
+
+.sketch-dropzone__hint {
+  font-family: var(--font-sketch-title, 'Outfit', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--sketch-ink, #18181b);
+  margin: 0 0 4px 0;
+}
+
+.sketch-dropzone__subhint {
+  font-family: var(--font-sketch-body, 'Inter', sans-serif);
+  font-size: 0.85rem;
+  color: var(--sketch-ink-muted, #71717a);
+}
+
+/* Lista de archivos subidos */
+.sketch-upload-filelist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sketch-upload-file-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-2, 20px 255px 20px 25px/255px 20px 225px 25px);
+  padding: 8px 14px;
+  box-shadow: 2px 3px 0px var(--sketch-ink, #18181b);
+  animation: sketch-pop-file 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes sketch-pop-file {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sketch-upload-file-icon {
+  color: var(--sketch-pen-blue, #0284c7);
+  flex-shrink: 0;
+}
+
+.sketch-upload-file-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.sketch-upload-file-name {
+  font-family: var(--font-sketch-title, 'Outfit', sans-serif);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--sketch-ink, #18181b);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sketch-upload-file-size {
+  font-size: 0.8rem;
+  color: var(--sketch-ink-muted, #71717a);
+}
+
+.sketch-upload-file-remove {
+  background: transparent;
+  border: 1.5px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-round, 50%);
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sketch-ink, #18181b);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  margin-left: 6px;
+}
+
+.sketch-upload-file-remove:hover {
+  background: #fee2e2;
+  color: #dc2626;
+  transform: scale(1.1);
+}

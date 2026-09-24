@@ -1,0 +1,125 @@
+/* ==========================================================================
+   SketchSwitch Styles (Interruptor / Toggle con Rebote Elástico Bungee)
+   ========================================================================== */
+
+.sketch-switch-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--font-sketch-body, 'Caveat', cursive);
+  font-size: 1.25rem;
+  color: var(--sketch-ink, #23272f);
+}
+
+.sketch-switch-wrapper input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.sketch-switch-track {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  background-color: var(--sketch-bg-paper, #fdfbf7);
+  border: 2px solid var(--sketch-ink, #23272f);
+  border-radius: var(--wobble-radius-pill, 255px 15px 225px 15px/15px 225px 15px 255px);
+  box-shadow: 2px 2px 0 var(--sketch-ink, #23272f);
+  transition: background-color 0.22s ease, box-shadow 0.15s ease;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.sketch-switch-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #23272f);
+  border-radius: var(--wobble-radius-round, 50%);
+  box-shadow: 1px 1px 0 var(--sketch-ink, #23272f);
+  /* Rebote elástico Bungee al deslizar hacia la derecha o izquierda */
+  transition: transform 0.3s var(--sketch-spring-bounce, cubic-bezier(0.34, 1.65, 0.64, 1)), background-color 0.2s ease;
+}
+
+.sketch-switch-wrapper:hover:not(.sketch-switch--disabled) .sketch-switch-knob {
+  transform: scale(1.1);
+}
+
+/* Checked state (Activado) */
+.sketch-switch-wrapper input:checked ~ .sketch-switch-track {
+  background-color: var(--sketch-accent-green, #bbf7d0);
+  box-shadow: 2.5px 2.5px 0 var(--sketch-ink, #23272f);
+}
+
+.sketch-switch-wrapper input:checked ~ .sketch-switch-track .sketch-switch-knob {
+  transform: translateX(24px) scale(1.05);
+  background-color: #ffffff;
+}
+
+.sketch-switch-wrapper:hover:not(.sketch-switch--disabled) input:checked ~ .sketch-switch-track .sketch-switch-knob {
+  transform: translateX(24px) scale(1.12);
+}
+
+/* Handwritten Track Labels (SÍ / NO) */
+.sketch-switch-labels {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 7px;
+  font-family: var(--font-sketch-title);
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.sketch-switch-label-on {
+  color: #166534;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 0.2s ease, transform 0.2s var(--sketch-spring-bounce);
+}
+
+.sketch-switch-label-off {
+  color: var(--sketch-ink-muted);
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s var(--sketch-spring-bounce);
+}
+
+.sketch-switch-wrapper input:checked ~ .sketch-switch-track .sketch-switch-label-on {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.sketch-switch-wrapper input:checked ~ .sketch-switch-track .sketch-switch-label-off {
+  opacity: 0;
+  transform: scale(0.7);
+}
+
+/* Variants */
+.sketch-switch--crayon .sketch-switch-track {
+  border-width: 2.5px;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(0,0,0,0.03) 5px, rgba(0,0,0,0.03) 7px);
+}
+
+.sketch-switch--chalk .sketch-switch-track {
+  background-color: #1e293b;
+  border-color: #f8fafc;
+}
+.sketch-switch--chalk .sketch-switch-knob {
+  background-color: #f8fafc;
+  border-color: #1e293b;
+}
+
+.sketch-switch--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -1,0 +1,173 @@
+/* ==========================================================================
+   SketchSelect Styles (Menús Desplegables con Rebote Bungee)
+   ========================================================================== */
+
+.sketch-select-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  width: 100%;
+  text-align: left;
+  user-select: none;
+}
+
+.sketch-select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 14px;
+  background-color: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #23272f);
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  box-shadow: 2px 3px 0px var(--sketch-ink, #23272f);
+  font-family: var(--font-sketch-body, 'Caveat', cursive);
+  font-size: 1.25rem;
+  color: var(--sketch-ink, #23272f);
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+}
+
+.sketch-select-trigger:hover {
+  box-shadow: 3px 4px 0px var(--sketch-ink, #23272f);
+  transform: translateY(-1px);
+}
+
+.sketch-select-trigger--open {
+  border-color: var(--sketch-pen-blue, #2563eb);
+  box-shadow: 3px 4px 0px var(--sketch-pen-blue, #2563eb);
+}
+
+/* Flecha rotatoria con resorte (bungee twist) */
+.sketch-select-arrow {
+  display: inline-flex;
+  transition: transform 0.35s cubic-bezier(0.34, 1.75, 0.64, 1);
+  color: var(--sketch-ink, #23272f);
+}
+
+.sketch-select-arrow--open {
+  transform: rotate(180deg) scale(1.18);
+}
+
+/* Menú desplegable flotante con física Bungee */
+.sketch-select-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background-color: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #23272f);
+  border-radius: var(--wobble-radius-2, 15px 225px 15px 255px/255px 15px 225px 15px);
+  box-shadow: 4px 6px 0px var(--sketch-ink, #23272f);
+  z-index: 100;
+  padding: 6px 0;
+  max-height: 240px;
+  overflow-y: auto;
+  transform-origin: top center;
+}
+
+/* Apertura elástica Bungee (Squash & Stretch) */
+.sketch-select-menu--opening {
+  animation: sketch-bungee-drop 0.36s cubic-bezier(0.34, 1.65, 0.64, 1) forwards;
+}
+
+/* Cierre elástico Bungee (Snap) */
+.sketch-select-menu--closing {
+  animation: sketch-bungee-snap 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes sketch-bungee-drop {
+  0% {
+    opacity: 0;
+    transform: scale(0.92, 0.1) translateY(-10px);
+  }
+  48% {
+    opacity: 1;
+    /* Estiramiento hacia abajo estilo gominola */
+    transform: scale(0.96, 1.15) translateY(5px);
+  }
+  74% {
+    /* Rebote elástico */
+    transform: scale(1.02, 0.94) translateY(-2px);
+  }
+  90% {
+    transform: scale(0.99, 1.02) translateY(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1) translateY(0);
+  }
+}
+
+@keyframes sketch-bungee-snap {
+  0% {
+    opacity: 1;
+    transform: scale(1, 1) translateY(0);
+  }
+  30% {
+    /* Ligera tensión hacia abajo antes de retraerse */
+    transform: scale(0.97, 1.06) translateY(2px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.85, 0.1) translateY(-8px);
+  }
+}
+
+.sketch-select-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 14px;
+  font-family: var(--font-sketch-body, 'Caveat', cursive);
+  font-size: 1.25rem;
+  color: var(--sketch-ink, #23272f);
+  cursor: pointer;
+  transition: background-color 0.12s ease;
+}
+
+.sketch-select-option:hover {
+  background-color: var(--sketch-accent-yellow, #fef08a);
+}
+
+.sketch-select-option--selected {
+  font-weight: bold;
+  background-color: rgba(37, 99, 235, 0.08);
+  border-left: 3px solid var(--sketch-pen-blue);
+}
+
+.sketch-select-search-wrap {
+  padding: 4px 10px 8px;
+  border-bottom: 1.5px dashed var(--sketch-ink-light);
+  margin-bottom: 4px;
+}
+
+.sketch-select-search-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  font-family: var(--font-sketch-body);
+  font-size: 1.05rem;
+  border: 1.5px solid var(--sketch-ink);
+  border-radius: var(--wobble-radius-1);
+  background: var(--sketch-bg-paper);
+  color: var(--sketch-ink);
+  outline: none;
+}
+
+.sketch-select-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sketch-select-empty {
+  padding: 12px 14px;
+  font-family: var(--font-sketch-cursive);
+  font-size: 1.1rem;
+  color: var(--sketch-ink-muted);
+  text-align: center;
+}
+

@@ -1,0 +1,140 @@
+/* ==========================================================================
+   SketchSidebar — Hand-Drawn Collapsible App Sidebar
+   ========================================================================== */
+
+.sketch-sidebar {
+  display: flex;
+  flex-direction: column;
+  background: var(--sketch-bg-surface, #ffffff);
+  border-right: 2.5px solid var(--sketch-ink, #1a1a1a);
+  height: 100%;
+  width: 250px;
+  min-height: 400px;
+  transition: width 0.2s cubic-bezier(0.2, 0, 0, 1);
+  font-family: var(--font-sketch-body, 'Patrick Hand', cursive, sans-serif);
+  color: var(--sketch-ink, #1a1a1a);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.sketch-sidebar--collapsed {
+  width: 68px;
+}
+
+.sketch-sidebar__header {
+  padding: 16px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px dashed var(--sketch-ink-light, #9ca3af);
+  min-height: 60px;
+  box-sizing: border-box;
+}
+
+.sketch-sidebar__nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sketch-sidebar__group-title {
+  font-family: var(--font-sketch-title, 'Architects Daughter', cursive, sans-serif);
+  font-size: 0.8rem;
+  color: var(--sketch-ink-muted, #5e6472);
+  padding: 8px 8px 4px 8px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sketch-sidebar__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  cursor: pointer;
+  color: var(--sketch-ink, #1a1a1a);
+  text-decoration: none;
+  font-size: 1.05rem;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.sketch-sidebar__item:hover {
+  background: var(--sketch-accent-yellow, #fef08a);
+  transform: translateX(3px) rotate(-0.5deg);
+}
+
+.sketch-sidebar__item--active {
+  background: var(--sketch-accent-yellow, #fef08a);
+  border: 1.5px solid var(--sketch-ink, #1a1a1a);
+  box-shadow: 2px 2px 0px var(--sketch-ink, #1a1a1a);
+  font-weight: 700;
+}
+
+.sketch-sidebar__active-arrow {
+  margin-left: auto;
+  font-size: 0.95rem;
+  animation: sketch-point-left 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes sketch-point-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(3px); }
+}
+
+.sketch-sidebar__item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sketch-sidebar__item-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.sketch-sidebar__item-badge {
+  font-size: 0.8rem;
+  padding: 1px 6px;
+  background: var(--sketch-accent-blue, #bfdbfe);
+  border: 1px solid var(--sketch-ink, #1a1a1a);
+  border-radius: var(--wobble-radius-pill, 10px);
+}
+
+.sketch-sidebar__footer {
+  padding: 12px 8px;
+  border-top: 2px dashed var(--sketch-ink-light, #9ca3af);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sketch-sidebar__toggle-btn {
+  background: transparent;
+  border: 1.5px solid var(--sketch-ink, #1a1a1a);
+  border-radius: var(--wobble-radius-round, 50%);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--sketch-ink, #1a1a1a);
+  box-shadow: 1px 1px 0px var(--sketch-ink, #1a1a1a);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.sketch-sidebar__toggle-btn:hover {
+  background: var(--sketch-accent-yellow, #fef08a);
+  transform: scale(1.1);
+}

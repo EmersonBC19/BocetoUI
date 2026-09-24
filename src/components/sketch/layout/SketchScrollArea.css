@@ -1,0 +1,290 @@
+/* ==========================================================================
+   SketchScrollArea — Contenedor de Desplazamiento Artesanal BocetoUI
+   ========================================================================== */
+
+.sketch-scroll-area {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #23272f);
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  box-shadow: 2.5px 3px 0px var(--sketch-ink, #23272f);
+  overflow: hidden;
+}
+
+/* Viewport interno que contiene el contenido deslizable */
+.sketch-scroll-viewport {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  position: relative;
+}
+
+.sketch-scroll-viewport::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+/* Contenido interno */
+.sketch-scroll-content {
+  box-sizing: border-box;
+  min-width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   CARRIL Y DESLIZADOR VERTICAL (Vertical Track & Thumb)
+   -------------------------------------------------------------------------- */
+.sketch-scroll-track-v {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  bottom: 6px;
+  width: 12px;
+  background: rgba(0, 0, 0, 0.03);
+  border-left: 1px dashed var(--sketch-ink-light, rgba(0, 0, 0, 0.15));
+  border-radius: 8px;
+  user-select: none;
+  cursor: pointer;
+  z-index: 10;
+  transition: opacity 0.2s ease, width 0.15s ease;
+}
+
+.sketch-scroll-thumb-v {
+  position: absolute;
+  left: 1px;
+  right: 1px;
+  border-radius: 999px;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  min-height: 28px;
+}
+
+.sketch-scroll-thumb-v:active {
+  cursor: grabbing;
+}
+
+/* --------------------------------------------------------------------------
+   CARRIL Y DESLIZADOR HORIZONTAL (Horizontal Track & Thumb)
+   -------------------------------------------------------------------------- */
+.sketch-scroll-track-h {
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  height: 12px;
+  background: rgba(0, 0, 0, 0.03);
+  border-top: 1px dashed var(--sketch-ink-light, rgba(0, 0, 0, 0.15));
+  border-radius: 8px;
+  user-select: none;
+  cursor: pointer;
+  z-index: 10;
+  transition: opacity 0.2s ease, height 0.15s ease;
+}
+
+.sketch-scroll-thumb-h {
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  border-radius: 999px;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  min-width: 28px;
+}
+
+.sketch-scroll-thumb-h:active {
+  cursor: grabbing;
+}
+
+/* --------------------------------------------------------------------------
+   VARIANTES DE ESTILO (Theme Variants)
+   -------------------------------------------------------------------------- */
+
+/* 1. Graphite (Predeterminada: Grafito de lápiz biselado) */
+.sketch-scroll-area--graphite .sketch-scroll-thumb-v,
+.sketch-scroll-area--graphite .sketch-scroll-thumb-h {
+  background-color: #64748b;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 255, 255, 0.25) 3px,
+    rgba(255, 255, 255, 0.25) 5px
+  );
+  border: 1.5px solid var(--sketch-ink, #23272f);
+  box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.4), 1px 1px 0px var(--sketch-ink, #23272f);
+}
+
+.sketch-scroll-area--graphite .sketch-scroll-thumb-v:hover,
+.sketch-scroll-area--graphite .sketch-scroll-thumb-h:hover {
+  background-color: var(--sketch-accent-yellow, #fef08a);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.15) 3px,
+    rgba(0, 0, 0, 0.15) 5px
+  );
+  border-color: var(--sketch-ink, #23272f);
+  box-shadow: 2px 2px 0px var(--sketch-ink, #23272f);
+}
+
+.sketch-scroll-area--graphite .sketch-scroll-thumb-v.is-dragging,
+.sketch-scroll-area--graphite .sketch-scroll-thumb-h.is-dragging {
+  background-color: var(--sketch-pen-red, #dc2626);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 255, 255, 0.35) 3px,
+    rgba(255, 255, 255, 0.35) 5px
+  );
+  border-color: var(--sketch-ink, #23272f);
+}
+
+/* 2. Washi Tape (Cinta washi adhesiva semi-transparente) */
+.sketch-scroll-area--wasi .sketch-scroll-thumb-v,
+.sketch-scroll-area--wasi .sketch-scroll-thumb-h {
+  background-color: rgba(254, 240, 138, 0.85);
+  border: 1px dashed rgba(180, 160, 90, 0.6);
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+.sketch-scroll-area--wasi .sketch-scroll-thumb-v:hover,
+.sketch-scroll-area--wasi .sketch-scroll-thumb-h:hover {
+  background-color: rgba(251, 207, 232, 0.95);
+  border-color: #f472b6;
+}
+
+/* 3. Ruler (Regla milimetrada con marcas de graduación) */
+.sketch-scroll-area--ruler .sketch-scroll-track-v {
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.04),
+    rgba(0, 0, 0, 0.04) 4px,
+    rgba(0, 0, 0, 0.18) 4px,
+    rgba(0, 0, 0, 0.18) 5px
+  );
+  border-left: 1.5px solid var(--sketch-ink, #23272f);
+}
+
+.sketch-scroll-area--ruler .sketch-scroll-thumb-v {
+  background-color: #fed7aa;
+  border: 1.5px solid #c2410c;
+  box-shadow: 1px 1px 0px var(--sketch-ink, #23272f);
+}
+
+/* 4. Pencil (Lápiz animado con mina y borrador) */
+.sketch-scroll-area--pencil .sketch-scroll-thumb-v {
+  background: linear-gradient(to bottom, #f87171 0% 18%, #facc15 18% 78%, #27272a 78% 100%);
+  border: 1.5px solid var(--sketch-ink, #23272f);
+  box-shadow: 1.5px 1.5px 0px var(--sketch-ink, #23272f);
+}
+
+/* --------------------------------------------------------------------------
+   INDICADORES DE DESBORDAMIENTO (Overflow Fades & Guides)
+   -------------------------------------------------------------------------- */
+.sketch-scroll-indicator-top,
+.sketch-scroll-indicator-bottom {
+  position: absolute;
+  left: 0;
+  right: 14px;
+  height: 24px;
+  pointer-events: none;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sketch-title, 'Patrick Hand', cursive);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--sketch-ink-muted, #71717a);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.sketch-scroll-indicator-top {
+  top: 0;
+  background: linear-gradient(to bottom, var(--sketch-bg-surface, #ffffff) 20%, transparent 100%);
+  border-bottom: 1.5px dotted var(--sketch-ink-light, #e2e8f0);
+}
+
+.sketch-scroll-indicator-bottom {
+  bottom: 0;
+  background: linear-gradient(to top, var(--sketch-bg-surface, #ffffff) 20%, transparent 100%);
+  border-top: 1.5px dotted var(--sketch-ink-light, #e2e8f0);
+}
+
+.sketch-scroll-indicator-top.is-visible,
+.sketch-scroll-indicator-bottom.is-visible {
+  opacity: 1;
+}
+
+/* Badge flotante de porcentaje de avance */
+.sketch-scroll-progress-badge {
+  position: absolute;
+  top: 8px;
+  right: 22px;
+  font-family: var(--font-sketch-title, 'Patrick Hand', cursive);
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--sketch-ink, #18181b);
+  background: var(--sketch-accent-yellow, #fef08a);
+  border: 1.5px solid var(--sketch-ink, #18181b);
+  border-radius: 12px;
+  padding: 1px 7px;
+  box-shadow: 1px 1.5px 0px var(--sketch-ink, #18181b);
+  pointer-events: none;
+  z-index: 15;
+  opacity: 0.92;
+  transition: transform 0.15s ease;
+}
+
+/* --------------------------------------------------------------------------
+   MODO PIZARRA (Chalkboard Mode)
+   -------------------------------------------------------------------------- */
+[data-theme="chalkboard"] .sketch-scroll-area,
+.paper-chalk .sketch-scroll-area {
+  background-color: #1e2832;
+  border-color: #f8fafc;
+  box-shadow: 2.5px 3px 0px #f8fafc;
+}
+
+[data-theme="chalkboard"] .sketch-scroll-area--graphite .sketch-scroll-thumb-v,
+[data-theme="chalkboard"] .sketch-scroll-area--graphite .sketch-scroll-thumb-h,
+.paper-chalk .sketch-scroll-area--graphite .sketch-scroll-thumb-v,
+.paper-chalk .sketch-scroll-area--graphite .sketch-scroll-thumb-h {
+  background-color: rgba(255, 255, 255, 0.35);
+  border-color: #f8fafc;
+  box-shadow: 1.5px 1.5px 0px #f8fafc;
+}
+
+[data-theme="chalkboard"] .sketch-scroll-area--graphite .sketch-scroll-thumb-v:hover,
+[data-theme="chalkboard"] .sketch-scroll-area--graphite .sketch-scroll-thumb-h:hover,
+.paper-chalk .sketch-scroll-area--graphite .sketch-scroll-thumb-v:hover,
+.paper-chalk .sketch-scroll-area--graphite .sketch-scroll-thumb-h:hover {
+  background-color: #facc15;
+  color: #18181b;
+  border-color: #facc15;
+}
+
+[data-theme="chalkboard"] .sketch-scroll-indicator-top,
+.paper-chalk .sketch-scroll-indicator-top {
+  background: linear-gradient(to bottom, #1e2832 20%, transparent 100%);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #94a3b8;
+}
+
+[data-theme="chalkboard"] .sketch-scroll-indicator-bottom,
+.paper-chalk .sketch-scroll-indicator-bottom {
+  background: linear-gradient(to top, #1e2832 20%, transparent 100%);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #94a3b8;
+}

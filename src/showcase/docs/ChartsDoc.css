@@ -1,0 +1,98 @@
+/* ==========================================================================
+   ChartsDoc.css — Estilos para la Vitrina de Gráficas
+   ========================================================================== */
+
+.charts-doc-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.charts-doc-header {
+  margin-bottom: 8px;
+}
+
+.charts-control-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 18px;
+  background-color: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-pill, 9999px);
+  box-shadow: 3px 4px 0px var(--sketch-ink, #18181b);
+  flex-wrap: wrap;
+}
+
+.charts-control-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.charts-control-label {
+  font-family: var(--font-sketch-title, sans-serif);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--sketch-ink, #18181b);
+}
+
+.charts-btn-toggle {
+  display: inline-flex;
+  border: 1.5px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-1, 6px);
+  overflow: hidden;
+}
+
+.charts-toggle-btn {
+  background: var(--sketch-bg-paper, #fdfbf7);
+  border: none;
+  padding: 5px 12px;
+  font-family: var(--font-sketch-title, sans-serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--sketch-ink, #18181b);
+  transition: all 0.15s ease;
+}
+
+.charts-toggle-btn--active {
+  background-color: var(--sketch-accent-yellow, #fef08a);
+  box-shadow: inset 1px 1px 0px var(--sketch-ink, #18181b);
+}
+
+.charts-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+.charts-donut-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.charts-donut-info-box {
+  max-width: 320px;
+  padding: 16px;
+  background-color: rgba(254, 240, 138, 0.2);
+  border: 2px dashed var(--sketch-ink-light, #d4d4d8);
+  border-radius: var(--wobble-radius-2, 8px);
+}
+
+.charts-code-block {
+  background: #18181b;
+  color: #38bdf8;
+  padding: 18px;
+  border-radius: var(--wobble-radius-2, 8px);
+  border: 2px solid var(--sketch-ink, #18181b);
+  box-shadow: 3px 4px 0px rgba(0, 0, 0, 0.3);
+  font-family: var(--font-sketch-code, monospace);
+  font-size: 0.9rem;
+  overflow-x: auto;
+  line-height: 1.5;
+}

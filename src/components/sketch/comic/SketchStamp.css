@@ -1,0 +1,110 @@
+/* ==========================================================================
+   SketchStamp.css — Sellos de Goma y Tinta Artesanal BocetoUI
+   ========================================================================== */
+
+.sketch-stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  user-select: none;
+  border-radius: var(--wobble-radius-1, 6px);
+  transition: transform 0.15s ease, filter 0.15s ease;
+  mix-blend-mode: multiply;
+  opacity: 0.92;
+}
+
+.sketch-stamp--interactive {
+  cursor: pointer;
+}
+
+.sketch-stamp--interactive:hover {
+  filter: brightness(1.1);
+  transform: scale(1.05) rotate(calc(var(--stamp-angle, 0deg) - 2deg));
+}
+
+.sketch-stamp--slamming {
+  animation: stamp-slam 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes stamp-slam {
+  0% { transform: scale(1.35) translateY(-14px); opacity: 0.4; }
+  50% { transform: scale(0.92) translateY(2px); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.92; }
+}
+
+.sketch-stamp__inner {
+  border: 3.5px solid var(--stamp-color, #16a34a);
+  border-radius: var(--wobble-radius-1, 4px);
+  padding: 4px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.sketch-stamp--double .sketch-stamp__inner {
+  box-shadow: inset 0 0 0 2px var(--stamp-color, #16a34a);
+  padding: 6px 16px;
+}
+
+.sketch-stamp--dashed .sketch-stamp__inner {
+  border-style: dashed;
+}
+
+.sketch-stamp__text {
+  font-family: var(--font-sketch-title, 'Patrick Hand', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--stamp-color, #16a34a);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 1;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.08);
+}
+
+.sketch-stamp__date {
+  font-family: var(--font-sketch-code, monospace);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--stamp-color, #16a34a);
+  opacity: 0.85;
+  border-top: 1px dashed currentColor;
+  padding-top: 2px;
+  margin-top: 2px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Forma Circular Vectorial */
+.sketch-stamp--circle {
+  width: 88px;
+  height: 88px;
+  padding: 0;
+  border-radius: 50%;
+  overflow: visible;
+}
+
+.sketch-stamp__circle-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.sketch-stamp__arc-text {
+  font-family: var(--font-sketch-code, monospace);
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Modo Pizarra (Chalkboard Mode) — Tiza Estampada
+   ========================================================================== */
+[data-theme="chalkboard"] .sketch-stamp,
+.paper-chalk .sketch-stamp {
+  mix-blend-mode: normal !important;
+  opacity: 0.95;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
+}

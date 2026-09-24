@@ -1,0 +1,40 @@
+/* ==========================================================================
+   SketchCoffeeStain.css — Manchas de Café y Salpicaduras de Tinta
+   ========================================================================== */
+
+.sketch-coffee-stain {
+  display: inline-block;
+  position: relative;
+  user-select: none;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+  z-index: 5;
+}
+
+.sketch-coffee-stain__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.sketch-coffee-stain--interactive {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.sketch-coffee-stain--interactive:hover {
+  transform: scale(1.05) rotate(3deg) !important;
+  opacity: 0.45 !important;
+}
+
+/* ==========================================================================
+   Modo Pizarra (Chalkboard Mode)
+   ========================================================================== */
+[data-theme="chalkboard"] .sketch-coffee-stain--coffee circle,
+[data-theme="chalkboard"] .sketch-coffee-stain--coffee path,
+.paper-chalk .sketch-coffee-stain--coffee circle,
+.paper-chalk .sketch-coffee-stain--coffee path {
+  stroke: rgba(254, 240, 138, 0.45);
+  fill: rgba(254, 240, 138, 0.45);
+}

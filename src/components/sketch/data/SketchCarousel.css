@@ -1,0 +1,98 @@
+/* ==========================================================================
+   SketchCarousel — Hand-Drawn Slider / Carousel Component
+   ========================================================================== */
+
+.sketch-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: var(--font-sketch-body, 'Patrick Hand', cursive, sans-serif);
+  color: var(--sketch-ink, #1a1a1a);
+  user-select: none;
+}
+
+.sketch-carousel__viewport {
+  overflow: hidden;
+  border: 2.5px solid var(--sketch-ink, #1a1a1a);
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  background: var(--sketch-bg-surface, #ffffff);
+  box-shadow: var(--sketch-shadow-hard, 3px 4px 0px var(--sketch-ink, #1a1a1a));
+  position: relative;
+}
+
+.sketch-carousel__track {
+  display: flex;
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  width: 100%;
+}
+
+.sketch-carousel__slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 240px;
+  padding: 24px;
+  text-align: center;
+}
+
+.sketch-carousel__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #1a1a1a);
+  border-radius: var(--wobble-radius-round, 50%);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px var(--sketch-ink, #1a1a1a);
+  z-index: 10;
+  transition: all 0.15s ease;
+  color: var(--sketch-ink, #1a1a1a);
+}
+
+.sketch-carousel__btn:hover {
+  background: var(--sketch-accent-yellow, #fef08a);
+  transform: translateY(-50%) scale(1.12);
+}
+
+.sketch-carousel__btn--prev {
+  left: -16px;
+}
+
+.sketch-carousel__btn--next {
+  right: -16px;
+}
+
+.sketch-carousel__indicators {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.sketch-carousel__dot {
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid var(--sketch-ink, #1a1a1a);
+  border-radius: var(--wobble-radius-round, 50%);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.sketch-carousel__dot--active {
+  background: var(--sketch-accent-yellow, #fef08a);
+  transform: scale(1.3) rotate(3deg);
+  border-width: 2px;
+  box-shadow: 1px 1px 0px var(--sketch-ink, #1a1a1a);
+}

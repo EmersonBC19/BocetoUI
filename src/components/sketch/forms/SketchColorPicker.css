@@ -1,0 +1,135 @@
+/* ==========================================================================
+   SketchColorPicker — Hand-Drawn Watercolor & Ink Palette
+   ========================================================================== */
+
+.sketch-color-picker {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #1a1a1a);
+  border-radius: var(--wobble-radius-2, 20px 255px 20px 25px/255px 20px 225px 25px);
+  padding: 14px;
+  box-shadow: var(--sketch-shadow-hard, 3px 4px 0px var(--sketch-ink, #1a1a1a));
+  font-family: var(--font-sketch-body, 'Patrick Hand', cursive, sans-serif);
+  color: var(--sketch-ink, #1a1a1a);
+  width: 280px;
+  box-sizing: border-box;
+}
+
+.sketch-color-picker__label {
+  font-family: var(--font-sketch-title, 'Architects Daughter', cursive, sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sketch-color-picker__swatches {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.sketch-color-picker__swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--wobble-radius-round, 50%);
+  border: 2px solid var(--sketch-ink, #1a1a1a);
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sketch-color-picker__swatch:hover {
+  transform: scale(1.15) rotate(4deg);
+  box-shadow: 1px 2px 0px var(--sketch-ink, #1a1a1a);
+}
+
+.sketch-color-picker__swatch--active {
+  transform: scale(1.12);
+  box-shadow: 2px 2px 0px var(--sketch-ink, #1a1a1a);
+  outline: 2px dashed var(--sketch-ink, #1a1a1a);
+  outline-offset: 2px;
+}
+
+.sketch-color-picker__check {
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.sketch-color-picker__footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1.5px dashed var(--sketch-ink-light, #9ca3af);
+}
+
+.sketch-color-picker__preview {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  border: 2px solid var(--sketch-ink, #1a1a1a);
+  box-shadow: 1px 1px 0px var(--sketch-ink, #1a1a1a);
+  flex-shrink: 0;
+}
+
+.sketch-color-picker__input-wrap {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+.sketch-color-picker__hex-input {
+  width: 100%;
+  padding: 4px 8px;
+  font-family: var(--font-sketch-code, 'JetBrains Mono', monospace);
+  font-size: 0.9rem;
+  border: 1.5px solid var(--sketch-ink, #1a1a1a);
+  border-radius: 4px;
+  background: var(--sketch-bg-paper, #fbf9f5);
+  color: var(--sketch-ink, #1a1a1a);
+  outline: none;
+  text-transform: uppercase;
+}
+
+.sketch-color-picker__native-btn {
+  background: none;
+  border: 1.5px solid var(--sketch-ink, #1a1a1a);
+  border-radius: var(--wobble-radius-round, 50%);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  color: var(--sketch-ink, #1a1a1a);
+  transition: transform 0.15s ease;
+}
+
+.sketch-color-picker__native-btn:hover {
+  transform: rotate(12deg) scale(1.08);
+  background: var(--sketch-accent-yellow, #fef08a);
+}
+
+.sketch-color-picker__native-input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+}

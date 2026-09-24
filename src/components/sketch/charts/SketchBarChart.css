@@ -1,0 +1,29 @@
+/* ==========================================================================
+   SketchBarChart.css — Gráfica de Barras Artesanal
+   ========================================================================== */
+
+.sketch-bar-item {
+  cursor: pointer;
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sketch-bar-item:hover .sketch-bar-surface {
+  filter: brightness(1.06);
+}
+
+.sketch-bar-item--active {
+  transform: translateY(-4px);
+}
+
+.sketch-bar-active-text {
+  font-family: var(--font-sketch-code, monospace);
+  font-size: 12px;
+  font-weight: 800;
+  fill: var(--sketch-ink, #18181b);
+  animation: sketch-pop 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sketch-bar-label--active {
+  fill: var(--sketch-ink, #18181b) !important;
+  font-weight: 800;
+}

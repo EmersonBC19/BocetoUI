@@ -1,0 +1,263 @@
+/* ==========================================================================
+   SketchSpeechBubble.css — Globos de Diálogo y Bocadillos Cómic
+   ========================================================================== */
+
+.sketch-speech-bubble {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+  font-family: var(--font-sketch-title, 'Patrick Hand', sans-serif);
+}
+
+.sketch-speech-bubble--animated {
+  animation: sketch-bubble-pop 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sketch-speech-bubble--animated:hover {
+  transform: scale(1.02) rotate(-0.5deg);
+}
+
+@keyframes sketch-bubble-pop {
+  0% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.sketch-speech-bubble__body {
+  position: relative;
+  padding: 12px 18px;
+  border: 2.2px solid var(--sketch-ink, #18181b);
+  box-shadow: 3px 4px 0px var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-1, 16px);
+  z-index: 2;
+}
+
+.sketch-speech-bubble__title {
+  display: block;
+  font-weight: 900;
+  font-size: 1.05rem;
+  color: var(--sketch-ink, #18181b);
+  margin-bottom: 4px;
+}
+
+.sketch-speech-bubble__content {
+  font-family: var(--font-sketch-body, 'Inter', sans-serif);
+  font-size: 0.94rem;
+  color: var(--sketch-ink, #18181b);
+  line-height: 1.45;
+}
+
+/* Colores */
+.sketch-speech-bubble--yellow .sketch-speech-bubble__body {
+  background-color: var(--sketch-accent-yellow, #fef08a);
+}
+.sketch-speech-bubble--yellow .sketch-speech-bubble__tail-path,
+.sketch-speech-bubble--yellow .sketch-speech-bubble__dot {
+  background-color: var(--sketch-accent-yellow, #fef08a);
+  fill: var(--sketch-accent-yellow, #fef08a);
+}
+.sketch-speech-bubble--yellow .sketch-speech-bubble__shout-polygon {
+  fill: var(--sketch-accent-yellow, #fef08a);
+}
+
+.sketch-speech-bubble--blue .sketch-speech-bubble__body {
+  background-color: var(--sketch-accent-blue, #bfdbfe);
+}
+.sketch-speech-bubble--blue .sketch-speech-bubble__tail-path,
+.sketch-speech-bubble--blue .sketch-speech-bubble__dot {
+  background-color: var(--sketch-accent-blue, #bfdbfe);
+  fill: var(--sketch-accent-blue, #bfdbfe);
+}
+.sketch-speech-bubble--blue .sketch-speech-bubble__shout-polygon {
+  fill: var(--sketch-accent-blue, #bfdbfe);
+}
+
+.sketch-speech-bubble--pink .sketch-speech-bubble__body {
+  background-color: #fbcfe8;
+}
+.sketch-speech-bubble--pink .sketch-speech-bubble__tail-path,
+.sketch-speech-bubble--pink .sketch-speech-bubble__dot {
+  background-color: #fbcfe8;
+  fill: #fbcfe8;
+}
+.sketch-speech-bubble--pink .sketch-speech-bubble__shout-polygon {
+  fill: #fbcfe8;
+}
+
+.sketch-speech-bubble--white .sketch-speech-bubble__body {
+  background-color: var(--sketch-bg-surface, #ffffff);
+}
+.sketch-speech-bubble--white .sketch-speech-bubble__tail-path,
+.sketch-speech-bubble--white .sketch-speech-bubble__dot {
+  background-color: var(--sketch-bg-surface, #ffffff);
+  fill: var(--sketch-bg-surface, #ffffff);
+}
+.sketch-speech-bubble--white .sketch-speech-bubble__shout-polygon {
+  fill: var(--sketch-bg-surface, #ffffff);
+}
+
+/* Variante SHOUT (Grito / Explosión Cómic) */
+.sketch-speech-bubble--shout {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+}
+
+.sketch-speech-bubble--shout .sketch-speech-bubble__body {
+  position: relative;
+  z-index: 2;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  padding: 26px 42px !important;
+  text-align: center;
+}
+
+.sketch-speech-bubble--shout .sketch-speech-bubble__title {
+  font-family: var(--font-sketch-title, 'Patrick Hand', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--sketch-ink, #18181b);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.sketch-speech-bubble--shout .sketch-speech-bubble__content {
+  font-family: var(--font-sketch-title, 'Patrick Hand', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--sketch-ink, #18181b);
+  line-height: 1.35;
+}
+
+.sketch-speech-bubble__shout-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.sketch-speech-bubble--shout:hover {
+  animation: comic-shout-shake 0.3s ease infinite;
+}
+
+@keyframes comic-shout-shake {
+  0% { transform: scale(1.02) rotate(0deg); }
+  25% { transform: scale(1.03) rotate(-0.8deg); }
+  75% { transform: scale(1.03) rotate(0.8deg); }
+  100% { transform: scale(1.02) rotate(0deg); }
+}
+
+/* Colas de Diálogo SVG */
+.sketch-speech-bubble__tail-svg {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  z-index: 1;
+}
+
+.sketch-speech-bubble__tail-path {
+  stroke: var(--sketch-ink, #18181b);
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+}
+
+.sketch-speech-bubble__tail-svg--bottom-left {
+  bottom: -16px;
+  left: 18px;
+  transform: rotate(0deg);
+}
+
+.sketch-speech-bubble__tail-svg--bottom-right {
+  bottom: -16px;
+  right: 18px;
+  transform: scaleX(-1);
+}
+
+.sketch-speech-bubble__tail-svg--top-left {
+  top: -16px;
+  left: 18px;
+  transform: scaleY(-1);
+}
+
+.sketch-speech-bubble__tail-svg--top-right {
+  top: -16px;
+  right: 18px;
+  transform: scale(-1);
+}
+
+/* Burbujas de Pensamiento (Thought Dots) */
+.sketch-speech-bubble__thought-dots {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  z-index: 1;
+}
+
+.sketch-speech-bubble__thought-dots--bottom-left {
+  bottom: -22px;
+  left: 20px;
+}
+
+.sketch-speech-bubble__dot {
+  display: block;
+  border: 2px solid var(--sketch-ink, #18181b);
+  border-radius: 50%;
+  box-shadow: 1.5px 1.5px 0px var(--sketch-ink, #18181b);
+}
+
+.sketch-speech-bubble__dot--1 { width: 12px; height: 12px; }
+.sketch-speech-bubble__dot--2 { width: 8px; height: 8px; }
+.sketch-speech-bubble__dot--3 { width: 5px; height: 5px; }
+
+/* ==========================================================================
+   Variante WHISPER (Susurro Cómic con trazo discontinuo y tono íntimo)
+   ========================================================================== */
+.sketch-speech-bubble--whisper .sketch-speech-bubble__body {
+  border-style: dashed;
+  border-width: 2px;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.12);
+  opacity: 0.92;
+}
+
+.sketch-speech-bubble--whisper .sketch-speech-bubble__title {
+  font-style: italic;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.sketch-speech-bubble--whisper .sketch-speech-bubble__content {
+  font-style: italic;
+  opacity: 0.88;
+}
+
+/* ==========================================================================
+   Contenedor Integrado de Avatar y Bocadillo
+   ========================================================================== */
+.sketch-speech-bubble-anchor-wrapper {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 12px;
+  position: relative;
+}
+
+.sketch-speech-bubble-anchor-wrapper--right {
+  flex-direction: row-reverse;
+}
+
+.sketch-speech-bubble__avatar-slot {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+

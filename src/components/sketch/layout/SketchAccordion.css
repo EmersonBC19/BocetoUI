@@ -1,0 +1,134 @@
+/* ==========================================================================
+   SketchAccordion Styles (Animaciones Elásticas Bungee / Squash & Stretch)
+   ========================================================================== */
+
+.sketch-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.sketch-accordion-item {
+  border: 2px solid var(--sketch-ink, #23272f);
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  background-color: var(--sketch-bg-surface, #ffffff);
+  box-shadow: 2.5px 3px 0 var(--sketch-ink, #23272f);
+  overflow: hidden;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.sketch-accordion-item--open {
+  box-shadow: 3.5px 5px 0 var(--sketch-ink, #23272f);
+}
+
+.sketch-accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 18px;
+  background: transparent;
+  border: none;
+  font-family: var(--font-sketch-title, 'Patrick Hand', cursive);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--sketch-ink, #23272f);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.15s ease;
+  user-select: none;
+}
+
+.sketch-accordion-header:hover {
+  background-color: rgba(254, 240, 138, 0.3);
+}
+
+.sketch-accordion-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sketch-accordion-icon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--sketch-ink, #23272f);
+}
+
+/* Flecha rotatoria con resorte elástico (bungee twist) */
+.sketch-accordion-chevron {
+  display: inline-flex;
+  transition: transform 0.35s cubic-bezier(0.34, 1.75, 0.64, 1);
+  color: var(--sketch-ink, #23272f);
+}
+
+.sketch-accordion-item--open .sketch-accordion-chevron {
+  transform: rotate(180deg) scale(1.15);
+}
+
+/* ==========================================================================
+   ANIMACIÓN BUNGEE DE APERTURA Y CIERRE
+   ========================================================================== */
+
+/* Contenedor colapsable con interpolación CSS Grid para apertura y cierre elásticos */
+.sketch-accordion-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+}
+
+.sketch-accordion-collapse--open {
+  grid-template-rows: 1fr;
+}
+
+.sketch-accordion-body {
+  min-height: 0;
+  overflow: hidden;
+  padding: 0 18px;
+  background-color: var(--sketch-bg-surface, #ffffff);
+  border-top: 0px dashed transparent;
+  transform-origin: top center;
+  transform: scaleY(0.65) translateY(-8px);
+  opacity: 0;
+  /* Transición elástica de retracción al cerrarse */
+  transition:
+    opacity 0.22s ease,
+    transform 0.26s cubic-bezier(0.4, 0, 0.2, 1),
+    padding 0.3s ease,
+    border-color 0.2s ease;
+}
+
+/* Estado abierto con efecto de estiramiento y rebote de bungee */
+.sketch-accordion-collapse--open .sketch-accordion-body {
+  padding: 16px 18px 20px 18px;
+  border-top: 2px dashed var(--sketch-ink-light, #e2e8f0);
+  opacity: 1;
+  transform: scaleY(1) translateY(0);
+  animation: sketch-accordion-bungee 0.4s cubic-bezier(0.34, 1.65, 0.64, 1) both;
+}
+
+@keyframes sketch-accordion-bungee {
+  0% {
+    opacity: 0;
+    transform: scale(0.96, 0.2) translateY(-10px);
+  }
+  48% {
+    opacity: 1;
+    /* Estiramiento elástico hacia abajo (overshoot bungee) */
+    transform: scale(0.97, 1.14) translateY(4px);
+  }
+  74% {
+    /* Rebote hacia arriba (rebound) */
+    transform: scale(1.02, 0.94) translateY(-2px);
+  }
+  90% {
+    /* Micro asentamiento */
+    transform: scale(0.99, 1.02) translateY(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1) translateY(0);
+  }
+}

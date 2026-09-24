@@ -1,0 +1,58 @@
+/* ==========================================================================
+   SketchEmptyState.css — Estado Vacío Artesanal BocetoUI
+   ========================================================================== */
+
+.sketch-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 24px;
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 2px dashed var(--sketch-ink-light, #a1a1aa);
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  max-width: 540px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.sketch-empty-state__illustration {
+  width: 140px;
+  height: 140px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sketch-empty-state__svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.sketch-empty-state__title {
+  font-family: var(--font-sketch-title, 'Outfit', sans-serif);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--sketch-ink, #18181b);
+  margin: 0 0 8px 0;
+}
+
+.sketch-empty-state__desc {
+  font-family: var(--font-sketch-body, 'Inter', sans-serif);
+  font-size: 0.95rem;
+  color: var(--sketch-ink-muted, #71717a);
+  max-width: 420px;
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+}
+
+.sketch-empty-state__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}

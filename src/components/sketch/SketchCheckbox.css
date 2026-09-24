@@ -1,0 +1,108 @@
+/* ==========================================================================
+   SketchCheckbox & SketchRadio Styles
+   ========================================================================== */
+
+.sketch-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--font-sketch-body);
+  font-size: 1.25rem;
+  color: var(--sketch-ink);
+  margin-bottom: 8px;
+  transition: transform 0.15s ease;
+}
+
+.sketch-toggle:hover {
+  transform: translateX(2px);
+}
+
+.sketch-toggle input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* ==========================================================================
+   Checkbox Box
+   ========================================================================== */
+.sketch-checkbox__box {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--sketch-ink);
+  border-radius: var(--wobble-radius-1);
+  background-color: var(--sketch-bg-surface);
+  box-shadow: 2px 2px 0px var(--sketch-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.sketch-toggle:hover .sketch-checkbox__box {
+  box-shadow: 3px 3px 0px var(--sketch-ink);
+}
+
+/* Hand-Drawn Checkmark (Palomita a Pluma) */
+.sketch-checkbox__mark {
+  width: 14px;
+  height: 14px;
+  color: var(--sketch-pen-blue);
+  opacity: 0;
+  transform: scale(0.4) rotate(-15deg);
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.12s ease;
+}
+
+.sketch-toggle input:checked ~ .sketch-checkbox__box .sketch-checkbox__mark {
+  opacity: 1;
+  transform: scale(1.15) rotate(0deg);
+}
+
+.sketch-checkbox__mark--cross {
+  color: var(--sketch-pen-red) !important;
+}
+
+
+/* ==========================================================================
+   Radio Circle
+   ========================================================================== */
+.sketch-radio__circle {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--sketch-ink);
+  border-radius: var(--wobble-radius-round);
+  background-color: var(--sketch-bg-surface);
+  box-shadow: 2px 2px 0px var(--sketch-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.sketch-toggle:hover .sketch-radio__circle {
+  box-shadow: 3px 3px 0px var(--sketch-ink);
+}
+
+/* Hand-Drawn Radio Dot */
+.sketch-radio__dot {
+  width: 11px;
+  height: 11px;
+  background-color: var(--sketch-pen-red);
+  border-radius: 48% 52% 55% 45% / 54% 46% 54% 46%;
+  opacity: 0;
+  transform: scale(0.2);
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.12s ease;
+}
+
+.sketch-toggle input:checked ~ .sketch-radio__circle .sketch-radio__dot {
+  opacity: 1;
+  transform: scale(1);
+}

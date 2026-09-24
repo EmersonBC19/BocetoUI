@@ -1,0 +1,64 @@
+/* ==========================================================================
+   SketchTable Styles (Tablas de Datos de Boceto)
+   ========================================================================== */
+
+.sketch-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin: 16px 0;
+  box-sizing: border-box;
+}
+
+.sketch-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sketch-body);
+  font-size: 1.15rem;
+  color: var(--sketch-ink);
+  background-color: var(--sketch-bg-surface);
+  border: 2.5px solid var(--sketch-ink);
+  box-shadow: 4px 5px 0px var(--sketch-ink);
+  text-align: left;
+}
+
+/* Encabezado */
+.sketch-table thead th {
+  font-family: var(--font-sketch-title);
+  font-weight: 700;
+  font-size: 1.15rem;
+  padding: 12px 16px;
+  background-color: var(--sketch-bg-paper);
+  border-bottom: 2.5px solid var(--sketch-ink);
+  border-right: 1.5px dashed var(--sketch-ink-muted);
+  letter-spacing: 0.5px;
+}
+
+.sketch-table thead th:last-child {
+  border-right: none;
+}
+
+/* Celdas */
+.sketch-table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1.5px dashed var(--sketch-ink-light);
+  border-right: 1.5px dashed var(--sketch-ink-light);
+  transition: background-color 0.15s ease;
+}
+
+.sketch-table tbody td:last-child {
+  border-right: none;
+}
+
+.sketch-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Filas cebra estilo papel */
+.sketch-table--striped tbody tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Hover de fila estilo marcador */
+.sketch-table tbody tr:hover td {
+  background-color: rgba(254, 240, 138, 0.25);
+}

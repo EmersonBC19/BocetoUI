@@ -1,0 +1,24 @@
+/* ==========================================================================
+   BocetoUI — Master Bundle Stylesheet
+   Importa tokens, variables CSS, texturas de lienzo y cursores cómic
+   ========================================================================== */
+
+@import '../../styles/sketch-theme.css';
+@import '../../styles/sketch-cursors.css';
+@import './brand/SketchLogo.css';
+@import './charts/SketchChartShared.css';
+@import './comic/SketchSpeechBubble.css';
+@import './comic/SketchStamp.css';
+@import './comic/SketchBurstBadge.css';
+@import './paper/SketchTape.css';
+@import './paper/SketchTornCard.css';
+@import './actions/SketchCloseButton.css';
+@import './layout/SketchScrollArea.css';
+
+/* Estilos de Contenedor del Proveedor BocetoProvider */
+.boceto-provider-root {
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}

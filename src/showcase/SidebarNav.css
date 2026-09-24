@@ -1,0 +1,720 @@
+/* ==========================================================================
+   Sidebar Navigation Styles (Menú Cuaderno de Bocetos Artesanal con Anillas)
+   ========================================================================== */
+
+/* Layout Principal con Menú Fijo a la Izquierda */
+.showcase-layout-fixed {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow-x: clip;
+}
+
+/* Sidebar Fijo al Borde Izquierdo Ocupando Todo el Alto (100vh) */
+.sidebar-nav {
+  width: 326px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--sketch-bg-surface, #ffffff);
+  border-right: 2.5px solid var(--sketch-ink, #18181b);
+  box-shadow: 5px 0 0 rgba(0, 0, 0, 0.05);
+  z-index: 100;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* --------------------------------------------------------------------------
+   1. ANILLAS DE CUADERNO ESPIRAL METÁLICO (Spine decorativo a la derecha)
+   -------------------------------------------------------------------------- */
+.sidebar-nav__spiral {
+  position: absolute;
+  right: -3px;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  pointer-events: none;
+  z-index: 25;
+}
+
+.sidebar-nav__spiral-ring {
+  position: relative;
+  height: 16px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Agujero troquelado en la hoja de papel */
+.sidebar-nav__spiral-hole {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(24, 24, 27, 0.28);
+  border: 1.5px solid var(--sketch-ink, #18181b);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* Alambre espiral metálico con sombra 3D */
+.sidebar-nav__spiral-wire {
+  position: absolute;
+  width: 16px;
+  height: 7px;
+  border: 2px solid var(--sketch-ink, #18181b);
+  border-radius: 5px;
+  background: linear-gradient(180deg, #f1f5f9 0%, #cbd5e1 45%, #64748b 100%);
+  box-shadow: 1.5px 2px 2px rgba(0, 0, 0, 0.25);
+  transform: rotate(-10deg) translateX(3px);
+}
+
+/* --------------------------------------------------------------------------
+   2. CABECERA CON MARCA Y BOTÓN "¡SORPRÉNDEME!"
+   -------------------------------------------------------------------------- */
+.sidebar-nav__brand {
+  padding: 16px 20px 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  gap: 10px;
+}
+
+/* Botón Dado Mágico Sorpréndeme */
+.sidebar-nav__dice-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--sketch-accent-yellow, #fef08a);
+  border: 2px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-pill, 255px 25px 225px 25px / 25px 225px 25px 255px);
+  padding: 5px 10px;
+  font-family: var(--font-sketch-title, 'Patrick Hand', cursive);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--sketch-ink, #18181b);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--sketch-ink, #18181b);
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease, background-color 0.15s;
+}
+
+.sidebar-nav__dice-btn:hover {
+  background-color: #fde047;
+  transform: scale(1.05) rotate(-1deg);
+  box-shadow: 3px 3px 0 var(--sketch-ink, #18181b);
+}
+
+.sidebar-nav__dice-btn:active,
+.sidebar-nav__dice-btn--rolling {
+  transform: scale(0.95) rotate(4deg);
+  box-shadow: 1px 1px 0 var(--sketch-ink, #18181b);
+}
+
+.sidebar-nav__dice-btn--rolling .sidebar-nav__dice-icon {
+  animation: sketch-dice-roll 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+}
+
+@keyframes sketch-dice-roll {
+  0% { transform: rotate(0deg) scale(0.9); }
+  50% { transform: rotate(180deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.sidebar-nav__dice-text {
+  letter-spacing: 0.02em;
+}
+
+/* --------------------------------------------------------------------------
+   3. BUSCADOR CON ATAJO ⌘K Y CHIPS DE FILTRO RÁPIDO
+   -------------------------------------------------------------------------- */
+.sidebar-nav__search-box {
+  padding: 4px 18px 12px 18px;
+  border-bottom: 2px dashed var(--sketch-ink-light, #e2e8f0);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar-nav__search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.sidebar-nav__search-icon {
+  position: absolute;
+  left: 10px;
+  color: var(--sketch-ink-muted, #71717a);
+  pointer-events: none;
+}
+
+.sidebar-nav__search-input {
+  width: 100%;
+  padding: 6px 42px 6px 32px;
+  background-color: var(--sketch-bg-paper, #fdfbf7);
+  border: 1.5px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-2, 20px 255px 20px 25px/255px 20px 225px 25px);
+  font-family: var(--font-sketch-body, 'Caveat', cursive);
+  font-size: 1.15rem;
+  color: var(--sketch-ink, #18181b);
+  box-sizing: border-box;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.sidebar-nav__search-input:focus {
+  border-color: var(--sketch-pen-blue, #2563eb);
+  background-color: #ffffff;
+  box-shadow: 2px 2px 0 var(--sketch-pen-blue, #2563eb);
+}
+
+.sidebar-nav__search-kbd {
+  position: absolute;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--sketch-ink-light, #cbd5e1);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-family: var(--font-sketch-code, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--sketch-ink-muted, #71717a);
+  pointer-events: none;
+}
+
+.sidebar-nav__search-clear {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+/* Pestañas de Filtro Rápido (Chips) */
+.sidebar-nav__chips-strip {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+}
+
+.sidebar-nav__chips-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar-nav__chip {
+  padding: 3px 9px;
+  background-color: transparent;
+  border: 1.5px dashed var(--sketch-ink, #18181b);
+  border-radius: 12px;
+  font-family: var(--font-sketch-title, 'Patrick Hand', cursive);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--sketch-ink, #18181b);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.sidebar-nav__chip:hover {
+  background-color: rgba(254, 240, 138, 0.4);
+  transform: translateY(-1px);
+}
+
+.sidebar-nav__chip--active {
+  background-color: var(--sketch-accent-yellow, #fef08a);
+  border-style: solid;
+  box-shadow: 1.5px 1.5px 0 var(--sketch-ink, #18181b);
+  transform: rotate(-1deg);
+}
+
+/* Subcabecera: Contador y Botón Expandir Todo */
+.sidebar-nav__subhead {
+  padding: 8px 18px 4px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  font-family: var(--font-sketch-title, 'Patrick Hand', cursive);
+  font-size: 0.82rem;
+  color: var(--sketch-ink-muted, #71717a);
+}
+
+.sidebar-nav__subhead-count {
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.sidebar-nav__toggle-all-btn {
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--sketch-pen-blue, #2563eb);
+  cursor: pointer;
+  padding: 2px 4px;
+  transition: opacity 0.15s;
+}
+
+.sidebar-nav__toggle-all-btn:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+/* --------------------------------------------------------------------------
+   4. MENÚ CON ACORDEONES Y LÁPIZ ACTIVO
+   -------------------------------------------------------------------------- */
+.sidebar-nav__menu {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 10px 14px 20px 14px;
+  scrollbar-width: thin;
+}
+
+.sidebar-nav__menu::-webkit-scrollbar {
+  width: 7px;
+}
+
+.sidebar-nav__menu::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.02);
+  margin: 8px 0;
+  border-radius: 6px;
+}
+
+.sidebar-nav__group {
+  margin-bottom: 12px;
+}
+
+/* Cabecera del Acordeón por Sección */
+.sidebar-nav__group-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 6px;
+  transition: background-color 0.15s;
+}
+
+.sidebar-nav__group-header:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.sidebar-nav__group-arrow {
+  color: var(--sketch-ink-muted, #71717a);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sidebar-nav__group-title {
+  flex: 1;
+  font-family: var(--font-sketch-title, 'Patrick Hand', cursive);
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--sketch-ink-muted, #71717a);
+  text-transform: uppercase;
+}
+
+.sidebar-nav__group-pill {
+  font-family: var(--font-sketch-code, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--sketch-ink-muted, #71717a);
+}
+
+.sidebar-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  list-style: none;
+  padding: 4px 0 4px 6px;
+  margin: 0;
+}
+
+.sidebar-nav__list li {
+  width: 100%;
+}
+
+/* Botón de Item Individual */
+.sidebar-nav__item-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1.5px solid transparent;
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  font-family: var(--font-sketch-title, 'Patrick Hand', cursive);
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--sketch-ink, #18181b);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-sizing: border-box;
+  position: relative;
+}
+
+.sidebar-nav__item-icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-right: 8px;
+  color: var(--sketch-ink, #18181b);
+  transition: transform 0.15s;
+}
+
+.sidebar-nav__item-btn:hover {
+  background-color: rgba(254, 240, 138, 0.35);
+  transform: translateX(4px);
+}
+
+.sidebar-nav__item-btn:hover .sidebar-nav__item-icon {
+  transform: scale(1.15) rotate(-3deg);
+}
+
+/* Estado ACTIVO con rotulador resaltador */
+.sidebar-nav__item-btn--active {
+  background: linear-gradient(104deg, rgba(254, 240, 138, 0.6) 0.9%, var(--sketch-accent-yellow, #fef08a) 3.5%, var(--sketch-accent-yellow, #fef08a) 94%, rgba(254, 240, 138, 0.6) 98%);
+  border: 2px solid var(--sketch-ink, #18181b);
+  box-shadow: 2.5px 3px 0 var(--sketch-ink, #18181b);
+  transform: translateX(5px) rotate(-0.5deg);
+  color: #18181b !important;
+}
+
+/* Lápiz animado apuntando al item activo */
+.sidebar-nav__active-pencil {
+  position: absolute;
+  left: -12px;
+  font-size: 0.95rem;
+  animation: sketch-pencil-bob 0.8s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes sketch-pencil-bob {
+  from { transform: translateX(0) rotate(-10deg); }
+  to { transform: translateX(3px) rotate(5deg); }
+}
+
+.sidebar-nav__item-label {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-nav__item-count {
+  font-family: var(--font-sketch-code, monospace);
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--sketch-ink-muted, #71717a);
+  margin-left: 6px;
+  flex-shrink: 0;
+}
+
+.sidebar-nav__item-btn--active .sidebar-nav__item-count {
+  background: rgba(0, 0, 0, 0.15) !important;
+  color: #18181b !important;
+}
+
+/* Badge especial (NUEVO / HOT) */
+.sidebar-nav__item-badge {
+  font-family: var(--font-sketch-title, 'Patrick Hand', cursive);
+  font-size: 0.68rem;
+  font-weight: 900;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background-color: var(--sketch-pen-red, #dc2626);
+  color: #ffffff;
+  border: 1px solid var(--sketch-ink, #18181b);
+  transform: rotate(3deg);
+  letter-spacing: 0.05em;
+  margin-left: 6px;
+  flex-shrink: 0;
+}
+
+.sidebar-nav__no-results {
+  padding: 24px 12px;
+  text-align: center;
+  color: var(--sketch-ink-muted, #71717a);
+  font-family: var(--font-sketch-body, cursive);
+  font-size: 1.15rem;
+}
+
+.sidebar-nav__reset-search-btn {
+  margin-top: 8px;
+  padding: 4px 12px;
+  background: var(--sketch-accent-yellow, #fef08a);
+  border: 1.5px solid var(--sketch-ink, #18181b);
+  border-radius: 8px;
+  font-family: var(--font-sketch-title, 'Patrick Hand', cursive);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   5. FOOTER CON MASCOTA BOCETÍN Y CONSEJOS INTERACTIVOS
+   -------------------------------------------------------------------------- */
+.sidebar-nav__footer {
+  padding: 12px 16px 14px 16px;
+  border-top: 2px dashed var(--sketch-ink-light, #e2e8f0);
+  background-color: var(--sketch-bg-paper, #fdfbf7);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-nav__bocetin-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--sketch-bg-surface, #ffffff);
+  border: 1.5px solid var(--sketch-ink, #18181b);
+  border-radius: 12px;
+  padding: 6px 10px;
+  box-shadow: 2px 2px 0px var(--sketch-ink, #18181b);
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s;
+}
+
+.sidebar-nav__bocetin-box:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 3px 3px 0px var(--sketch-ink, #18181b);
+}
+
+.sidebar-nav__bocetin-box--bouncing {
+  animation: sketch-bocetin-bounce 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes sketch-bocetin-bounce {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.15) rotate(-4deg); }
+  70% { transform: scale(0.95) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.sidebar-nav__bocetin-avatar {
+  flex-shrink: 0;
+}
+
+.sidebar-nav__bocetin-bubble {
+  flex: 1;
+  font-family: var(--font-sketch-body, 'Caveat', cursive);
+  font-size: 1.02rem;
+  line-height: 1.25;
+  color: var(--sketch-ink, #18181b);
+  font-weight: 600;
+}
+
+.sidebar-nav__footer-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+}
+
+.sidebar-nav__footer-tag {
+  font-family: var(--font-sketch-code, monospace);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--sketch-ink-muted, #71717a);
+}
+
+.sidebar-nav__footer-gpu {
+  font-family: var(--font-sketch-title, 'Patrick Hand', cursive);
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #16a34a;
+  background: rgba(34, 197, 94, 0.12);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   6. CONTENIDO PRINCIPAL Y RESPONSIVIDAD
+   -------------------------------------------------------------------------- */
+.showcase-main-expanded {
+  margin-left: 326px;
+  width: calc(100% - 326px);
+  max-width: calc(100% - 326px);
+  min-height: 100vh;
+  padding: 32px 56px 90px 56px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1040px) {
+  .showcase-layout-fixed {
+    flex-direction: column;
+  }
+  .sidebar-nav {
+    width: 100%;
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 2.5px solid var(--sketch-ink, #18181b);
+  }
+  .sidebar-nav__spiral {
+    display: none;
+  }
+  .showcase-main-expanded {
+    margin-left: 0;
+    width: 100%;
+    max-width: 100%;
+    padding: 24px 20px 80px 20px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. MODO PIZARRA (Chalkboard Mode)
+   -------------------------------------------------------------------------- */
+[data-theme="chalkboard"] .sidebar-nav,
+.paper-chalk .sidebar-nav {
+  background-color: #1a232b;
+  border-right-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 5px 0 0 rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="chalkboard"] .sidebar-nav__spiral-hole,
+.paper-chalk .sidebar-nav__spiral-hole {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="chalkboard"] .sidebar-nav__spiral-wire,
+.paper-chalk .sidebar-nav__spiral-wire {
+  background: linear-gradient(180deg, #94a3b8 0%, #475569 100%);
+  border-color: #f8fafc;
+}
+
+[data-theme="chalkboard"] .sidebar-nav__search-box,
+.paper-chalk .sidebar-nav__search-box {
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="chalkboard"] .sidebar-nav__search-input,
+.paper-chalk .sidebar-nav__search-input {
+  background-color: #141c22;
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #f8fafc;
+}
+
+[data-theme="chalkboard"] .sidebar-nav__search-kbd,
+.paper-chalk .sidebar-nav__search-kbd {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #94a3b8;
+}
+
+[data-theme="chalkboard"] .sidebar-nav__chip,
+.paper-chalk .sidebar-nav__chip {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #f8fafc;
+}
+
+[data-theme="chalkboard"] .sidebar-nav__chip--active,
+.paper-chalk .sidebar-nav__chip--active {
+  background-color: #facc15;
+  color: #18181b;
+  border-color: #ffffff;
+}
+
+[data-theme="chalkboard"] .sidebar-nav__group-title,
+.paper-chalk .sidebar-nav__group-title {
+  color: #94a3b8;
+}
+
+[data-theme="chalkboard"] .sidebar-nav__group-pill,
+.paper-chalk .sidebar-nav__group-pill {
+  background: rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+}
+
+[data-theme="chalkboard"] .sidebar-nav__item-btn,
+.paper-chalk .sidebar-nav__item-btn {
+  color: #f8fafc;
+}
+
+[data-theme="chalkboard"] .sidebar-nav__item-icon,
+.paper-chalk .sidebar-nav__item-icon {
+  color: #cbd5e1;
+}
+
+[data-theme="chalkboard"] .sidebar-nav__item-count,
+.paper-chalk .sidebar-nav__item-count {
+  background: rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+}
+
+[data-theme="chalkboard"] .sidebar-nav__item-btn:hover,
+.paper-chalk .sidebar-nav__item-btn:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="chalkboard"] .sidebar-nav__item-btn--active,
+.paper-chalk .sidebar-nav__item-btn--active {
+  background-color: #facc15;
+  border-color: #ffffff;
+  color: #18181b !important;
+  box-shadow: 2.5px 3px 0 rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="chalkboard"] .sidebar-nav__item-btn--active .sidebar-nav__item-icon {
+  color: #18181b !important;
+}
+
+[data-theme="chalkboard"] .sidebar-nav__item-btn--active .sidebar-nav__item-count {
+  background: rgba(0, 0, 0, 0.2) !important;
+  color: #18181b !important;
+}
+
+[data-theme="chalkboard"] .sidebar-nav__footer,
+.paper-chalk .sidebar-nav__footer {
+  background-color: #141c22;
+  border-top-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="chalkboard"] .sidebar-nav__bocetin-box,
+.paper-chalk .sidebar-nav__bocetin-box {
+  background-color: #1e2832;
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="chalkboard"] .sidebar-nav__bocetin-bubble,
+.paper-chalk .sidebar-nav__bocetin-bubble {
+  color: #f8fafc;
+}

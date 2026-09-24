@@ -1,0 +1,155 @@
+/* ==========================================================================
+   SketchTape.css — Cintas Adhesivas Washi Tape Artesanales
+   ========================================================================== */
+
+.sketch-tape-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.sketch-tape {
+  position: relative;
+  display: inline-block;
+  background-color: rgba(254, 240, 138, 0.75);
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.12);
+  user-select: none;
+  z-index: 10;
+  clip-path: polygon(
+    0% 0%, 96% 0%, 100% 25%, 97% 50%, 100% 75%, 96% 100%,
+    4% 100%, 0% 75%, 3% 50%, 0% 25%
+  );
+  transition: transform 0.2s ease;
+}
+
+.sketch-tape:hover {
+  transform: scale(1.03);
+}
+
+/* Patrones */
+.sketch-tape--masking {
+  background-color: rgba(254, 243, 199, 0.85);
+  border-top: 1px dashed rgba(24, 24, 27, 0.2);
+  border-bottom: 1px dashed rgba(24, 24, 27, 0.2);
+}
+
+.sketch-tape--striped {
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(254, 240, 138, 0.85),
+    rgba(254, 240, 138, 0.85) 6px,
+    rgba(251, 146, 60, 0.85) 6px,
+    rgba(251, 146, 60, 0.85) 12px
+  );
+}
+
+.sketch-tape--grid {
+  background-color: rgba(191, 219, 254, 0.85);
+  background-image: 
+    linear-gradient(rgba(24, 24, 27, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 24, 27, 0.15) 1px, transparent 1px);
+  background-size: 6px 6px;
+}
+
+.sketch-tape--pink {
+  background-color: rgba(251, 207, 232, 0.85);
+}
+
+.sketch-tape--mint {
+  background-color: rgba(187, 247, 208, 0.85);
+}
+
+.sketch-tape--dots {
+  background-color: rgba(233, 213, 255, 0.88);
+  background-image: radial-gradient(circle, rgba(24, 24, 27, 0.25) 1.5px, transparent 1.5px);
+  background-size: 8px 8px;
+}
+
+.sketch-tape--kraft {
+  background-color: rgba(217, 186, 140, 0.92);
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(140, 95, 45, 0.12) 0px,
+    rgba(140, 95, 45, 0.12) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+  border-top: 1px dashed rgba(100, 65, 25, 0.35);
+  border-bottom: 1px dashed rgba(100, 65, 25, 0.35);
+}
+
+/* Posiciones Automáticas cuando envuelve a un elemento */
+.sketch-tape--top-center {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+}
+
+.sketch-tape--bottom-center {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(1deg);
+}
+
+.sketch-tape--top-left,
+.sketch-tape--corner-top-left {
+  position: absolute;
+  top: -10px;
+  left: -18px;
+  transform: rotate(-30deg);
+}
+
+.sketch-tape--top-right,
+.sketch-tape--corner-top-right {
+  position: absolute;
+  top: -10px;
+  right: -18px;
+  transform: rotate(30deg);
+}
+
+.sketch-tape--bottom-left,
+.sketch-tape--corner-bottom-left {
+  position: absolute;
+  bottom: -10px;
+  left: -18px;
+  transform: rotate(30deg);
+}
+
+.sketch-tape--bottom-right,
+.sketch-tape--corner-bottom-right {
+  position: absolute;
+  bottom: -10px;
+  right: -18px;
+  transform: rotate(-30deg);
+}
+
+/* ==========================================================================
+   Interacción de Despegado y Fijado (Peel Effect)
+   ========================================================================== */
+.sketch-tape--interactive {
+  cursor: pointer;
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease, filter 0.28s ease;
+}
+
+.sketch-tape--interactive:hover:not(.sketch-tape--peeled) {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 2px 5px 8px rgba(0, 0, 0, 0.18);
+}
+
+.sketch-tape--peeled {
+  transform: perspective(400px) rotateX(24deg) rotateZ(3deg) translateY(-8px) scale(1.06) !important;
+  box-shadow: -4px 14px 16px rgba(0, 0, 0, 0.24) !important;
+  filter: brightness(1.06);
+}
+
+/* Ajustes Chalkboard */
+[data-theme="chalkboard"] .sketch-tape--masking {
+  background-color: rgba(254, 243, 199, 0.7);
+}
+[data-theme="chalkboard"] .sketch-tape--dots {
+  background-color: rgba(216, 180, 254, 0.75);
+}
+[data-theme="chalkboard"] .sketch-tape--kraft {
+  background-color: rgba(190, 150, 100, 0.85);
+}

@@ -1,0 +1,188 @@
+/* ==========================================================================
+   sketch-cursors.css — Sistema de Punteros Cómic Artesanales de BocetoUI
+   Diseño Fiel a Imágenes:
+   1. Flecha Cómic (Default): Fondo blanco, borde negro y rayado interior (reposo).
+   2. Flecha Clickeada (Active general): Ráfagas de esparcido al hacer clic en cualquier área.
+   3. Guante Cómic (Hover / Pointer): 3 costuras en dorso y puño en interactivos.
+   4. Guante Clickeado (Active interactivo): Ráfagas de esparcido en el dedo al clickear.
+   Acciones: default, active, pointer, pointer-active, grab, grabbing, text, not-allowed, native
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. PUNTERO POR DEFECTO (REPOSO): Flecha Cómic Blanca con Borde Negro & Rayado
+   -------------------------------------------------------------------------- */
+:root:not([data-cursor="native"]),
+[data-cursor="comic"],
+[data-cursor="pencil"],
+[data-cursor="arrow"],
+[data-cursor="architect"],
+:root:not([data-cursor="native"]) *,
+[data-cursor="comic"] * {
+  cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 64 64'><path d='M11,11h1v1h-1z M12,12h2v1h-2z M12,13h5v1h-5z M13,14h6v1h-6z M13,15h9v1h-9z M13,16h5v1h-5z M20,16h4v1h-4z M14,17h4v1h-4z M23,17h4v1h-4z M14,18h5v1h-5z M23,18h6v1h-6z M15,19h6v1h-6z M23,19h2v1h-2z M28,19h4v1h-4z M15,20h10v1h-10z M30,20h4v1h-4z M15,21h11v1h-11z M33,21h4v1h-4z M16,22h12v1h-12z M35,22h4v1h-4z M16,23h15v1h-15z M38,23h4v1h-4z M17,24h16v1h-16z M40,24h4v1h-4z M17,25h19v1h-19z M42,25h5v1h-5z M17,26h22v1h-22z M42,26h7v1h-7z M18,27h32v1h-32z M18,28h30v1h-30z M19,29h27v1h-27z M19,30h26v1h-26z M19,31h24v1h-24z M20,32h21v1h-21z M20,33h20v1h-20z M21,34h18v1h-18z M21,35h18v1h-18z M21,36h18v1h-18z M22,37h18v1h-18z M22,38h19v1h-19z M23,39h11v1h-11z M37,39h5v1h-5z M23,40h10v1h-10z M38,40h5v1h-5z M23,41h9v1h-9z M39,41h5v1h-5z M24,42h8v1h-8z M40,42h5v1h-5z M24,43h7v1h-7z M41,43h5v1h-5z M24,44h7v1h-7z M42,44h5v1h-5z M25,45h5v1h-5z M43,45h5v1h-5z M25,46h4v1h-4z M44,46h5v1h-5z M26,47h3v1h-3z M45,47h5v1h-5z M26,48h2v1h-2z M46,48h5v1h-5z M26,49h2v1h-2z M47,49h5v1h-5z M48,50h5v1h-5z M49,51h4v1h-4z M50,52h2v1h-2z' fill='%23ffffff'/><path d='M9,9h5v1h-5z M9,10h7v1h-7z M9,11h2v1h-2z M12,11h7v1h-7z M9,12h3v1h-3z M14,12h7v1h-7z M9,13h3v1h-3z M17,13h7v1h-7z M10,14h3v1h-3z M19,14h7v1h-7z M10,15h3v1h-3z M22,15h7v1h-7z M11,16h2v1h-2z M18,16h2v1h-2z M24,16h7v1h-7z M11,17h3v1h-3z M18,17h5v1h-5z M27,17h7v1h-7z M11,18h3v1h-3z M19,18h4v1h-4z M29,18h7v1h-7z M12,19h3v1h-3z M21,19h2v1h-2z M25,19h3v1h-3z M32,19h7v1h-7z M12,20h3v1h-3z M25,20h5v1h-5z M34,20h7v1h-7z M13,21h2v1h-2z M26,21h7v1h-7z M37,21h7v1h-7z M13,22h3v1h-3z M28,22h7v1h-7z M39,22h7v1h-7z M13,23h3v1h-3z M31,23h7v1h-7z M42,23h7v1h-7z M14,24h3v1h-3z M33,24h7v1h-7z M44,24h8v1h-8z M14,25h3v1h-3z M36,25h6v1h-6z M47,25h6v1h-6z M15,26h2v1h-2z M39,26h3v1h-3z M49,26h5v1h-5z M15,27h3v1h-3z M50,27h3v1h-3z M15,28h3v1h-3z M48,28h5v1h-5z M16,29h3v1h-3z M46,29h6v1h-6z M16,30h3v1h-3z M45,30h5v1h-5z M17,31h2v1h-2z M43,31h5v1h-5z M17,32h3v1h-3z M41,32h5v1h-5z M17,33h3v1h-3z M40,33h5v1h-5z M18,34h3v1h-3z M39,34h4v1h-4z M18,35h3v1h-3z M39,35h3v1h-3z M19,36h2v1h-2z M39,36h4v1h-4z M19,37h3v1h-3z M40,37h4v1h-4z M19,38h3v1h-3z M41,38h4v1h-4z M20,39h3v1h-3z M34,39h3v1h-3z M42,39h4v1h-4z M20,40h3v1h-3z M33,40h5v1h-5z M43,40h4v1h-4z M21,41h2v1h-2z M32,41h7v1h-7z M44,41h4v1h-4z M21,42h3v1h-3z M32,42h3v1h-3z M37,42h3v1h-3z M45,42h3v1h-3z M21,43h3v1h-3z M31,43h3v1h-3z M38,43h3v1h-3z M46,43h3v1h-3z M22,44h2v1h-2z M31,44h3v1h-3z M39,44h3v1h-3z M47,44h3v1h-3z M22,45h3v1h-3z M30,45h3v1h-3z M40,45h3v1h-3z M48,45h3v1h-3z M23,46h2v1h-2z M29,46h3v1h-3z M41,46h3v1h-3z M49,46h3v1h-3z M23,47h3v1h-3z M29,47h3v1h-3z M42,47h3v1h-3z M50,47h3v1h-3z M23,48h3v1h-3z M28,48h3v1h-3z M43,48h3v1h-3z M51,48h3v1h-3z M24,49h2v1h-2z M28,49h3v1h-3z M44,49h3v1h-3z M52,49h3v1h-3z M24,50h6v1h-6z M45,50h3v1h-3z M53,50h2v1h-2z M25,51h4v1h-4z M46,51h3v1h-3z M53,51h2v1h-2z M25,52h4v1h-4z M47,52h3v1h-3z M52,52h3v1h-3z M26,53h1v1h-1z M48,53h6v1h-6z M49,54h4v1h-4z' fill='%2318181b'/></svg>") 5 5, default !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. CLIC EN ÁREAS LIBRES / FONDO (:active): Flecha con Ráfagas de Esparcido
+   -------------------------------------------------------------------------- */
+:root:not([data-cursor="native"]):active,
+:root:not([data-cursor="native"]) *:active,
+[data-cursor="comic"]:active,
+[data-cursor="comic"] *:active {
+  cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 64 64'><path d='M11,11h1v1h-1z M12,12h2v1h-2z M12,13h5v1h-5z M13,14h6v1h-6z M13,15h9v1h-9z M13,16h5v1h-5z M20,16h4v1h-4z M14,17h4v1h-4z M23,17h4v1h-4z M14,18h5v1h-5z M23,18h6v1h-6z M15,19h6v1h-6z M23,19h2v1h-2z M28,19h4v1h-4z M15,20h10v1h-10z M30,20h4v1h-4z M15,21h11v1h-11z M33,21h4v1h-4z M16,22h12v1h-12z M35,22h4v1h-4z M16,23h15v1h-15z M38,23h4v1h-4z M17,24h16v1h-16z M40,24h4v1h-4z M17,25h19v1h-19z M42,25h5v1h-5z M17,26h22v1h-22z M42,26h7v1h-7z M18,27h32v1h-32z M18,28h30v1h-30z M19,29h27v1h-27z M19,30h26v1h-26z M19,31h24v1h-24z M20,32h21v1h-21z M20,33h20v1h-20z M21,34h18v1h-18z M21,35h18v1h-18z M21,36h18v1h-18z M22,37h18v1h-18z M22,38h19v1h-19z M23,39h11v1h-11z M37,39h5v1h-5z M23,40h10v1h-10z M38,40h5v1h-5z M23,41h9v1h-9z M39,41h5v1h-5z M24,42h8v1h-8z M40,42h5v1h-5z M24,43h7v1h-7z M41,43h5v1h-5z M24,44h7v1h-7z M42,44h5v1h-5z M25,45h5v1h-5z M43,45h5v1h-5z M25,46h4v1h-4z M44,46h5v1h-5z M26,47h3v1h-3z M45,47h5v1h-5z M26,48h2v1h-2z M46,48h5v1h-5z M26,49h2v1h-2z M47,49h5v1h-5z M48,50h5v1h-5z M49,51h4v1h-4z M50,52h2v1h-2z' fill='%23ffffff'/><path d='M9,9h5v1h-5z M9,10h7v1h-7z M9,11h2v1h-2z M12,11h7v1h-7z M9,12h3v1h-3z M14,12h7v1h-7z M9,13h3v1h-3z M17,13h7v1h-7z M10,14h3v1h-3z M19,14h7v1h-7z M10,15h3v1h-3z M22,15h7v1h-7z M11,16h2v1h-2z M18,16h2v1h-2z M24,16h7v1h-7z M11,17h3v1h-3z M18,17h5v1h-5z M27,17h7v1h-7z M11,18h3v1h-3z M19,18h4v1h-4z M29,18h7v1h-7z M12,19h3v1h-3z M21,19h2v1h-2z M25,19h3v1h-3z M32,19h7v1h-7z M12,20h3v1h-3z M25,20h5v1h-5z M34,20h7v1h-7z M13,21h2v1h-2z M26,21h7v1h-7z M37,21h7v1h-7z M13,22h3v1h-3z M28,22h7v1h-7z M39,22h7v1h-7z M13,23h3v1h-3z M31,23h7v1h-7z M42,23h7v1h-7z M14,24h3v1h-3z M33,24h7v1h-7z M44,24h8v1h-8z M14,25h3v1h-3z M36,25h6v1h-6z M47,25h6v1h-6z M15,26h2v1h-2z M39,26h3v1h-3z M49,26h5v1h-5z M15,27h3v1h-3z M50,27h3v1h-3z M15,28h3v1h-3z M48,28h5v1h-5z M16,29h3v1h-3z M46,29h6v1h-6z M16,30h3v1h-3z M45,30h5v1h-5z M17,31h2v1h-2z M43,31h5v1h-5z M17,32h3v1h-3z M41,32h5v1h-5z M17,33h3v1h-3z M40,33h5v1h-5z M18,34h3v1h-3z M39,34h4v1h-4z M18,35h3v1h-3z M39,35h3v1h-3z M19,36h2v1h-2z M39,36h4v1h-4z M19,37h3v1h-3z M40,37h4v1h-4z M19,38h3v1h-3z M41,38h4v1h-4z M20,39h3v1h-3z M34,39h3v1h-3z M42,39h4v1h-4z M20,40h3v1h-3z M33,40h5v1h-5z M43,40h4v1h-4z M21,41h2v1h-2z M32,41h7v1h-7z M44,41h4v1h-4z M21,42h3v1h-3z M32,42h3v1h-3z M37,42h3v1h-3z M45,42h3v1h-3z M21,43h3v1h-3z M31,43h3v1h-3z M38,43h3v1h-3z M46,43h3v1h-3z M22,44h2v1h-2z M31,44h3v1h-3z M39,44h3v1h-3z M47,44h3v1h-3z M22,45h3v1h-3z M30,45h3v1h-3z M40,45h3v1h-3z M48,45h3v1h-3z M23,46h2v1h-2z M29,46h3v1h-3z M41,46h3v1h-3z M49,46h3v1h-3z M23,47h3v1h-3z M29,47h3v1h-3z M42,47h3v1h-3z M50,47h3v1h-3z M23,48h3v1h-3z M28,48h3v1h-3z M43,48h3v1h-3z M51,48h3v1h-3z M24,49h2v1h-2z M28,49h3v1h-3z M44,49h3v1h-3z M52,49h3v1h-3z M24,50h6v1h-6z M45,50h3v1h-3z M53,50h2v1h-2z M25,51h4v1h-4z M46,51h3v1h-3z M53,51h2v1h-2z M25,52h4v1h-4z M47,52h3v1h-3z M52,52h3v1h-3z M26,53h1v1h-1z M48,53h6v1h-6z M49,54h4v1h-4z' fill='%2318181b'/><path d='M10,1h2v1h-2z M10,2h2v1h-2z M4,3h1v1h-1z M10,3h2v1h-2z M17,3h2v1h-2z M3,4h3v1h-3z M10,4h2v1h-2z M16,4h3v1h-3z M4,5h3v1h-3z M15,5h4v1h-4z M5,6h2v1h-2z M16,6h2v1h-2z M1,10h4v1h-4z M1,11h4v1h-4z M2,12h2v1h-2z M4,16h3v1h-3z M3,17h4v1h-4z M3,18h3v1h-3z' fill='%2318181b'/></svg>") 5 5, default !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. HOVER / CLICKEABLE: Guante de Dibujo Animado Señalando con Pespuntes
+   -------------------------------------------------------------------------- */
+:root:not([data-cursor="native"]) a,
+:root:not([data-cursor="native"]) button,
+:root:not([data-cursor="native"]) [role="button"],
+:root:not([data-cursor="native"]) [role="tab"],
+:root:not([data-cursor="native"]) input[type="button"],
+:root:not([data-cursor="native"]) input[type="submit"],
+:root:not([data-cursor="native"]) input[type="checkbox"],
+:root:not([data-cursor="native"]) input[type="radio"],
+:root:not([data-cursor="native"]) select,
+:root:not([data-cursor="native"]) .sketch-switch-wrapper,
+:root:not([data-cursor="native"]) .sketch-tab-btn,
+:root:not([data-cursor="native"]) .sketch-select-trigger,
+:root:not([data-cursor="native"]) .canvas-btn,
+:root:not([data-cursor="native"]) .cursor-btn,
+:root:not([data-cursor="native"]) .sketch-btn,
+:root:not([data-cursor="native"]) .sketch-breadcrumb__link,
+:root:not([data-cursor="native"]) .sketch-rating__star,
+:root:not([data-cursor="native"]) .sketch-accordion__header,
+:root:not([data-cursor="native"]) .sketch-step-node--clickable,
+[data-cursor="comic"] a,
+[data-cursor="comic"] button,
+[data-cursor="comic"] [role="button"],
+[data-cursor="comic"] [role="tab"],
+[data-cursor="comic"] input[type="button"],
+[data-cursor="comic"] input[type="submit"],
+[data-cursor="comic"] input[type="checkbox"],
+[data-cursor="comic"] input[type="radio"],
+[data-cursor="comic"] select,
+[data-cursor="comic"] .sketch-switch-wrapper,
+[data-cursor="comic"] .sketch-tab-btn,
+[data-cursor="comic"] .sketch-select-trigger,
+[data-cursor="comic"] .canvas-btn,
+[data-cursor="comic"] .cursor-btn,
+[data-cursor="comic"] .sketch-btn,
+[data-cursor="comic"] .sketch-breadcrumb__link,
+[data-cursor="comic"] .sketch-rating__star,
+[data-cursor="comic"] .sketch-accordion__header,
+[data-cursor="comic"] .sketch-step-node--clickable {
+  cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><path d='M11,7h1v1h-1z M11,8h2v1h-2z M11,9h2v1h-2z M11,10h2v1h-2z M11,11h3v1h-3z M12,12h2v1h-2z M15,12h2v1h-2z M18,12h2v1h-2z M12,13h8v1h-8z M21,13h2v1h-2z M8,14h2v1h-2z M12,14h11v1h-11z M8,15h3v1h-3z M12,15h11v1h-11z M9,16h6v1h-6z M16,16h1v1h-1z M18,16h1v1h-1z M20,16h3v1h-3z M10,17h5v1h-5z M16,17h1v1h-1z M18,17h1v1h-1z M20,17h3v1h-3z M10,18h5v1h-5z M16,18h1v1h-1z M18,18h1v1h-1z M20,18h2v1h-2z M11,19h4v1h-4z M16,19h1v1h-1z M18,19h1v1h-1z M20,19h2v1h-2z M12,20h3v1h-3z M16,20h1v1h-1z M18,20h1v1h-1z M20,20h1v1h-1z M12,21h9v1h-9z M13,22h4v1h-4z M18,22h3v1h-3z' fill='%23ffffff'/><path d='M11,6h1v1h-1z M10,7h1v1h-1z M12,7h1v1h-1z M10,8h1v1h-1z M13,8h1v1h-1z M10,9h1v1h-1z M13,9h1v1h-1z M10,10h1v1h-1z M13,10h3v1h-3z M10,11h1v1h-1z M14,11h7v1h-7z M10,12h2v1h-2z M14,12h1v1h-1z M17,12h1v1h-1z M20,12h3v1h-3z M7,13h5v1h-5z M20,13h1v1h-1z M23,13h1v1h-1z M7,14h1v1h-1z M10,14h2v1h-2z M23,14h1v1h-1z M7,15h1v1h-1z M11,15h1v1h-1z M23,15h1v1h-1z M8,16h1v1h-1z M15,16h1v1h-1z M17,16h1v1h-1z M19,16h1v1h-1z M23,16h1v1h-1z M8,17h2v1h-2z M15,17h1v1h-1z M17,17h1v1h-1z M19,17h1v1h-1z M23,17h1v1h-1z M9,18h1v1h-1z M15,18h1v1h-1z M17,18h1v1h-1z M19,18h1v1h-1z M22,18h1v1h-1z M10,19h1v1h-1z M15,19h1v1h-1z M17,19h1v1h-1z M19,19h1v1h-1z M22,19h1v1h-1z M10,20h2v1h-2z M15,20h1v1h-1z M17,20h1v1h-1z M19,20h1v1h-1z M21,20h1v1h-1z M11,21h1v1h-1z M21,21h1v1h-1z M12,22h1v1h-1z M17,22h1v1h-1z M21,22h1v1h-1z M12,23h10v1h-10z' fill='%2318181b'/></svg>") 11 6, pointer !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. CLIC EN ELEMENTOS INTERACTIVOS (:active): Guante con Ráfagas de Esparcido
+   -------------------------------------------------------------------------- */
+:root:not([data-cursor="native"]) button:active,
+:root:not([data-cursor="native"]) a:active,
+:root:not([data-cursor="native"]) [role="button"]:active,
+:root:not([data-cursor="native"]) [role="tab"]:active,
+:root:not([data-cursor="native"]) input[type="button"]:active,
+:root:not([data-cursor="native"]) input[type="submit"]:active,
+:root:not([data-cursor="native"]) input[type="checkbox"]:active,
+:root:not([data-cursor="native"]) input[type="radio"]:active,
+:root:not([data-cursor="native"]) select:active,
+:root:not([data-cursor="native"]) .sketch-switch-wrapper:active,
+:root:not([data-cursor="native"]) .sketch-tab-btn:active,
+:root:not([data-cursor="native"]) .sketch-select-trigger:active,
+:root:not([data-cursor="native"]) .canvas-btn:active,
+:root:not([data-cursor="native"]) .cursor-btn:active,
+:root:not([data-cursor="native"]) .sketch-btn:active,
+:root:not([data-cursor="native"]) .sketch-breadcrumb__link:active,
+:root:not([data-cursor="native"]) .sketch-rating__star:active,
+:root:not([data-cursor="native"]) .sketch-accordion__header:active,
+:root:not([data-cursor="native"]) .sketch-step-node--clickable:active,
+[data-cursor="comic"] button:active,
+[data-cursor="comic"] a:active,
+[data-cursor="comic"] [role="button"]:active,
+[data-cursor="comic"] [role="tab"]:active,
+[data-cursor="comic"] input[type="button"]:active,
+[data-cursor="comic"] input[type="submit"]:active,
+[data-cursor="comic"] input[type="checkbox"]:active,
+[data-cursor="comic"] input[type="radio"]:active,
+[data-cursor="comic"] select:active,
+[data-cursor="comic"] .sketch-switch-wrapper:active,
+[data-cursor="comic"] .sketch-tab-btn:active,
+[data-cursor="comic"] .sketch-select-trigger:active,
+[data-cursor="comic"] .canvas-btn:active,
+[data-cursor="comic"] .cursor-btn:active,
+[data-cursor="comic"] .sketch-btn:active,
+[data-cursor="comic"] .sketch-breadcrumb__link:active,
+[data-cursor="comic"] .sketch-rating__star:active,
+[data-cursor="comic"] .sketch-accordion__header:active,
+[data-cursor="comic"] .sketch-step-node--clickable:active {
+  cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><path d='M11,7h1v1h-1z M11,8h2v1h-2z M11,9h2v1h-2z M11,10h2v1h-2z M11,11h3v1h-3z M12,12h2v1h-2z M15,12h2v1h-2z M18,12h2v1h-2z M12,13h8v1h-8z M21,13h2v1h-2z M8,14h2v1h-2z M12,14h11v1h-11z M8,15h3v1h-3z M12,15h11v1h-11z M9,16h6v1h-6z M16,16h1v1h-1z M18,16h1v1h-1z M20,16h3v1h-3z M10,17h5v1h-5z M16,17h1v1h-1z M18,17h1v1h-1z M20,17h3v1h-3z M10,18h5v1h-5z M16,18h1v1h-1z M18,18h1v1h-1z M20,18h2v1h-2z M11,19h4v1h-4z M16,19h1v1h-1z M18,19h1v1h-1z M20,19h2v1h-2z M12,20h3v1h-3z M16,20h1v1h-1z M18,20h1v1h-1z M20,20h1v1h-1z M12,21h9v1h-9z M13,22h4v1h-4z M18,22h3v1h-3z' fill='%23ffffff'/><path d='M11,6h1v1h-1z M10,7h1v1h-1z M12,7h1v1h-1z M10,8h1v1h-1z M13,8h1v1h-1z M10,9h1v1h-1z M13,9h1v1h-1z M10,10h1v1h-1z M13,10h3v1h-3z M10,11h1v1h-1z M14,11h7v1h-7z M10,12h2v1h-2z M14,12h1v1h-1z M17,12h1v1h-1z M20,12h3v1h-3z M7,13h5v1h-5z M20,13h1v1h-1z M23,13h1v1h-1z M7,14h1v1h-1z M10,14h2v1h-2z M23,14h1v1h-1z M7,15h1v1h-1z M11,15h1v1h-1z M23,15h1v1h-1z M8,16h1v1h-1z M15,16h1v1h-1z M17,16h1v1h-1z M19,16h1v1h-1z M23,16h1v1h-1z M8,17h2v1h-2z M15,17h1v1h-1z M17,17h1v1h-1z M19,17h1v1h-1z M23,17h1v1h-1z M9,18h1v1h-1z M15,18h1v1h-1z M17,18h1v1h-1z M19,18h1v1h-1z M22,18h1v1h-1z M10,19h1v1h-1z M15,19h1v1h-1z M17,19h1v1h-1z M19,19h1v1h-1z M22,19h1v1h-1z M10,20h2v1h-2z M15,20h1v1h-1z M17,20h1v1h-1z M19,20h1v1h-1z M21,20h1v1h-1z M11,21h1v1h-1z M21,21h1v1h-1z M12,22h1v1h-1z M17,22h1v1h-1z M21,22h1v1h-1z M12,23h10v1h-10z' fill='%2318181b'/><path d='M11,1h2v1h-2z M7,2h2v1h-2z M11,2h2v1h-2z M15,2h2v1h-2z M7,3h3v1h-3z M14,3h3v1h-3z M8,4h2v1h-2z M15,4h1v1h-1z M6,6h2v1h-2z M6,7h2v1h-2z M7,10h3v1h-3z M7,11h2v1h-2z' fill='%2318181b'/></svg>") 11 6, pointer !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. ARRASTRE DISPONIBLE (grab): Guante Abierto
+   -------------------------------------------------------------------------- */
+:root:not([data-cursor="native"]) [draggable="true"],
+:root:not([data-cursor="native"]) .sketch-slider__thumb,
+:root:not([data-cursor="native"]) .sketch-grabbable,
+[data-cursor="comic"] [draggable="true"],
+[data-cursor="comic"] .sketch-slider__thumb,
+[data-cursor="comic"] .sketch-grabbable {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M11 6 C9.5 6, 9 7.5, 9 9 L9 15 C8 15, 6 16, 4 17 C2 18, 2.5 21, 5 21 L8 21 L8 22 C8 25, 11 27, 15 27 L19 27 C23 27, 26 25, 26 21 L26 12 C26 10.5, 24.5 9, 23 9 C22 9, 21.5 9.5, 21 10.5 C20.5 9.5, 20 9, 19 9 C18 9, 17.5 9.5, 17 10.5 C16.5 9.5, 16 9, 15 9 C14 9, 13.5 9.5, 13 10.5 L13 9 C13 7.5, 12.5 6, 11 6 Z' fill='%23ffffff' stroke='%2318181b' stroke-width='2' stroke-linejoin='round' stroke-linecap='round'/%3E%3Cline x1='14' y1='17' x2='14' y2='22' stroke='%2318181b' stroke-width='1.8' stroke-linecap='round'/%3E%3Cline x1='17' y1='17' x2='17' y2='22' stroke='%2318181b' stroke-width='1.8' stroke-linecap='round'/%3E%3Cline x1='20' y1='17' x2='20' y2='22' stroke='%2318181b' stroke-width='1.8' stroke-linecap='round'/%3E%3Cellipse cx='16' cy='28' rx='6' ry='2.2' fill='%23ffffff' stroke='%2318181b' stroke-width='2'/%3E%3C/svg%3E") 16 16, grab !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. ARRASTRANDO ACTIVAMENTE (grabbing): Guante Cerrado en Puño Firme
+   -------------------------------------------------------------------------- */
+:root:not([data-cursor="native"]) [draggable="true"]:active,
+:root:not([data-cursor="native"]) .sketch-slider__thumb:active,
+:root:not([data-cursor="native"]) .sketch-grabbable:active,
+[data-cursor="comic"] [draggable="true"]:active,
+[data-cursor="comic"] .sketch-slider__thumb:active,
+[data-cursor="comic"] .sketch-grabbable:active {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M10 13 C8 13, 7 15, 7 17 C7 21, 10 25, 15 25 L18 25 C23 25, 25 22, 25 18 C25 14, 23 12, 20 12 L10 12 Z' fill='%23ffffff' stroke='%2318181b' stroke-width='2' stroke-linejoin='round'/%3E%3Cpath d='M10 12 C10 10, 12 10, 14 10 L19 10 C21 10, 22 11, 22 13' fill='none' stroke='%2318181b' stroke-width='1.8' stroke-linecap='round'/%3E%3Cline x1='12' y1='16' x2='12' y2='21' stroke='%2318181b' stroke-width='1.8' stroke-linecap='round'/%3E%3Cline x1='15' y1='16' x2='15' y2='21' stroke='%2318181b' stroke-width='1.8' stroke-linecap='round'/%3E%3Cline x1='18' y1='16' x2='18' y2='21' stroke='%2318181b' stroke-width='1.8' stroke-linecap='round'/%3E%3Cellipse cx='16' cy='26' rx='5.5' ry='2' fill='%23ffffff' stroke='%2318181b' stroke-width='2'/%3E%3C/svg%3E") 16 16, grabbing !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. TEXTO / EDICIÓN / CORTE (text): I-Beam Cómic con Marcas de Pluma
+   -------------------------------------------------------------------------- */
+:root:not([data-cursor="native"]) input[type="text"],
+:root:not([data-cursor="native"]) input[type="password"],
+:root:not([data-cursor="native"]) input[type="email"],
+:root:not([data-cursor="native"]) input[type="search"],
+:root:not([data-cursor="native"]) textarea,
+[data-cursor="comic"] input[type="text"],
+[data-cursor="comic"] input[type="password"],
+[data-cursor="comic"] input[type="email"],
+[data-cursor="comic"] input[type="search"],
+[data-cursor="comic"] textarea {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cline x1='16' y1='5' x2='16' y2='27' stroke='%2318181b' stroke-width='2.2' stroke-linecap='round'/%3E%3Cpath d='M10 5 L22 5 M10 27 L22 27' stroke='%2318181b' stroke-width='2.2' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='16' r='1.5' fill='%23f59e0b'/%3E%3Cline x1='11' y1='9' x2='13' y2='7' stroke='%23f59e0b' stroke-width='1.2' stroke-linecap='round'/%3E%3Cline x1='11' y1='23' x2='13' y2='25' stroke='%23f59e0b' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E") 16 16, text !important;
+}
+
+/* --------------------------------------------------------------------------
+   8. BLOQUEADO / DESHABILITADO (not-allowed): Mano de Alto con Aspa
+   -------------------------------------------------------------------------- */
+:root:not([data-cursor="native"]) :disabled,
+:root:not([data-cursor="native"]) [aria-disabled="true"],
+:root:not([data-cursor="native"]) .sketch-disabled,
+[data-cursor="comic"] :disabled,
+[data-cursor="comic"] [aria-disabled="true"],
+[data-cursor="comic"] .sketch-disabled {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='%23fef2f2' stroke='%23ef4444' stroke-width='2.2'/%3E%3Cline x1='8' y1='8' x2='24' y2='24' stroke='%23ef4444' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") 16 16, not-allowed !important;
+}
+
+/* --------------------------------------------------------------------------
+   9. MODO NATIVO: Restablece a los punteros estándar del sistema
+   -------------------------------------------------------------------------- */
+[data-cursor="native"],
+[data-cursor="native"] * {
+  cursor: auto !important;
+}
+[data-cursor="native"] a,
+[data-cursor="native"] button,
+[data-cursor="native"] [role="button"],
+[data-cursor="native"] select,
+[data-cursor="native"] .sketch-tab-btn,
+[data-cursor="native"] .canvas-btn {
+  cursor: pointer !important;
+}

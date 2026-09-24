@@ -1,0 +1,20 @@
+/* ==========================================================================
+   SketchLineChart.css — Gráfica de Líneas y Área Artesanal
+   ========================================================================== */
+
+.sketch-line-path {
+  transition: stroke-width 0.15s ease;
+}
+
+.sketch-line-dot-group {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sketch-line-dot--active circle:first-child {
+  filter: drop-shadow(2px 2px 0px #18181b);
+}
+
+.sketch-line-label--active {
+  fill: var(--sketch-ink, #18181b) !important;
+  font-weight: 800;
+}

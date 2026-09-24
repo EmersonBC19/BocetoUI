@@ -1,0 +1,499 @@
+/* ==========================================================================
+   BOCETO-UI — Core Theme & Hand-Drawn Styling Engine
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Caveat:wght@600&family=Patrick+Hand&family=JetBrains+Mono:wght@500&display=swap');
+
+:root {
+  /* Ink Colors */
+  --sketch-ink: #1a1a1a;
+  --sketch-ink-muted: #5e6472;
+  --sketch-ink-light: #9ca3af;
+  
+  /* Highlighter / Color Accents */
+  --sketch-accent-yellow: #fef08a;
+  --sketch-accent-blue: #bfdbfe;
+  --sketch-accent-pink: #fbcfe8;
+  --sketch-accent-green: #bbf7d0;
+  --sketch-accent-orange: #fed7aa;
+  --sketch-accent-purple: #e9d5ff;
+
+  /* Primary Pen Colors */
+  --sketch-pen-blue: #1d4ed8;
+  --sketch-pen-red: #b91c1c;
+  --sketch-pen-green: #15803d;
+  
+  /* Paper / Canvas Backgrounds */
+  --sketch-bg-paper: #fbf9f5;
+  --sketch-bg-surface: #ffffff;
+  --sketch-grid-color: rgba(60, 60, 60, 0.08);
+  --sketch-line-color: rgba(37, 99, 235, 0.12);
+  --sketch-margin-red: rgba(239, 68, 68, 0.25);
+
+  /* Tape & Craft Elements */
+  --sketch-tape-bg: rgba(254, 240, 138, 0.85);
+  --sketch-tape-border: rgba(180, 160, 90, 0.4);
+
+  /* Shadows */
+  --sketch-shadow-hard: 3px 4px 0px var(--sketch-ink);
+  --sketch-shadow-deep: 5px 6px 0px var(--sketch-ink);
+  --sketch-shadow-hover: 1px 2px 0px var(--sketch-ink);
+
+  /* Typography */
+  --font-sketch-title: 'Architects Daughter', cursive, sans-serif;
+  --font-sketch-body: 'Patrick Hand', cursive, sans-serif;
+  --font-sketch-cursive: 'Caveat', cursive, sans-serif;
+  --font-sketch-code: 'JetBrains Mono', monospace;
+
+  /* Organic Wobbly Radii */
+  --wobble-radius-1: 255px 15px 225px 15px/15px 225px 15px 255px;
+  --wobble-radius-2: 20px 255px 20px 25px/255px 20px 225px 25px;
+  --wobble-radius-3: 255px 25px 225px 25px/25px 225px 25px 255px;
+  --wobble-radius-round: 51% 49% 48% 52% / 62% 44% 56% 38%;
+  --wobble-radius-pill: 255px 25px 225px 25px / 25px 225px 25px 255px;
+
+  /* Spring Physics & Micro-Animation Curves */
+  --sketch-spring-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --sketch-spring-gentle: cubic-bezier(0.16, 1, 0.3, 1);
+  --sketch-spring-snappy: cubic-bezier(0.2, 0.8, 0.2, 1.2);
+
+  /* Highlighter & Tinta Especial */
+  --sketch-highlighter-yellow: rgba(254, 240, 138, 0.75);
+  --sketch-highlighter-pink: rgba(251, 207, 232, 0.75);
+  --sketch-highlighter-green: rgba(187, 247, 208, 0.75);
+  --sketch-highlighter-blue: rgba(191, 219, 254, 0.75);
+  --sketch-teacher-red: #dc2626;
+
+  /* Sketch Scrollbar Tokens (Grafito & Textura) */
+  --sketch-scrollbar-size: 10px;
+  --sketch-scrollbar-track: rgba(0, 0, 0, 0.03);
+  --sketch-scrollbar-thumb: #64748b;
+  --sketch-scrollbar-thumb-hover: #fef08a;
+  --sketch-scrollbar-thumb-border: #1a1a1a;
+  --sketch-scrollbar-thumb-active: #dc2626;
+}
+
+/* ==========================================================================
+   Dark Chalkboard Theme (Pizarra de Tiza)
+   ========================================================================== */
+[data-theme="chalkboard"],
+.paper-chalk {
+  /* Ink Colors - Trazo de tiza nítido con alto contraste */
+  --sketch-ink: #f8fafc;
+  --sketch-ink-muted: #cbd5e1;
+  --sketch-ink-light: #64748b;
+
+  /* Tizas de Color Vibrantes (Auténtico arte sobre pizarra) */
+  --sketch-accent-yellow: #facc15;
+  --sketch-accent-blue: #38bdf8;
+  --sketch-accent-pink: #f472b6;
+  --sketch-accent-green: #4ade80;
+  --sketch-accent-orange: #fb923c;
+  --sketch-accent-purple: #c084fc;
+
+  /* Lápices y bolígrafos convertidos en trazos de tiza pura */
+  --sketch-pen-blue: #38bdf8;
+  --sketch-pen-red: #f87171;
+  --sketch-pen-green: #4ade80;
+
+  /* Fondos de Pizarra y Superficies de Pizarra */
+  --sketch-bg-paper: #141c22;
+  --sketch-bg-surface: #1e2832;
+  --sketch-grid-color: rgba(255, 255, 255, 0.08);
+  --sketch-line-color: rgba(147, 197, 253, 0.15);
+  --sketch-margin-red: rgba(248, 113, 113, 0.28);
+
+  /* Cintas y Artesanía sobre Pizarra */
+  --sketch-tape-bg: rgba(250, 204, 21, 0.35);
+  --sketch-tape-border: rgba(255, 255, 255, 0.25);
+
+  /* Sombras Profundas de Pizarra */
+  --sketch-shadow-hard: 3px 4px 0px rgba(0, 0, 0, 0.75);
+  --sketch-shadow-deep: 5px 6px 0px rgba(0, 0, 0, 0.9);
+  --sketch-shadow-hover: 1px 2px 0px rgba(0, 0, 0, 0.75);
+
+  /* Resaltadores de Tiza */
+  --sketch-highlighter-yellow: rgba(250, 204, 21, 0.38);
+  --sketch-highlighter-pink: rgba(244, 114, 182, 0.38);
+  --sketch-highlighter-green: rgba(74, 222, 128, 0.38);
+  --sketch-highlighter-blue: rgba(56, 189, 248, 0.38);
+  --sketch-teacher-red: #f87171;
+
+  /* Sketch Scrollbar Tokens (Pizarra & Tiza) */
+  --sketch-scrollbar-track: rgba(255, 255, 255, 0.04);
+  --sketch-scrollbar-thumb: rgba(255, 255, 255, 0.35);
+  --sketch-scrollbar-thumb-hover: #facc15;
+  --sketch-scrollbar-thumb-border: rgba(255, 255, 255, 0.7);
+  --sketch-scrollbar-thumb-active: #f87171;
+}
+
+/* ==========================================================================
+   Paper Texture Canvases
+   ========================================================================== */
+.paper-canvas {
+  min-height: 100vh;
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: var(--sketch-bg-paper);
+  color: var(--sketch-ink);
+  font-family: var(--font-sketch-body);
+  font-size: 1.15rem;
+  line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+}
+
+/* 1. Cuadrícula Milimetrada / Grid Blueprint */
+.paper-grid {
+  background-image: 
+    linear-gradient(var(--sketch-grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--sketch-grid-color) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* 2. Libreta Rayada con Margen Rojo */
+.paper-lined {
+  background-image: 
+    linear-gradient(90deg, transparent 48px, var(--sketch-margin-red) 48px, var(--sketch-margin-red) 50px, transparent 50px),
+    linear-gradient(var(--sketch-line-color) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 32px;
+}
+
+/* 3. Papel Blanco Artístico Liso */
+.paper-plain {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 0);
+  background-size: 16px 16px;
+}
+
+/* 4. Pizarra Escolar con Polvo de Tiza */
+.paper-chalk {
+  background-color: var(--sketch-bg-paper, #141c22);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+/* ==========================================================================
+   Typography Helpers
+   ========================================================================== */
+.sketch-title {
+  font-family: var(--font-sketch-title);
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+
+.sketch-cursive {
+  font-family: var(--font-sketch-cursive);
+}
+
+.sketch-code {
+  font-family: var(--font-sketch-code);
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   Core Hand-Drawn Wobbly Utilities (GPU-Accelerated 120fps)
+   ========================================================================== */
+.sketch-wobble-1 {
+  border-radius: var(--wobble-radius-1);
+}
+
+.sketch-wobble-2 {
+  border-radius: var(--wobble-radius-2);
+}
+
+.sketch-wobble-3 {
+  border-radius: var(--wobble-radius-3);
+}
+
+.sketch-filter-wiggle {
+  /* Optimizado: Cero costo de rasterización en CPU */
+  border-radius: var(--wobble-radius-1);
+}
+
+.sketch-filter-bold {
+  border-radius: var(--wobble-radius-2);
+}
+
+/* ==========================================================================
+   Washi Tape (Cinta Adhesiva) - Referencia Imagen 2
+   ========================================================================== */
+.washi-tape {
+  position: absolute;
+  height: 24px;
+  background: var(--sketch-tape-bg);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border-left: 2px dashed rgba(0,0,0,0.2);
+  border-right: 2px dashed rgba(0,0,0,0.2);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.washi-tape-top {
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1.5deg);
+  width: 90px;
+}
+
+.washi-tape-corner-left {
+  top: -10px;
+  left: -15px;
+  width: 70px;
+  transform: rotate(-35deg);
+}
+
+.washi-tape-corner-right {
+  top: -10px;
+  right: -15px;
+  width: 70px;
+  transform: rotate(35deg);
+}
+
+/* ==========================================================================
+   Notebook Holes / Perforaciones de libreta - Referencia Imagen 2
+   ========================================================================== */
+.notebook-holes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 18px;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 20px;
+  pointer-events: none;
+}
+
+.notebook-hole {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--sketch-bg-paper);
+  border: 1.5px solid var(--sketch-ink);
+  transform: translateY(-5px);
+}
+
+/* ==========================================================================
+   Hand-Drawn Animations & Interactive Transitions
+   ========================================================================== */
+@keyframes sketch-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.97) rotate(-0.5deg); }
+  100% { transform: scale(1); }
+}
+
+.sketch-pop:active {
+  animation: sketch-pop 0.15s ease-out;
+}
+
+/* ==========================================================================
+   Transversal Effect 1: Line-Boil (Animación Stop-Motion Viva a 3 Cuadros)
+   ========================================================================== */
+@keyframes sketch-boil {
+  0%, 100% {
+    border-radius: var(--wobble-radius-1);
+    transform: translate(0, 0);
+  }
+  33% {
+    border-radius: var(--wobble-radius-2);
+    transform: translate(-0.6px, 0.4px) rotate(0.15deg);
+  }
+  66% {
+    border-radius: var(--wobble-radius-3);
+    transform: translate(0.6px, -0.4px) rotate(-0.15deg);
+  }
+}
+
+.sketch-boil {
+  animation: sketch-boil 0.35s steps(1) infinite;
+}
+
+.sketch-boil-hover:hover {
+  animation: sketch-boil 0.28s steps(1) infinite;
+}
+
+/* ==========================================================================
+   Transversal Effect 2: Highlighter Focus Ring (Rotulador Fluorescente)
+   ========================================================================== */
+:is(button, input, select, textarea, [tabindex="0"], a):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--sketch-highlighter-yellow), 0 0 0 5px var(--sketch-ink) !important;
+  transition: box-shadow 0.15s ease;
+}
+
+.sketch-highlight-yellow {
+  background: linear-gradient(104deg, rgba(254, 240, 138, 0) 0.9%, var(--sketch-highlighter-yellow) 2.4%, var(--sketch-highlighter-yellow) 94%, rgba(254, 240, 138, 0) 98%);
+  padding: 0.1em 0.35em;
+  border-radius: 4px 12px 3px 15px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.sketch-highlight-pink {
+  background: linear-gradient(104deg, rgba(251, 207, 232, 0) 0.9%, var(--sketch-highlighter-pink) 2.4%, var(--sketch-highlighter-pink) 94%, rgba(251, 207, 232, 0) 98%);
+  padding: 0.1em 0.35em;
+  border-radius: 12px 4px 15px 3px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.sketch-highlight-green {
+  background: linear-gradient(104deg, rgba(187, 247, 208, 0) 0.9%, var(--sketch-highlighter-green) 2.4%, var(--sketch-highlighter-green) 94%, rgba(187, 247, 208, 0) 98%);
+  padding: 0.1em 0.35em;
+  border-radius: 5px 14px 4px 12px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* ==========================================================================
+   Transversal Effect 3: Crosshatching Sombreado a Pluma (Hachurado SVG/CSS)
+   ========================================================================== */
+.sketch-hatch-fine {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 5px,
+    var(--sketch-grid-color) 5px,
+    var(--sketch-grid-color) 6.5px
+  );
+}
+
+.sketch-hatch-dense {
+  background-image: 
+    repeating-linear-gradient(-45deg, transparent, transparent 4px, var(--sketch-grid-color) 4px, var(--sketch-grid-color) 5.5px),
+    repeating-linear-gradient(45deg, transparent, transparent 4px, var(--sketch-grid-color) 4px, var(--sketch-grid-color) 5.5px);
+}
+
+/* ==========================================================================
+   Transversal Effect 4: Red-Ink Corrections (Corrección de Profesor)
+   ========================================================================== */
+.sketch-correction-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.sketch-correction-circle {
+  position: absolute;
+  inset: -4px -6px;
+  border: 2px solid var(--sketch-teacher-red);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  pointer-events: none;
+  animation: sketch-red-circle 0.35s var(--sketch-spring-bounce) forwards;
+}
+
+@keyframes sketch-red-circle {
+  0% { transform: scale(0.9) rotate(-3deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* ==========================================================================
+   Transversal Effect 5: Onomatopeyas Cómic & Spring Shakes
+   ========================================================================== */
+@keyframes sketch-comic-pop {
+  0% { transform: scale(0.3) rotate(-15deg); opacity: 0; }
+  60% { transform: scale(1.15) rotate(3deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 0.95; }
+}
+
+.sketch-onomatopoeia {
+  display: inline-block;
+  font-family: var(--font-sketch-title);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--sketch-teacher-red);
+  text-shadow: 2px 2px 0px var(--sketch-accent-yellow), 3px 3px 0px var(--sketch-ink);
+  animation: sketch-comic-pop 0.25s var(--sketch-spring-bounce) forwards;
+  pointer-events: none;
+  user-select: none;
+}
+
+@keyframes sketch-shake-elastic {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px) rotate(-1deg); }
+  40% { transform: translateX(4px) rotate(1deg); }
+  60% { transform: translateX(-2px) rotate(-0.5deg); }
+  80% { transform: translateX(2px) rotate(0.5deg); }
+}
+
+.sketch-shake {
+  animation: sketch-shake-elastic 0.4s var(--sketch-spring-bounce);
+}
+
+/* ==========================================================================
+   Motor Global de Scrollbar Artesanal (Pencil Graphite & Washi Track)
+   ========================================================================== */
+
+/* Soporte universal para Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--sketch-scrollbar-thumb, #64748b) var(--sketch-scrollbar-track, rgba(0, 0, 0, 0.03));
+}
+
+/* Soporte universal para WebKit (Chrome, Edge, Safari, Opera) */
+::-webkit-scrollbar {
+  width: var(--sketch-scrollbar-size, 10px);
+  height: var(--sketch-scrollbar-size, 10px);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sketch-scrollbar-track, rgba(0, 0, 0, 0.03));
+  border-radius: 8px;
+  margin: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--sketch-scrollbar-thumb, #64748b);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 255, 255, 0.22) 3px,
+    rgba(255, 255, 255, 0.22) 5px
+  );
+  border: 1.5px solid var(--sketch-scrollbar-thumb-border, #1a1a1a);
+  border-radius: 999px;
+  box-shadow: 
+    inset 1px 1px 0px rgba(255, 255, 255, 0.4),
+    1px 1px 0px var(--sketch-ink, rgba(0, 0, 0, 0.15));
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+  min-height: 38px;
+  min-width: 38px;
+}
+
+/* Hover: El deslizador se ilumina como resaltador amarillo con trazos cruzados oscuros */
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--sketch-scrollbar-thumb-hover, #fef08a);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.15) 3px,
+    rgba(0, 0, 0, 0.15) 5px
+  );
+  border-color: var(--sketch-ink, #1a1a1a);
+  box-shadow: 
+    inset 1px 1px 0px rgba(255, 255, 255, 0.6),
+    2px 2px 0px var(--sketch-ink, #1a1a1a);
+}
+
+/* Active / Dragging: Tinta de bolígrafo roja con rebote y prensado */
+::-webkit-scrollbar-thumb:active {
+  background-color: var(--sketch-scrollbar-thumb-active, #dc2626);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 255, 255, 0.3) 3px,
+    rgba(255, 255, 255, 0.3) 5px
+  );
+  border-color: var(--sketch-ink, #1a1a1a);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* Esquinas de intersección de scroll vertical y horizontal */
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+

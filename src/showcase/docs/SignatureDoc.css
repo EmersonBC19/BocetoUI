@@ -1,0 +1,556 @@
+/* ==========================================================================
+   SignatureDoc.css — Estilos para la Colección Signature & Scrapbook Studio
+   ========================================================================== */
+
+.signature-doc-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 100%;
+}
+
+.signature-doc-header {
+  margin-bottom: 4px;
+}
+
+.signature-section-intro {
+  margin: 0 0 16px 0;
+  font-size: 0.94rem;
+  color: var(--sketch-ink-muted, #52525b);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   HERO INTERACTIVO: TALLER DEL ARTESANO (SCRAPBOOK STUDIO)
+   ========================================================================== */
+
+.signature-studio-card {
+  position: relative;
+  background-color: var(--sketch-bg-paper, #fdfbf7);
+  background-image: 
+    radial-gradient(var(--sketch-ink-faint, rgba(24, 24, 27, 0.08)) 1px, transparent 1px);
+  background-size: 16px 16px;
+  border: 2.5px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-1, 14px);
+  box-shadow: 6px 7px 0px var(--sketch-ink, #18181b);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+.signature-studio-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 18px 24px;
+  background-color: rgba(254, 240, 138, 0.25);
+  border-bottom: 2px solid var(--sketch-ink, #18181b);
+}
+
+.signature-studio-title-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.signature-studio-title {
+  margin: 0;
+  font-family: var(--font-sketch-title, 'Patrick Hand', sans-serif);
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--sketch-ink, #18181b);
+}
+
+.signature-studio-badge {
+  font-family: var(--font-sketch-code, monospace);
+  font-size: 0.74rem;
+  font-weight: 800;
+  background-color: var(--sketch-accent-yellow, #fef08a);
+  color: var(--sketch-ink, #18181b);
+  border: 1.5px solid var(--sketch-ink, #18181b);
+  padding: 2px 8px;
+  border-radius: 9999px;
+  box-shadow: 1px 1px 0px var(--sketch-ink, #18181b);
+}
+
+.signature-studio-presets {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.signature-studio-canvas {
+  position: relative;
+  min-height: 420px;
+  padding: 44px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.signature-studio-stain-slot {
+  position: absolute;
+  top: 15px;
+  left: 25px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.signature-studio-paper-assembly {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  max-width: 100%;
+}
+
+.signature-studio-side-elements {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 320px;
+}
+
+.signature-studio-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 14px 24px;
+  background-color: rgba(24, 24, 27, 0.03);
+  border-top: 2px dashed var(--sketch-ink-light, rgba(24, 24, 27, 0.2));
+}
+
+.signature-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-1, 8px);
+  box-shadow: 2.5px 3px 0px var(--sketch-ink, #18181b);
+  padding: 8px 16px;
+  font-family: var(--font-sketch-title, 'Patrick Hand', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--sketch-ink, #18181b);
+  cursor: pointer;
+  transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.signature-copy-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  background-color: var(--sketch-accent-yellow, #fef08a);
+  box-shadow: 3.5px 4px 0px var(--sketch-ink, #18181b);
+}
+
+.signature-copy-btn:active {
+  transform: translateY(1px);
+  box-shadow: 1px 1px 0px var(--sketch-ink, #18181b);
+}
+
+/* ==========================================================================
+   BARRAS DE CONTROL Y BOTONES
+   ========================================================================== */
+
+.signature-controls-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 12px 18px;
+  background-color: var(--sketch-bg-paper, #fdfbf7);
+  border: 1.5px dashed var(--sketch-ink-light, rgba(24, 24, 27, 0.25));
+  border-radius: var(--wobble-radius-1, 8px);
+  margin-bottom: 20px;
+}
+
+.signature-control-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.signature-label {
+  font-family: var(--font-sketch-title, 'Patrick Hand', sans-serif);
+  font-weight: 800;
+  font-size: 0.92rem;
+  color: var(--sketch-ink, #18181b);
+}
+
+.signature-sublabel {
+  display: block;
+  font-family: var(--font-sketch-title, 'Patrick Hand', sans-serif);
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--sketch-ink, #18181b);
+  margin-bottom: 10px;
+}
+
+.signature-btn-pill {
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 1.5px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-pill, 9999px);
+  padding: 4px 12px;
+  font-family: var(--font-sketch-code, monospace);
+  font-size: 0.78rem;
+  cursor: pointer;
+  color: var(--sketch-ink, #18181b);
+  transition: all 0.15s ease;
+}
+
+.signature-btn-pill:hover {
+  background-color: var(--sketch-accent-blue, #bfdbfe);
+  transform: translateY(-1px);
+}
+
+.signature-btn-pill--active {
+  background-color: var(--sketch-accent-yellow, #fef08a) !important;
+  box-shadow: 1.5px 1.5px 0px var(--sketch-ink, #18181b);
+  font-weight: 800;
+}
+
+/* ==========================================================================
+   SHOWCASES INDIVIDUALES
+   ========================================================================== */
+
+/* 1. Paperclip */
+.signature-paperclip-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  margin-top: 14px;
+}
+
+.signature-paperclip-demo-box {
+  padding: 16px;
+  background-color: var(--sketch-bg-paper, #fdfbf7);
+  border: 1px dashed rgba(24, 24, 27, 0.2);
+  border-radius: 8px;
+}
+
+.signature-card-clip-container {
+  position: relative;
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #18181b);
+  border-radius: 6px;
+  box-shadow: 3px 3px 0px var(--sketch-ink, #18181b);
+  padding: 24px 18px 18px 18px;
+  margin-top: 14px;
+}
+
+.signature-card-clip-inner {
+  font-size: 0.88rem;
+  color: var(--sketch-ink, #18181b);
+}
+
+/* 2. Wax Seals */
+.signature-seals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+  align-items: center;
+  justify-items: center;
+  padding: 24px 12px;
+}
+
+.signature-seal-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.signature-seal-label {
+  font-family: var(--font-sketch-title, 'Patrick Hand', sans-serif);
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--sketch-ink, #18181b);
+}
+
+/* 3. Coffee Stains */
+.signature-stains-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  margin-top: 14px;
+}
+
+.signature-stain-card {
+  position: relative;
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #18181b);
+  border-radius: 8px;
+  box-shadow: 3px 3px 0px var(--sketch-ink, #18181b);
+  padding: 20px;
+  overflow: hidden;
+}
+
+.signature-stain-wrapper {
+  position: relative;
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signature-stain-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.signature-stain-content strong {
+  display: block;
+  font-family: var(--font-sketch-title, 'Patrick Hand', sans-serif);
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+
+.signature-stain-content p {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--sketch-ink-muted, #52525b);
+}
+
+.signature-stain-card {
+  position: relative;
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #18181b);
+  border-radius: 8px;
+  box-shadow: 3px 3px 0px var(--sketch-ink, #18181b);
+  padding: 20px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.signature-stain-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 5px 0px var(--sketch-ink, #18181b);
+}
+
+.signature-stain-card--selected {
+  border-color: #2563eb !important;
+  box-shadow: 4px 5px 0px #2563eb !important;
+  background-color: rgba(191, 219, 254, 0.2) !important;
+}
+
+.signature-stain-tag {
+  display: inline-block;
+  margin-top: 6px;
+  font-family: var(--font-sketch-code, monospace);
+  font-size: 0.72rem;
+  color: #2563eb;
+  font-weight: 800;
+}
+
+/* Lienzo de Prueba en Vivo de Manchas de Café */
+.signature-stain-live-box {
+  background-color: var(--sketch-bg-paper, #fdfbf7);
+  background-image: radial-gradient(var(--sketch-ink-faint, rgba(24, 24, 27, 0.08)) 1px, transparent 1px);
+  background-size: 16px 16px;
+  border: 2px dashed var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-1, 10px);
+  padding: 32px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.signature-stain-live-paper {
+  position: relative;
+  min-height: 180px;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.signature-stain-live-caption {
+  text-align: center;
+  font-family: var(--font-sketch-title, 'Patrick Hand', sans-serif);
+  font-size: 0.95rem;
+  color: var(--sketch-ink, #18181b);
+}
+
+.signature-stain-live-caption code {
+  font-family: var(--font-sketch-code, monospace);
+  background: var(--sketch-accent-yellow, #fef08a);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+/* 4. Stamps */
+.signature-stamps-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  flex-wrap: wrap;
+  padding: 20px 8px;
+}
+
+/* 5. Speech Bubble */
+.signature-bubble-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.signature-bubble-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 18px;
+  background-color: var(--sketch-bg-paper, #fdfbf7);
+  border: 1.5px dashed var(--sketch-ink-light, #d4d4d8);
+  border-radius: var(--wobble-radius-1, 8px);
+}
+
+.signature-bubble-stage {
+  padding: 30px 16px 40px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 150px;
+}
+
+/* 6. Tape */
+.signature-tape-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  align-items: center;
+  justify-items: center;
+  padding: 28px 12px;
+}
+
+.signature-tape-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.signature-tape-item-label {
+  font-family: var(--font-sketch-code, monospace);
+  font-size: 0.76rem;
+  color: var(--sketch-ink-muted, #52525b);
+  text-align: center;
+}
+
+/* 7. Coupon & Torn Demo */
+.signature-coupon-demo-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+  align-items: flex-start;
+  margin-top: 16px;
+}
+
+.signature-coupon-demo-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.signature-split-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* 8. Bursts */
+.signature-bursts-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 24px 8px;
+}
+
+/* ==========================================================================
+   ADAPTACIÓN CHALKBOARD
+   ========================================================================== */
+
+[data-theme="chalkboard"] .signature-studio-card {
+  background-color: #1c2621;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  border-color: #f5f5f4;
+  box-shadow: 6px 7px 0px #f5f5f4;
+}
+
+[data-theme="chalkboard"] .signature-studio-header {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-bottom-color: #f5f5f4;
+}
+
+[data-theme="chalkboard"] .signature-studio-title {
+  color: #f5f5f4;
+}
+
+[data-theme="chalkboard"] .signature-copy-btn {
+  background-color: #27362f;
+  color: #f5f5f4;
+  border-color: #f5f5f4;
+}
+
+[data-theme="chalkboard"] .signature-controls-bar,
+[data-theme="chalkboard"] .signature-bubble-controls,
+[data-theme="chalkboard"] .signature-paperclip-demo-box {
+  background-color: #222e28;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+[data-theme="chalkboard"] .signature-btn-pill {
+  background-color: #27362f;
+  color: #f5f5f4;
+  border-color: #f5f5f4;
+}
+
+[data-theme="chalkboard"] .signature-card-clip-container,
+[data-theme="chalkboard"] .signature-stain-card {
+  background-color: #222e28;
+  border-color: #f5f5f4;
+  box-shadow: 3px 3px 0px #f5f5f4;
+}
+
+[data-theme="chalkboard"] .signature-label,
+[data-theme="chalkboard"] .signature-sublabel,
+[data-theme="chalkboard"] .signature-seal-label,
+[data-theme="chalkboard"] .signature-card-clip-inner {
+  color: #f5f5f4;
+}
+
+[data-theme="chalkboard"] .signature-stain-live-box {
+  background-color: #1c2621;
+  border-color: #f5f5f4;
+}
+
+[data-theme="chalkboard"] .signature-stain-live-caption {
+  color: #f5f5f4;
+}
+
+[data-theme="chalkboard"] .signature-stain-live-caption code {
+  background-color: #3f3b1e;
+  color: #fef08a;
+}
+

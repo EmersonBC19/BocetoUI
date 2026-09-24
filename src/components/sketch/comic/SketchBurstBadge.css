@@ -1,0 +1,122 @@
+/* ==========================================================================
+   SketchBurstBadge.css — Insignias de Onomatopeya Cómic y Estrellas de Impacto
+   ========================================================================== */
+
+.sketch-burst-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  filter: drop-shadow(2.5px 3px 0px var(--sketch-ink, #18181b));
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+}
+
+.sketch-burst-badge:hover {
+  transform: scale(1.1) rotate(calc(var(--burst-angle, 6deg) + 4deg)) !important;
+}
+
+.sketch-burst-badge--popped {
+  animation: burst-pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes burst-pop {
+  0% { transform: scale(0.8) rotate(-10deg); }
+  50% { transform: scale(1.25) rotate(14deg); }
+  100% { transform: scale(1) rotate(6deg); }
+}
+
+.sketch-burst-badge__shape {
+  background-color: var(--burst-bg, #ef4444);
+  clip-path: polygon(
+    50% 0%, 63% 18%, 82% 9%, 82% 30%, 100% 38%, 90% 55%,
+    100% 70%, 82% 76%, 80% 98%, 62% 88%, 50% 100%, 38% 88%,
+    20% 98%, 18% 76%, 0% 70%, 10% 55%, 0% 38%, 18% 30%,
+    18% 9%, 37% 18%
+  );
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.sketch-burst-badge__label {
+  font-family: var(--font-sketch-title, 'Patrick Hand', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--burst-text, #ffffff);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4);
+}
+
+/* Tamaños */
+.sketch-burst-badge--sm .sketch-burst-badge__shape {
+  padding: 12px 16px;
+}
+.sketch-burst-badge--sm .sketch-burst-badge__label {
+  font-size: 0.85rem;
+}
+
+.sketch-burst-badge--lg .sketch-burst-badge__shape {
+  padding: 24px 30px;
+}
+.sketch-burst-badge--lg .sketch-burst-badge__label {
+  font-size: 1.45rem;
+}
+
+/* ==========================================================================
+   Variante ACTION (Estrella multi-punta estilo Shonen Manga)
+   ========================================================================== */
+.sketch-burst-badge--action .sketch-burst-badge__shape {
+  clip-path: polygon(
+    50% 0%, 57% 17%, 71% 3%, 72% 23%, 89% 14%, 83% 33%, 100% 31%,
+    89% 49%, 100% 64%, 83% 66%, 89% 84%, 71% 76%, 66% 96%, 50% 82%,
+    34% 96%, 29% 76%, 11% 84%, 17% 66%, 0% 64%, 11% 49%, 0% 31%,
+    17% 33%, 11% 14%, 28% 23%, 29% 3%, 43% 17%
+  );
+  padding: 24px 28px;
+}
+
+.sketch-burst-badge__rays {
+  position: absolute;
+  inset: -12px;
+  width: calc(100% + 24px);
+  height: calc(100% + 24px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+   Variante HALFTONE (Textura tramada de cómic retro Ben-Day dots)
+   ========================================================================== */
+.sketch-burst-badge--halftone .sketch-burst-badge__shape {
+  position: relative;
+}
+
+.sketch-burst-badge--halftone .sketch-burst-badge__shape::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(24, 24, 27, 0.28) 1.5px, transparent 1.5px);
+  background-size: 5px 5px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sketch-burst-badge--halftone .sketch-burst-badge__label {
+  position: relative;
+  z-index: 2;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.6);
+}
+
+/* Chalkboard Theme */
+[data-theme="chalkboard"] .sketch-burst-badge {
+  filter: drop-shadow(2px 3px 0px rgba(255, 255, 255, 0.65));
+}
+[data-theme="chalkboard"] .sketch-burst-badge__rays line {
+  stroke: rgba(255, 255, 255, 0.85);
+}

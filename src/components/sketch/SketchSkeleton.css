@@ -1,0 +1,119 @@
+/* ==========================================================================
+   SketchSkeleton Styles (Skeletons con estela de nubes y líneas de velocidad)
+   ========================================================================== */
+
+.sketch-skeleton-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.sketch-skeleton {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--sketch-bg-paper, #fdfbf7);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 8px,
+    rgba(37, 99, 235, 0.03) 8px,
+    rgba(37, 99, 235, 0.03) 9px
+  );
+  border: 1.5px dashed var(--sketch-ink-light, #cbd5e1);
+  box-sizing: border-box;
+  min-height: 18px;
+  contain: paint layout;
+  will-change: transform;
+}
+
+/* ==========================================================================
+   Variantes de forma
+   ========================================================================== */
+
+/* 1. Línea de Texto */
+.sketch-skeleton--text {
+  height: 20px;
+  border-radius: var(--wobble-radius-1);
+  margin-bottom: 6px;
+}
+
+/* 2. Tarjeta / Contenedor */
+.sketch-skeleton--card {
+  height: 180px;
+  border-radius: var(--wobble-radius-2);
+  border: 2px dashed var(--sketch-ink-muted, #64748b);
+}
+
+/* 3. Avatar Circular */
+.sketch-skeleton--avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--wobble-radius-round);
+  border: 2px dashed var(--sketch-ink-muted, #64748b);
+  flex-shrink: 0;
+}
+
+/* 4. Imagen / Banner */
+.sketch-skeleton--image {
+  height: 140px;
+  border-radius: var(--wobble-radius-3);
+  border: 2px dashed var(--sketch-ink-muted, #64748b);
+}
+
+/* ==========================================================================
+   Estela de humo y líneas de velocidad animadas (Shimmer de Boceto a 120 FPS)
+   Recorre el 100% del ancho del contenedor sin cortarse a la mitad
+   ========================================================================== */
+
+.sketch-skeleton__shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* El runner mide el 100% de la anchura del contenedor */
+.sketch-skeleton__track-runner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  animation: sketch-smoke-drift 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform;
+}
+
+/* Caja fija para la nube y las líneas de velocidad sin deformación vertical */
+.sketch-skeleton__smoke-box {
+  width: 180px;
+  height: 42px;
+  max-height: 90%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  /* Margen negativo para arrancar completamente oculto fuera del borde izquierdo */
+  margin-left: -180px;
+}
+
+.sketch-skeleton__smoke-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Recorrido completo: desde antes del borde izquierdo (0) hasta salir por el derecho (100% + ancho) */
+@keyframes sketch-smoke-drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(calc(100% + 200px), 0, 0);
+  }
+}

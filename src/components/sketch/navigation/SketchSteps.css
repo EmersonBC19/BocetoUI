@@ -1,0 +1,248 @@
+/* ==========================================================================
+   SketchSteps.css — Asistente / Stepper Paso a Paso BocetoUI
+   ========================================================================== */
+
+.sketch-steps {
+  display: flex;
+  width: 100%;
+  position: relative;
+  font-family: var(--font-sketch-title, 'Outfit', sans-serif);
+}
+
+.sketch-steps--horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.sketch-steps--vertical {
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sketch-step-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.sketch-steps--horizontal .sketch-step-item {
+  flex-direction: column;
+  text-align: center;
+}
+
+.sketch-steps--vertical .sketch-step-item {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* Conector de línea dibujada entre pasos */
+.sketch-step-connector {
+  position: absolute;
+  background: transparent;
+  z-index: 1;
+}
+
+.sketch-steps--horizontal .sketch-step-connector {
+  top: 20px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  border-top: 2px dashed var(--sketch-ink-light, #a1a1aa);
+}
+
+.sketch-step-connector--completed {
+  border-top: 2.5px solid var(--sketch-pen-green, #16a34a) !important;
+}
+
+.sketch-steps--vertical .sketch-step-connector {
+  top: 42px;
+  left: 20px;
+  width: 2px;
+  height: calc(100% + 8px);
+  border-left: 2px dashed var(--sketch-ink-light, #a1a1aa);
+}
+
+.sketch-step-connector--completed-vertical {
+  border-left: 2.5px solid var(--sketch-pen-green, #16a34a) !important;
+}
+
+/* Nodo circular artesanal */
+.sketch-step-node {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  border: 2px solid var(--sketch-ink, #18181b);
+  background: var(--sketch-bg-surface, #ffffff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--sketch-ink, #18181b);
+  z-index: 2;
+  position: relative;
+  box-shadow: 2px 2px 0px var(--sketch-ink, #18181b);
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: default;
+}
+
+.sketch-step-node--clickable {
+  cursor: pointer;
+}
+
+.sketch-step-node--clickable:hover {
+  transform: scale(1.1) rotate(-2deg);
+}
+
+/* Estados: Pendiente, Activo, Completado */
+.sketch-step-item--pending .sketch-step-node {
+  color: var(--sketch-ink-muted, #71717a);
+  border-color: #a1a1aa;
+  box-shadow: 1.5px 1.5px 0px #a1a1aa;
+  background: #f4f4f5;
+}
+
+.sketch-step-item--active .sketch-step-node {
+  background: var(--sketch-accent-blue, #dbeafe);
+  color: var(--sketch-pen-blue, #0284c7);
+  border-color: var(--sketch-ink, #18181b);
+  box-shadow: 3px 3px 0px var(--sketch-pen-blue, #0284c7);
+  transform: scale(1.08) rotate(1deg);
+}
+
+.sketch-step-item--completed .sketch-step-node {
+  background: #dcfce7;
+  color: var(--sketch-pen-green, #16a34a);
+  border-color: var(--sketch-ink, #18181b);
+  box-shadow: 2px 2px 0px var(--sketch-pen-green, #16a34a);
+}
+
+/* Contenido de texto */
+.sketch-step-content {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sketch-steps--vertical .sketch-step-content {
+  margin-top: 2px;
+}
+
+.sketch-step-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--sketch-ink, #18181b);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sketch-step-status-tag {
+  font-size: 0.72rem;
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid currentColor;
+  font-family: var(--font-sketch-code);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.sketch-step-status-tag--done {
+  color: var(--sketch-pen-green, #16a34a);
+  background: #dcfce7;
+  transform: rotate(-1deg);
+}
+
+.sketch-step-status-tag--active {
+  color: var(--sketch-pen-blue, #0284c7);
+  background: var(--sketch-accent-yellow, #fef08a);
+  transform: rotate(1deg);
+}
+
+.sketch-step-item--active .sketch-step-title {
+  color: var(--sketch-pen-blue, #0284c7);
+}
+
+.sketch-step-desc {
+  font-size: 0.85rem;
+  color: var(--sketch-ink-muted, #71717a);
+  font-family: var(--font-sketch-body, 'Inter', sans-serif);
+}
+
+@media (max-width: 640px) {
+  .sketch-steps--horizontal .sketch-step-desc {
+    display: none;
+  }
+  .sketch-steps--horizontal .sketch-step-title {
+    font-size: 0.85rem;
+  }
+  .sketch-step-node {
+    width: 34px;
+    height: 34px;
+    font-size: 0.95rem;
+  }
+  .sketch-steps--horizontal .sketch-step-connector {
+    top: 17px;
+  }
+}
+
+/* ==========================================================================
+   Modo Pizarra (Chalkboard Mode) — Stepper en Tiza
+   ========================================================================== */
+[data-theme="chalkboard"] .sketch-step-node,
+.paper-chalk .sketch-step-node {
+  background: #172027;
+  color: #f8fafc;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="chalkboard"] .sketch-step-item--pending .sketch-step-node,
+.paper-chalk .sketch-step-item--pending .sketch-step-node {
+  background: #121920;
+  color: #64748b;
+  border-color: #334155;
+  box-shadow: 1.5px 1.5px 0 #000;
+}
+
+[data-theme="chalkboard"] .sketch-step-item--active .sketch-step-node,
+.paper-chalk .sketch-step-item--active .sketch-step-node {
+  background: #38bdf8;
+  color: #0f172a !important;
+  border-color: #ffffff;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5), 2px 2px 0 rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="chalkboard"] .sketch-step-item--completed .sketch-step-node,
+.paper-chalk .sketch-step-item--completed .sketch-step-node {
+  background: #4ade80;
+  color: #052e16 !important;
+  border-color: #ffffff;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="chalkboard"] .sketch-step-item--active .sketch-step-title,
+.paper-chalk .sketch-step-item--active .sketch-step-title {
+  color: #38bdf8;
+}
+
+[data-theme="chalkboard"] .sketch-step-status-tag--done,
+.paper-chalk .sketch-step-status-tag--done {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.18);
+  border-color: #4ade80;
+}
+
+[data-theme="chalkboard"] .sketch-step-status-tag--active,
+.paper-chalk .sketch-step-status-tag--active {
+  color: #18181b;
+  background: #facc15;
+  border-color: #facc15;
+}

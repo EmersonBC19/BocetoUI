@@ -1,0 +1,177 @@
+/* ==========================================================================
+   SketchSlider Styles (Control Deslizante de Boceto)
+   ========================================================================== */
+
+.sketch-slider-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 16px;
+  user-select: none;
+}
+
+.sketch-slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sketch-slider-label {
+  font-family: var(--font-sketch-title);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--sketch-ink);
+}
+
+.sketch-slider-value {
+  font-family: var(--font-sketch-code);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 2px 8px;
+  border: 1.5px solid var(--sketch-ink);
+  border-radius: var(--wobble-radius-pill);
+  background: var(--sketch-accent-yellow);
+  color: #1a1a1a;
+  box-shadow: 1.5px 2px 0 var(--sketch-ink);
+}
+
+.sketch-slider-track-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 32px;
+}
+
+/* Base Range Input */
+.sketch-slider-input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  z-index: 2;
+  margin: 0;
+}
+
+/* Pista Visual de Fondo */
+.sketch-slider-track-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background-color: var(--sketch-bg-surface);
+  border: 2px solid var(--sketch-ink);
+  border-radius: var(--wobble-radius-pill);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+/* Relleno Activo */
+.sketch-slider-track-fill {
+  position: absolute;
+  left: 0;
+  height: 6px;
+  background-color: var(--sketch-pen-blue);
+  border-radius: var(--wobble-radius-pill);
+  pointer-events: none;
+  top: 13px;
+  margin-left: 2px;
+}
+
+/* Thumb (Pomo) WebKit */
+.sketch-slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--wobble-radius-round);
+  background-color: var(--sketch-bg-paper);
+  border: 2.5px solid var(--sketch-ink);
+  box-shadow: 2px 3px 0 var(--sketch-ink);
+  cursor: grab;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.sketch-slider-input::-webkit-slider-thumb:hover {
+  transform: scale(1.15) rotate(-3deg);
+  box-shadow: 3px 4px 0 var(--sketch-ink);
+}
+
+.sketch-slider-input::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.05);
+  box-shadow: 1px 1px 0 var(--sketch-ink);
+}
+
+/* Thumb Firefox */
+.sketch-slider-input::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
+  border-radius: var(--wobble-radius-round);
+  background-color: var(--sketch-bg-paper);
+  border: 2.5px solid var(--sketch-ink);
+  box-shadow: 2px 3px 0 var(--sketch-ink);
+  cursor: grab;
+}
+
+/* Ticks de regla milimetrada */
+.sketch-slider-ticks {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  font-family: var(--font-sketch-code);
+  font-size: 0.65rem;
+  color: var(--sketch-ink-muted);
+  line-height: 1;
+  user-select: none;
+  margin-top: -6px;
+  opacity: 0.6;
+}
+
+/* ==========================================================================
+   Modo Pizarra (Chalkboard Mode) — Slider de Tiza
+   ========================================================================== */
+[data-theme="chalkboard"] .sketch-slider-value,
+.paper-chalk .sketch-slider-value {
+  background: #facc15;
+  color: #18181b !important;
+  border-color: #ffffff;
+  box-shadow: 1.5px 2px 0 rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="chalkboard"] .sketch-slider-track-bg,
+.paper-chalk .sketch-slider-track-bg {
+  background-color: #121920;
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="chalkboard"] .sketch-slider-track-fill,
+.paper-chalk .sketch-slider-track-fill {
+  background-color: #38bdf8;
+}
+
+[data-theme="chalkboard"] .sketch-slider-input::-webkit-slider-thumb,
+.paper-chalk .sketch-slider-input::-webkit-slider-thumb {
+  background-color: #f8fafc;
+  border-color: #38bdf8;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.5), 2px 3px 0 rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="chalkboard"] .sketch-slider-input::-moz-range-thumb,
+.paper-chalk .sketch-slider-input::-moz-range-thumb {
+  background-color: #f8fafc;
+  border-color: #38bdf8;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.5), 2px 3px 0 rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="chalkboard"] .sketch-slider-ticks,
+.paper-chalk .sketch-slider-ticks {
+  color: #94a3b8;
+  opacity: 0.8;
+}
+

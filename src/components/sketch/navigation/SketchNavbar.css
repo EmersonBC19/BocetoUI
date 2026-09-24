@@ -1,0 +1,145 @@
+/* ==========================================================================
+   SketchNavbar — Hand-Drawn Artisan Top Application Bar
+   ========================================================================== */
+
+.sketch-navbar {
+  width: 100%;
+  background: var(--sketch-bg-surface, #ffffff);
+  border-bottom: 2.5px solid var(--sketch-ink, #1a1a1a);
+  box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.06);
+  font-family: var(--font-sketch-body, 'Patrick Hand', cursive, sans-serif);
+  color: var(--sketch-ink, #1a1a1a);
+  position: relative;
+  z-index: 100;
+  box-sizing: border-box;
+}
+
+.sketch-navbar--sticky {
+  position: sticky;
+  top: 0;
+}
+
+.sketch-navbar__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.sketch-navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sketch-title, 'Architects Daughter', cursive, sans-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--sketch-ink, #1a1a1a);
+}
+
+.sketch-navbar__nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sketch-navbar__link {
+  padding: 6px 12px;
+  font-size: 1.05rem;
+  color: var(--sketch-ink, #1a1a1a);
+  text-decoration: none;
+  border-radius: var(--wobble-radius-pill, 255px 25px 225px 25px / 25px 225px 25px 255px);
+  transition: all 0.15s ease;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.sketch-navbar__link:hover {
+  background: var(--sketch-accent-yellow, #fef08a);
+  transform: rotate(-1deg) scale(1.04);
+}
+
+.sketch-navbar__link--active {
+  background: var(--sketch-accent-yellow, #fef08a);
+  border: 1.5px solid var(--sketch-ink, #1a1a1a);
+  box-shadow: 1px 1px 0px var(--sketch-ink, #1a1a1a);
+  font-weight: 700;
+}
+
+.sketch-navbar__active-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--sketch-pen-red, #b91c1c);
+  display: inline-block;
+}
+
+/* Regla milimetrada en el borde inferior */
+.sketch-navbar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--sketch-ink) 0,
+    var(--sketch-ink) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.sketch-navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sketch-navbar__mobile-toggle {
+  display: none;
+  background: none;
+  border: 1.5px solid var(--sketch-ink, #1a1a1a);
+  border-radius: var(--wobble-radius-round, 50%);
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--sketch-ink, #1a1a1a);
+  box-shadow: 1px 1px 0px var(--sketch-ink, #1a1a1a);
+}
+
+.sketch-navbar__mobile-menu {
+  display: none;
+  background: var(--sketch-bg-paper, #fbf9f5);
+  border-top: 2px dashed var(--sketch-ink-light, #9ca3af);
+  padding: 14px 20px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .sketch-navbar__nav {
+    display: none;
+  }
+  .sketch-navbar__mobile-toggle {
+    display: inline-flex;
+  }
+  .sketch-navbar__mobile-menu--open {
+    display: flex;
+  }
+}
+

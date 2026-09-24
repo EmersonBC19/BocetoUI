@@ -1,0 +1,137 @@
+/* ==========================================================================
+   SketchTimeline.css — Línea de Tiempo Artesanal BocetoUI
+   ========================================================================== */
+
+.sketch-timeline {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.sketch-timeline-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 24px;
+}
+
+.sketch-timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+/* Hilo conductor vertical */
+.sketch-timeline-line {
+  position: absolute;
+  left: 15px;
+  top: 32px;
+  bottom: 0;
+  width: 2px;
+  border-left: 2px dashed var(--sketch-ink-light, #a1a1aa);
+  z-index: 1;
+}
+
+.sketch-timeline-item--completed .sketch-timeline-line {
+  border-left: 2.5px solid var(--sketch-pen-green, #16a34a);
+}
+
+/* Nodo circular artesanal */
+.sketch-timeline-node {
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-round, 50%);
+  background: var(--sketch-bg-surface, #ffffff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  z-index: 2;
+  position: relative;
+  flex-shrink: 0;
+  box-shadow: 2px 2px 0px var(--sketch-ink, #18181b);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sketch-timeline-node:hover {
+  transform: scale(1.15) rotate(2deg);
+}
+
+.sketch-timeline-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sketch-ink-light, #a1a1aa);
+}
+
+/* Estados del nodo */
+.sketch-timeline-item--completed .sketch-timeline-node {
+  background: #dcfce7;
+  color: var(--sketch-pen-green, #16a34a);
+  border-color: var(--sketch-ink, #18181b);
+  box-shadow: 2px 2px 0px var(--sketch-pen-green, #16a34a);
+}
+
+.sketch-timeline-item--active .sketch-timeline-node {
+  background: var(--sketch-accent-blue, #dbeafe);
+  color: var(--sketch-pen-blue, #0284c7);
+  box-shadow: 2.5px 2.5px 0px var(--sketch-pen-blue, #0284c7);
+}
+
+.sketch-timeline-item--danger .sketch-timeline-node {
+  background: #fee2e2;
+  color: var(--sketch-pen-red, #dc2626);
+  border-color: var(--sketch-pen-red, #dc2626);
+  box-shadow: 2px 2px 0px var(--sketch-pen-red, #dc2626);
+}
+
+.sketch-timeline-item--pending .sketch-timeline-node {
+  background: #f4f4f5;
+  color: var(--sketch-ink-muted, #71717a);
+  border-color: #a1a1aa;
+}
+
+/* Contenido */
+.sketch-timeline-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sketch-timeline-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sketch-timeline-title {
+  font-family: var(--font-sketch-title, 'Outfit', sans-serif);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--sketch-ink, #18181b);
+}
+
+.sketch-timeline-time {
+  font-size: 0.8rem;
+  color: var(--sketch-ink-muted, #71717a);
+  font-family: var(--font-sketch-body, 'Inter', sans-serif);
+}
+
+.sketch-timeline-tag {
+  font-size: 0.75rem;
+  background: var(--sketch-accent-yellow, #fef08a);
+  border: 1px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-pill, 999px);
+  padding: 1px 7px;
+  font-weight: 700;
+}
+
+.sketch-timeline-desc {
+  font-family: var(--font-sketch-body, 'Inter', sans-serif);
+  font-size: 0.88rem;
+  color: var(--sketch-ink-muted, #71717a);
+  line-height: 1.45;
+  margin: 0;
+}

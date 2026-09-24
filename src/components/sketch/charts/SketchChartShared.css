@@ -1,0 +1,134 @@
+/* ==========================================================================
+   SketchChartShared.css — Estilos y Tooltips Compartidos para Gráficas BocetoUI
+   ========================================================================== */
+
+.sketch-chart-container {
+  position: relative;
+  width: 100%;
+  user-select: none;
+  font-family: var(--font-sketch-title, 'Outfit', sans-serif);
+}
+
+.sketch-chart-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sketch-chart-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--sketch-ink, #18181b);
+}
+
+.sketch-chart-subtitle {
+  font-family: var(--font-sketch-code, monospace);
+  font-size: 0.8rem;
+  color: var(--sketch-ink-muted, #71717a);
+}
+
+.sketch-chart-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* Tooltip de Papel Adhesivo Flotante */
+.sketch-chart-tooltip {
+  position: absolute;
+  pointer-events: none;
+  background-color: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-1, 6px);
+  padding: 8px 12px;
+  box-shadow: 3px 4px 0px var(--sketch-ink, #18181b);
+  font-family: var(--font-sketch-title, sans-serif);
+  font-size: 0.88rem;
+  z-index: 1000;
+  transform: translate(-50%, -120%);
+  transition: opacity 0.12s ease, transform 0.12s ease;
+  white-space: nowrap;
+}
+
+.sketch-chart-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+  width: 32px;
+  height: 12px;
+  background: var(--sketch-tape-bg);
+  border: 1px dashed rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+
+.sketch-chart-tooltip__label {
+  font-weight: 800;
+  color: var(--sketch-ink, #18181b);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.sketch-chart-tooltip__value {
+  font-family: var(--font-sketch-code, monospace);
+  font-weight: 700;
+  color: #0284c7;
+}
+
+/* Líneas de Ejes y Retícula */
+.sketch-chart-axis-line {
+  stroke: var(--sketch-ink, #18181b);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.sketch-chart-grid-line {
+  stroke: var(--sketch-ink-light, #e4e4e7);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+
+.sketch-chart-tick-text {
+  font-family: var(--font-sketch-code, monospace);
+  font-size: 11px;
+  fill: var(--sketch-ink-muted, #71717a);
+}
+
+/* Leyenda Interactiva */
+.sketch-chart-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.sketch-chart-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--sketch-ink, #18181b);
+  transition: opacity 0.15s ease;
+}
+
+.sketch-chart-legend__item:hover {
+  opacity: 0.75;
+}
+
+.sketch-chart-legend__color {
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid var(--sketch-ink, #18181b);
+  border-radius: 3px;
+  box-shadow: 1px 1px 0px var(--sketch-ink, #18181b);
+}

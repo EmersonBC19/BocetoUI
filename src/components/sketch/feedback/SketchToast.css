@@ -1,0 +1,253 @@
+/* ==========================================================================
+   SketchToast — Notificación flotante de boceto con Rebote Bungee
+   ========================================================================== */
+
+/* Posicionamiento base: ARRIBA A LA DERECHA por defecto (para no chocar con barras inferiores ni estuches de dibujo) */
+.sketch-toast-container {
+  position: fixed;
+  top: 24px;
+  right: 28px;
+  z-index: 9999;
+  pointer-events: auto;
+  animation: sketch-toast-bungee-down 0.38s cubic-bezier(0.34, 1.6, 0.64, 1);
+}
+
+.sketch-toast-container--top-right {
+  top: 24px;
+  bottom: auto;
+  right: 28px;
+  left: auto;
+  animation: sketch-toast-bungee-down 0.38s cubic-bezier(0.34, 1.6, 0.64, 1);
+}
+
+.sketch-toast-container--top-left {
+  top: 24px;
+  bottom: auto;
+  left: 28px;
+  right: auto;
+  animation: sketch-toast-bungee-down 0.38s cubic-bezier(0.34, 1.6, 0.64, 1);
+}
+
+.sketch-toast-container--top-center {
+  top: 24px;
+  bottom: auto;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  animation: sketch-toast-bungee-down-center 0.38s cubic-bezier(0.34, 1.6, 0.64, 1);
+}
+
+.sketch-toast-container--bottom-right {
+  top: auto;
+  bottom: 28px;
+  right: 28px;
+  left: auto;
+  animation: sketch-toast-bungee-up 0.38s cubic-bezier(0.34, 1.6, 0.64, 1);
+}
+
+.sketch-toast-container--bottom-left {
+  top: auto;
+  bottom: 28px;
+  left: 28px;
+  right: auto;
+  animation: sketch-toast-bungee-up 0.38s cubic-bezier(0.34, 1.6, 0.64, 1);
+}
+
+.sketch-toast-container--bottom-center {
+  top: auto;
+  bottom: 28px;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  animation: sketch-toast-bungee-up-center 0.38s cubic-bezier(0.34, 1.6, 0.64, 1);
+}
+
+/* Animaciones elásticas Bungee para caída desde arriba y subida desde abajo */
+@keyframes sketch-toast-bungee-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-44px) scale(0.85) rotate(4deg);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(6px) scale(1.02) rotate(-2deg);
+  }
+  85% {
+    transform: translateY(-2px) scale(0.99) rotate(0.5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(-1deg);
+  }
+}
+
+@keyframes sketch-toast-bungee-down-center {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -44px) scale(0.85) rotate(3deg);
+  }
+  65% {
+    opacity: 1;
+    transform: translate(-50%, 6px) scale(1.02) rotate(-1.5deg);
+  }
+  85% {
+    transform: translate(-50%, -2px) scale(0.99) rotate(0.5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes sketch-toast-bungee-up {
+  0% {
+    opacity: 0;
+    transform: translateY(44px) scale(0.85) rotate(-4deg);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(-6px) scale(1.02) rotate(2deg);
+  }
+  85% {
+    transform: translateY(2px) scale(0.99) rotate(-0.5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(-1deg);
+  }
+}
+
+@keyframes sketch-toast-bungee-up-center {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 44px) scale(0.85) rotate(-3deg);
+  }
+  65% {
+    opacity: 1;
+    transform: translate(-50%, -6px) scale(1.02) rotate(1.5deg);
+  }
+  85% {
+    transform: translate(-50%, 2px) scale(0.99) rotate(-0.5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1) rotate(0deg);
+  }
+}
+
+.sketch-toast {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #23272f);
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  box-shadow: 4px 5px 0px var(--sketch-ink, #23272f);
+  padding: 12px 18px;
+  max-width: 380px;
+  min-width: 260px;
+  transform: rotate(-1deg);
+}
+
+/* Cinta adhesiva washi decorativa */
+.sketch-toast__tape {
+  position: absolute;
+  top: -10px;
+  left: 30px;
+  width: 55px;
+  height: 18px;
+  background-color: rgba(254, 240, 138, 0.85);
+  border: 1px dashed rgba(0, 0, 0, 0.15);
+  transform: rotate(3deg);
+  pointer-events: none;
+}
+
+.sketch-toast__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sketch-toast__content {
+  font-family: var(--font-sketch-body, 'Caveat', cursive);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--sketch-ink, #23272f);
+  line-height: 1.25;
+  flex-grow: 1;
+}
+
+.sketch-toast__close {
+  flex-shrink: 0;
+  margin-left: 4px;
+}
+
+.sketch-toast__burst {
+  font-family: var(--font-sketch-title);
+  font-size: 0.85em;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--sketch-pen-red);
+  background: var(--sketch-accent-yellow);
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--sketch-ink);
+  margin-right: 4px;
+  display: inline-block;
+  transform: rotate(-2deg);
+}
+
+.sketch-toast__pause-pill {
+  position: absolute;
+  top: -9px;
+  right: 18px;
+  font-family: var(--font-sketch-title, inherit);
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  background-color: var(--sketch-ink, #23272f);
+  color: #ffffff;
+  padding: 1px 7px;
+  border-radius: 999px;
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  animation: sketch-toast-pill-pop 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 2;
+}
+
+@keyframes sketch-toast-pill-pop {
+  from {
+    transform: scale(0.6) rotate(-5deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.sketch-toast__fuse-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background-color: var(--sketch-pen-red, #dc2626);
+  width: 100%;
+  animation: sketch-toast-fuse var(--toast-duration, 4.5s) linear forwards;
+  border-radius: 0 0 4px 4px;
+}
+
+.sketch-toast:hover .sketch-toast__fuse-bar,
+.sketch-toast--paused .sketch-toast__fuse-bar {
+  animation-play-state: paused;
+}
+
+@keyframes sketch-toast-fuse {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+

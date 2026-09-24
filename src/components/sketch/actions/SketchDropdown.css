@@ -1,0 +1,162 @@
+/* ==========================================================================
+   SketchDropdown.css — Menú Desplegable Artesanal BocetoUI
+   ========================================================================== */
+
+.sketch-dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 100;
+}
+
+.sketch-dropdown__trigger {
+  display: inline-flex;
+  outline: none;
+}
+
+.sketch-dropdown__menu {
+  position: absolute;
+  z-index: 9999;
+  min-width: 190px;
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  box-shadow: 3.5px 4px 0px var(--sketch-ink, #18181b);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  animation: sketch-pop-menu 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes sketch-pop-menu {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(-6px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Posiciones */
+.sketch-dropdown__menu--bottom-left {
+  top: calc(100% + 6px);
+  left: 0;
+}
+
+.sketch-dropdown__menu--bottom-right {
+  top: calc(100% + 6px);
+  right: 0;
+}
+
+.sketch-dropdown__menu--top-left {
+  bottom: calc(100% + 6px);
+  left: 0;
+}
+
+.sketch-dropdown__menu--top-right {
+  bottom: calc(100% + 6px);
+  right: 0;
+}
+
+/* Ítems del menú */
+.sketch-dropdown__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 12px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--wobble-radius-2, 20px 255px 20px 25px/255px 20px 225px 25px);
+  font-family: var(--font-sketch-title, 'Outfit', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--sketch-ink, #18181b);
+  text-align: left;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.sketch-dropdown__item:hover:not(:disabled) {
+  background: var(--sketch-accent-yellow, #fef08a);
+  border-color: var(--sketch-ink, #18181b);
+  transform: translateX(3px) rotate(-0.5deg);
+}
+
+.sketch-dropdown__item-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.sketch-dropdown__item-label {
+  flex: 1;
+}
+
+.sketch-dropdown__item-badge {
+  font-size: 0.75rem;
+  background: #f4f4f5;
+  border: 1px solid var(--sketch-ink, #18181b);
+  border-radius: 999px;
+  padding: 1px 6px;
+  font-weight: 700;
+}
+
+/* Peligro (Eliminar) */
+.sketch-dropdown__item--danger {
+  color: var(--sketch-pen-red, #dc2626);
+}
+
+.sketch-dropdown__item--danger:hover:not(:disabled) {
+  background: #fee2e2 !important;
+  color: #b91c1c !important;
+}
+
+/* Deshabilitado */
+.sketch-dropdown__item--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Separador artesanal con tijera */
+.sketch-dropdown__divider {
+  position: relative;
+  height: 1px;
+  border-top: 1.5px dashed var(--sketch-ink-light, #a1a1aa);
+  margin: 8px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.sketch-dropdown__scissor {
+  font-size: 0.72rem;
+  line-height: 1;
+  position: absolute;
+  right: 0;
+  top: -7px;
+  background: var(--sketch-bg-surface, #ffffff);
+  padding-left: 4px;
+  color: var(--sketch-ink-muted, #71717a);
+}
+
+/* Perforaciones superiores estilo bloc de notas */
+.sketch-dropdown__notepad-top {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2px 10px 6px;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.08);
+  margin-bottom: 4px;
+}
+
+.sketch-dropdown__notch {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sketch-bg-paper, #fdfbf7);
+  border: 1px solid var(--sketch-ink, #18181b);
+}
+

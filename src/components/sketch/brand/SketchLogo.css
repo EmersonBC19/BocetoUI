@@ -1,0 +1,139 @@
+/* ==========================================================================
+   SketchLogo.css — Logotipo & Isotipo Oficial BocetoUI
+   ========================================================================== */
+
+.sketch-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+  text-decoration: none;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sketch-logo:hover .sketch-logo__mark {
+  transform: rotate(-3deg) scale(1.06);
+}
+
+.sketch-logo__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sketch-logo__text-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.sketch-logo__wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  position: relative;
+}
+
+.sketch-logo__name {
+  font-family: var(--font-sketch-title, 'Patrick Hand', cursive, sans-serif);
+  font-weight: 900;
+  color: var(--sketch-ink, #18181b);
+  letter-spacing: -0.5px;
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Trazo de subrayado con pincel artesanal */
+.sketch-logo__brush-line {
+  position: absolute;
+  left: 2px;
+  right: -2px;
+  bottom: -3px;
+  height: 6px;
+  background-color: var(--sketch-accent-yellow, #fef08a);
+  border-radius: 4px;
+  z-index: -1;
+  transform: rotate(-1deg);
+  opacity: 0.85;
+}
+
+/* Badge 'UI' estilo sello de goma / sticker */
+.sketch-logo__badge-ui {
+  font-family: var(--font-sketch-title, 'Patrick Hand', sans-serif);
+  font-weight: 900;
+  color: #1e3a8a;
+  background: var(--sketch-accent-blue, #bfdbfe);
+  border: 1.5px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-1, 6px);
+  padding: 1px 6px;
+  box-shadow: 1.5px 1.5px 0px var(--sketch-ink, #18181b);
+  transform: rotate(3deg);
+  line-height: 1.1;
+  display: inline-block;
+}
+
+.sketch-logo__tagline {
+  font-family: var(--font-sketch-code, monospace);
+  font-size: 0.72rem;
+  color: var(--sketch-ink-muted, #71717a);
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   Variantes de Tamaño
+   ========================================================================== */
+.sketch-logo--xs .sketch-logo__name {
+  font-size: 1.15rem;
+}
+.sketch-logo--xs .sketch-logo__badge-ui {
+  font-size: 0.7rem;
+  padding: 0px 4px;
+}
+
+.sketch-logo--sm .sketch-logo__name {
+  font-size: 1.4rem;
+}
+.sketch-logo--sm .sketch-logo__badge-ui {
+  font-size: 0.8rem;
+  padding: 1px 5px;
+}
+
+.sketch-logo--md .sketch-logo__name {
+  font-size: 1.85rem;
+}
+.sketch-logo--md .sketch-logo__badge-ui {
+  font-size: 0.95rem;
+  padding: 2px 7px;
+}
+
+.sketch-logo--lg .sketch-logo__name {
+  font-size: 2.5rem;
+}
+.sketch-logo--lg .sketch-logo__badge-ui {
+  font-size: 1.15rem;
+  padding: 3px 9px;
+}
+
+.sketch-logo--xl .sketch-logo__name {
+  font-size: 3.2rem;
+}
+.sketch-logo--xl .sketch-logo__badge-ui {
+  font-size: 1.35rem;
+  padding: 4px 12px;
+}
+
+/* ==========================================================================
+   Variante Apilada (Stacked)
+   ========================================================================== */
+.sketch-logo--stacked {
+  flex-direction: column;
+  text-align: center;
+  gap: 8px;
+}
+
+.sketch-logo--stacked .sketch-logo__wordmark {
+  justify-content: center;
+}

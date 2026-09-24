@@ -1,0 +1,78 @@
+/* ==========================================================================
+   SketchPagination — Paginación con recuadros estilo boceto
+   ========================================================================== */
+
+.sketch-pagination {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0;
+  font-family: var(--font-sketch-body, 'Caveat', cursive);
+  user-select: none;
+}
+
+.sketch-pagination__btn {
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 2px solid var(--sketch-ink, #23272f);
+  border-radius: var(--wobble-radius-1, 255px 15px 225px 15px/15px 225px 15px 255px);
+  box-shadow: 2px 2px 0px var(--sketch-ink, #23272f);
+  font-family: var(--font-sketch-title, 'Patrick Hand', cursive);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--sketch-ink, #23272f);
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.sketch-pagination__btn:hover:not(:disabled) {
+  background-color: var(--sketch-accent-yellow, #fef08a);
+  transform: translateY(-1px);
+}
+
+.sketch-pagination__btn:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 1px 1px 0px var(--sketch-ink, #23272f);
+}
+
+.sketch-pagination__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.sketch-pagination__numbers {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sketch-pagination__page {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sketch-bg-surface, #ffffff);
+  border: 1.5px solid var(--sketch-ink, #23272f);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 2px 2px 0px var(--sketch-ink, #23272f);
+  font-family: var(--font-sketch-title, 'Patrick Hand', cursive);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--sketch-ink, #23272f);
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.sketch-pagination__page:hover:not(.sketch-pagination__page--active) {
+  background-color: rgba(254, 240, 138, 0.4);
+  transform: translateY(-1px);
+}
+
+.sketch-pagination__page--active {
+  background-color: var(--sketch-accent-yellow, #fef08a);
+  border-width: 2.5px;
+  box-shadow: 2px 3px 0px var(--sketch-ink, #23272f);
+  transform: scale(1.08) rotate(-1deg);
+}
