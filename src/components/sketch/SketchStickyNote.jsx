@@ -14,15 +14,23 @@ import './SketchStickyNote.css';
 export function SketchStickyNote({
   children,
   color = 'yellow',
-  hasPin = true,
+  hasPin,
+  pin,
   tilt,
+  rotation,
   className = '',
   style = {},
   ...rest
 }) {
+  // Soporte bidireccional para hasPin o pin (por defecto true)
+  const showPin = pin !== undefined ? Boolean(pin) : (hasPin !== undefined ? Boolean(hasPin) : true);
+
+  // Soporte bidireccional para tilt o rotation
+  const angle = tilt !== undefined ? tilt : rotation;
+
   const customStyle = {
     ...style,
-    ...(tilt !== undefined ? { transform: `rotate(${tilt}deg)` } : {})
+    ...(angle !== undefined ? { transform: `rotate(${angle}deg)` } : {})
   };
 
   return (
@@ -31,7 +39,7 @@ export function SketchStickyNote({
       style={customStyle}
       {...rest}
     >
-      {hasPin && <div className="sketch-sticky-note__pin" />}
+      {showPin && <div className="sketch-sticky-note__pin" />}
       {children}
     </div>
   );

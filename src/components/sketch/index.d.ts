@@ -92,10 +92,12 @@ export interface SketchDividerProps {
 }
 export declare const SketchDivider: React.FC<SketchDividerProps>;
 
-export interface SketchStickyNoteProps {
-  color?: 'yellow' | 'pink' | 'cyan' | 'green';
+export interface SketchStickyNoteProps extends React.HTMLAttributes<HTMLDivElement> {
+  color?: 'yellow' | 'pink' | 'cyan' | 'blue' | 'green' | 'orange';
   title?: string;
+  hasPin?: boolean;
   pin?: boolean;
+  tilt?: number;
   rotation?: number;
   children?: React.ReactNode;
 }
