@@ -13,6 +13,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { SketchCloseButton } from '../actions/SketchCloseButton';
+import { playSketchSound } from '../audio/sketchAudio';
 
 /**
  * SketchDoodleCanvas — Capa de dibujo libre a mano alzada a 120 FPS.
@@ -30,6 +31,7 @@ export function SketchDoodleCanvas({
   const strokesRef = useRef([]); // Historial de trazos [{ tool, color, width, opacity, composite, lineStyle, dash, points: [{x,y}] }]
   const redoStackRef = useRef([]); // Pila para rehacer trazos deshechos
   const currentStrokeRef = useRef(null);
+  const lastSoundTimeRef = useRef(0);
   const [activeTool, setActiveTool] = useState('pencil');
   const [lineStyle, setLineStyle] = useState(defaultLineStyle); // 'solid' | 'dashed'
   const [isPassthrough, setIsPassthrough] = useState(false);
@@ -247,6 +249,8 @@ export function SketchDoodleCanvas({
     };
     currentStrokeRef.current = newStroke;
 
+    playSketchSound(activeTool === 'eraser' ? 'eraser' : (canvasType === 'paper-chalk' ? 'chalk' : 'pencil'), 0.22);
+
     redrawAllStrokes(newStroke);
   };
 
@@ -270,6 +274,13 @@ export function SketchDoodleCanvas({
     if (distSq < 6.25) return;
 
     pts.push({ x, y });
+
+    // Efecto sonoro de trazo de grafito o tiza en tiempo real
+    const now = Date.now();
+    if (now - lastSoundTimeRef.current > 85) {
+      lastSoundTimeRef.current = now;
+      playSketchSound(activeTool === 'eraser' ? 'eraser' : (canvasType === 'paper-chalk' ? 'chalk' : 'pencil'), 0.16);
+    }
 
     // Redibujado suave e instantáneo del trazo completo en vivo (sólido o punteado)
     redrawAllStrokes(stroke);
@@ -384,6 +395,7 @@ export function SketchDoodleCanvas({
   // Borrar todos los trazos (permite deshacer con Ctrl+Z)
   const handleClear = () => {
     if (strokesRef.current.length === 0) return;
+    playSketchSound('eraser');
     redoStackRef.current = [...strokesRef.current];
     strokesRef.current = [];
     setStrokeCount(0);

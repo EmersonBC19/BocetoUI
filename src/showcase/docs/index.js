@@ -71,6 +71,8 @@ export { DoodleDoc } from './DoodleDoc';
 export { IconDoc } from './IconDoc';
 export { CloseButtonDoc } from './CloseButtonDoc';
 export { ScrollAreaDoc } from './ScrollAreaDoc';
+export { SoundDoc } from './SoundDoc';
+
 
 
 

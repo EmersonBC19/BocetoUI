@@ -11,7 +11,9 @@ import {
   SketchNotebookIcon,
   SketchPaperIcon,
   SketchChalkboardIcon,
-  SketchIcon
+  SketchIcon,
+  SketchSoundToggle,
+  playSketchSound
 } from '../../components/sketch';
 import {
   Terminal, Copy, Check, ArrowRight, Sparkles,
@@ -73,7 +75,10 @@ export function WelcomeDoc({
                 <button
                   key={id}
                   type="button"
-                  onClick={() => onSetCanvasType(id)}
+                  onClick={() => {
+                    playSketchSound(id === 'paper-chalk' ? 'chalk' : 'paper');
+                    onSetCanvasType(id);
+                  }}
                   title={`Cambiar fondo a ${label}`}
                   className={`welcome-nav__canvas-btn ${canvasType === id ? 'welcome-nav__canvas-btn--active' : ''}`}
                 >
@@ -90,6 +95,7 @@ export function WelcomeDoc({
               type="button"
               className={`welcome-nav__tool-btn ${cursorMode === 'comic' ? 'welcome-nav__tool-btn--active' : ''}`}
               onClick={() => {
+                playSketchSound('marker');
                 const next = cursorMode === 'comic' ? 'native' : 'comic';
                 onSetCursorMode(next);
                 onTriggerToast?.(next === 'comic' ? 'Puntero Cómic activado' : 'Puntero Nativo');
@@ -107,6 +113,7 @@ export function WelcomeDoc({
               type="button"
               className={`welcome-nav__tool-btn ${isDoodleOpen ? 'welcome-nav__tool-btn--active' : ''}`}
               onClick={() => {
+                playSketchSound('pencil');
                 onToggleDoodle(!isDoodleOpen);
                 if (!isDoodleOpen) onTriggerToast?.('✏️ ¡Estuche abierto! Puedes rayar sobre la pantalla.');
               }}
@@ -122,7 +129,10 @@ export function WelcomeDoc({
             <button
               type="button"
               className={`welcome-nav__tool-btn ${isForceDesktop ? 'welcome-nav__tool-btn--active' : ''}`}
-              onClick={onToggleForceDesktop}
+              onClick={() => {
+                playSketchSound('marker');
+                onToggleForceDesktop();
+              }}
               title={isForceDesktop ? "Cambiar a vista móvil estándar" : "Forzar versión para ordenadores"}
             >
               {isForceDesktop ? <Smartphone size={14} /> : <Monitor size={14} />}
@@ -130,16 +140,26 @@ export function WelcomeDoc({
             </button>
           )}
 
-          {/* Botón para abrir el Menú de 54 Componentes en Móviles */}
+          {/* Alternar Efectos Sonoros */}
+          <SketchSoundToggle
+            size="sm"
+            variant="pill"
+            onTriggerToast={onTriggerToast}
+          />
+
+          {/* Botón para abrir el Menú de 55 Componentes en Móviles */}
           {onOpenMobileNav && (
             <button
               type="button"
               className="welcome-nav__mobile-index-btn"
-              onClick={onOpenMobileNav}
-              title="Abrir índice completo de 54 componentes"
+              onClick={() => {
+                playSketchSound('paper');
+                onOpenMobileNav();
+              }}
+              title="Abrir índice completo de 55 componentes"
             >
               <Menu size={14} />
-              <span>Componentes (54)</span>
+              <span>Componentes (55)</span>
             </button>
           )}
 

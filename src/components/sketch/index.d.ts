@@ -833,5 +833,37 @@ export interface SketchDoodleCanvasProps {
 }
 export declare const SketchDoodleCanvas: React.FC<SketchDoodleCanvasProps>;
 
+export type SketchSoundType = 'pencil' | 'marker' | 'click' | 'pop' | 'paper' | 'flip' | 'chalk' | 'dice' | 'bocetin' | 'mascot' | 'eraser';
+
+export interface SketchAudioAPI {
+  isEnabled: () => boolean;
+  setEnabled: (enabled: boolean) => boolean;
+  toggle: () => boolean;
+  play: (soundType?: SketchSoundType, customVolume?: number) => void;
+}
+
+export declare const sketchAudio: SketchAudioAPI;
+export declare function playSketchSound(soundType?: SketchSoundType, customVolume?: number): void;
+export declare function isSketchAudioEnabled(): boolean;
+export declare function setSketchAudioEnabled(enabled: boolean): boolean;
+
+export interface UseSketchSoundResult {
+  isSoundEnabled: boolean;
+  toggleSound: () => boolean;
+  setSoundEnabled: (enabled: boolean) => boolean;
+  playSound: (type?: SketchSoundType, volume?: number) => void;
+}
+export declare function useSketchSound(): UseSketchSoundResult;
+
+export interface SketchSoundToggleProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  size?: 'sm' | 'md' | 'lg';
+  variant?: 'pill' | 'badge' | 'ghost';
+  showLabel?: boolean;
+  onTriggerToast?: (msg: string) => void;
+  className?: string;
+}
+export declare const SketchSoundToggle: React.FC<SketchSoundToggleProps>;
+
+
 
 

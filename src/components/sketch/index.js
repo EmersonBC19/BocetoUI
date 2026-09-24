@@ -103,3 +103,14 @@ export { SketchCoffeeStain } from './paper/SketchCoffeeStain';
 // 10. Interacción & Pizarra Libre (Doodle & Canvas)
 export { SketchDoodleCanvas } from './doodle/SketchDoodleCanvas';
 
+// 11. Motor de Audio Acústico & Sonidos Hápticos
+export {
+  sketchAudio,
+  playSketchSound,
+  isSketchAudioEnabled,
+  setSketchAudioEnabled,
+  useSketchSound,
+  SketchSoundToggle
+} from './audio';
+
+

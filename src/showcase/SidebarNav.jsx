@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './SidebarNav.css';
-import { SketchBadge, SketchLogo, SketchCloseButton } from '../components/sketch';
+import { SketchBadge, SketchLogo, SketchCloseButton, playSketchSound } from '../components/sketch';
 import {
   PenTool,
   Search,
@@ -49,7 +49,8 @@ import {
   Filter,
   Check,
   Monitor,
-  Smartphone
+  Smartphone,
+  Volume2
 } from 'lucide-react';
 
 export const NAV_GROUPS = [
@@ -60,7 +61,7 @@ export const NAV_GROUPS = [
       { id: 'welcome', label: 'Presentación', icon: <Sparkles size={16} /> },
       { id: 'quickstart', label: 'Guía de Instalación npm', icon: <Package size={16} />, count: 1 },
       { id: 'signature', label: 'Colección Signature', icon: <Sparkles size={16} />, count: 8, badge: 'NUEVO' },
-      { id: 'all', label: 'Todos los Componentes', icon: <Layout size={16} />, count: 54 },
+      { id: 'all', label: 'Todos los Componentes', icon: <Layout size={16} />, count: 55 },
       { id: 'templates', label: 'Plantillas del Mundo Real', icon: <LayoutTemplate size={16} />, count: 3 },
       { id: 'design-system', label: 'Principios & Tokens UX', icon: <Palette size={16} />, count: 4 },
       { id: 'playground', label: 'Tablero CQRS en Vivo', icon: <Gamepad2 size={16} />, count: 1 }
@@ -147,6 +148,7 @@ export const NAV_GROUPS = [
       { id: 'alert', label: 'SketchAlert', icon: <Bell size={16} />, count: 4 },
       { id: 'tooltip', label: 'SketchTooltip', icon: <MessageSquare size={16} />, count: 4 },
       { id: 'toast', label: 'SketchToast', icon: <Bell size={16} />, count: 4 },
+      { id: 'sound', label: 'SketchSound & SFX', icon: <Volume2 size={16} />, count: 7, badge: 'NUEVO' },
       { id: 'doodle', label: 'SketchDoodleCanvas', icon: <PenTool size={16} />, count: 1 }
     ]
   }
@@ -166,6 +168,7 @@ const BOCETIN_TIPS = [
   "💡 Tip: ¡Usa el modo Garabato para rayar en vivo a 120 FPS!",
   "✂️ Tip: ¡Haz clic en los cupones para rasgar el troquelado real!",
   "☕ Tip: ¡Prueba las manchas de café espresso en la Colección Signature!",
+  "🔊 Tip: ¡Activa los efectos de sonido para escuchar el lápiz y la tiza en tiempo real!",
   "🏷️ Tip: ¡Presiona ⌘K o / para buscar cualquier componente al instante!",
   "🖍️ Tip: ¡Cambia a modo Pizarra de Tiza en la barra superior!",
   "📌 Tip: ¡Los SketchStickyNotes se pueden inclinar orgánicamente!",
@@ -178,7 +181,7 @@ export function SidebarNav({
   searchTerm = '',
   onSearchChange,
   onTriggerToast,
-  totalComponents = 54,
+  totalComponents = 55,
   isForceDesktop = false,
   onToggleForceDesktop = null,
   isOpenOnMobile = false,
@@ -235,6 +238,7 @@ export function SidebarNav({
   const handleSurpriseMe = () => {
     if (isRollingDice) return;
     setIsRollingDice(true);
+    playSketchSound('dice');
 
     const candidates = allNavItems.filter((i) => i.id !== activeCategory);
     const randomItem = candidates[Math.floor(Math.random() * candidates.length)];
@@ -258,6 +262,7 @@ export function SidebarNav({
   // Interacción con la mascota Bocetín en el footer
   const handleBocetinClick = () => {
     setIsBocetinBouncing(true);
+    playSketchSound('bocetin');
     setTipIndex((prev) => (prev + 1) % BOCETIN_TIPS.length);
     setTimeout(() => setIsBocetinBouncing(false), 500);
   };
@@ -376,6 +381,7 @@ export function SidebarNav({
                   isChipActive ? 'sidebar-nav__chip--active' : ''
                 }`}
                 onClick={() => {
+                  playSketchSound('marker');
                   setActiveFilter(chip.id);
                   if (chip.id !== 'all') onSearchChange('');
                 }}

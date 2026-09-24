@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import {
   SketchBadge, SketchDivider, SketchToast, SketchLogo, SketchDoodleCanvas,
-  SketchGridIcon, SketchNotebookIcon, SketchPaperIcon, SketchChalkboardIcon
+  SketchGridIcon, SketchNotebookIcon, SketchPaperIcon, SketchChalkboardIcon,
+  SketchSoundToggle, playSketchSound
 } from './components/sketch';
 
 import { SidebarNav } from './showcase/SidebarNav';
@@ -17,7 +18,7 @@ import {
   WelcomeDoc, QuickStartDoc, DropdownDoc, PopoverDoc, UploadDoc, TimelineDoc, ChartsDoc,
   SignatureDoc, DatePickerDoc, ColorPickerDoc, PinInputDoc, AutocompleteDoc,
   NavbarDoc, SidebarDoc, CommandPaletteDoc, TreeViewDoc, CodeBlockDoc, CarouselDoc,
-  DoodleDoc, IconDoc, CloseButtonDoc, ScrollAreaDoc
+  DoodleDoc, IconDoc, CloseButtonDoc, ScrollAreaDoc, SoundDoc
 } from './showcase/docs';
 
 import { PenTool, Palette, MousePointer, Monitor, Smartphone, Menu } from 'lucide-react';
@@ -131,6 +132,7 @@ export function App() {
       case 'alert': return <AlertDoc onTriggerToast={showToast} />;
       case 'tooltip': return <TooltipDoc />;
       case 'toast': return <ToastDoc />;
+      case 'sound': return <SoundDoc onTriggerToast={showToast} />;
       case 'doodle': return <DoodleDoc onTriggerToast={showToast} onToggleDoodle={setIsDoodleOpen} />;
       case 'icon': return <IconDoc onTriggerToast={showToast} />;
       case 'playground': return <PlaygroundDoc onTriggerToast={showToast} onCopyCode={copyCode} />;
@@ -182,6 +184,7 @@ export function App() {
           <AlertDoc key="alt" onTriggerToast={showToast} />,
           <TooltipDoc key="tip" />,
           <ToastDoc key="tst" />,
+          <SoundDoc key="sound" onTriggerToast={showToast} />,
           <DoodleDoc key="doodle" onTriggerToast={showToast} onToggleDoodle={setIsDoodleOpen} />,
           <IconDoc key="icon" onTriggerToast={showToast} />
         ];
@@ -256,6 +259,7 @@ export function App() {
         <SidebarNav
           activeCategory={activeCategory}
           onSelectCategory={(catId) => {
+            playSketchSound('paper');
             setActiveCategory(catId);
             setSearchTerm('');
             setIsMobileNavOpen(false);
@@ -264,7 +268,7 @@ export function App() {
           searchTerm={searchTerm}
           onSearchChange={setSearchTerm}
           onTriggerToast={showToast}
-          totalComponents={54}
+          totalComponents={55}
           isForceDesktop={isForceDesktop}
           onToggleForceDesktop={toggleForceDesktop}
           isOpenOnMobile={isMobileNavOpen}
@@ -286,7 +290,7 @@ export function App() {
                 aria-label="Abrir menú de componentes"
               >
                 <Menu size={16} />
-                <span className="docs-menu-trigger-text">Índice (54)</span>
+                <span className="docs-menu-trigger-text">Índice (55)</span>
               </button>
 
               <button
@@ -313,7 +317,10 @@ export function App() {
                     key={id}
                     type="button"
                     className={`canvas-btn ${canvasType === id ? 'canvas-btn--active' : ''}`}
-                    onClick={() => setCanvasType(id)}
+                    onClick={() => {
+                      playSketchSound(id === 'paper-chalk' ? 'chalk' : 'paper');
+                      setCanvasType(id);
+                    }}
                     title={label}
                   >
                     <Icon size={14} /> <span className="docs-tool-label">{label}</span>
@@ -328,6 +335,7 @@ export function App() {
                     type="button"
                     className={`cursor-btn ${cursorMode === id ? 'cursor-btn--active' : ''}`}
                     onClick={() => {
+                      playSketchSound('marker');
                       setCursorMode(id);
                       showToast(toastMsg);
                     }}
@@ -344,6 +352,7 @@ export function App() {
                   onClick={() => {
                     const next = !isDoodleOpen;
                     setIsDoodleOpen(next);
+                    playSketchSound('pencil');
                     if (next) showToast('✏️ Estuche abierto: ¡Ya puedes garabatear sobre la pantalla!');
                   }}
                   title="Activar estuche de garabatos y dibujo a mano alzada"
@@ -355,12 +364,22 @@ export function App() {
                 <button
                   type="button"
                   className={`cursor-btn ${isForceDesktop ? 'cursor-btn--active' : ''}`}
-                  onClick={toggleForceDesktop}
+                  onClick={() => {
+                    playSketchSound('marker');
+                    toggleForceDesktop();
+                  }}
                   title={isForceDesktop ? "Volver a vista móvil adaptada" : "Forzar versión de escritorio completa"}
                 >
                   {isForceDesktop ? <Smartphone size={14} /> : <Monitor size={14} />}
                   <span className="docs-tool-label">{isForceDesktop ? 'Móvil' : 'Escritorio'}</span>
                 </button>
+
+                {/* Alternar Efectos de Sonido Artesanales */}
+                <SketchSoundToggle
+                  size="sm"
+                  variant="pill"
+                  onTriggerToast={showToast}
+                />
               </div>
             </div>
           </header>
