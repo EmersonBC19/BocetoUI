@@ -281,3 +281,71 @@
   gap: 8px;
 }
 
+/* ==========================================================================
+   Responsiveness para ComponentDocLayout
+   ========================================================================== */
+@media (max-width: 680px) {
+  .comp-doc {
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .comp-doc__title {
+    font-size: 1.85rem;
+  }
+  .comp-doc__desc {
+    font-size: 1.15rem;
+  }
+  .comp-doc__import-box {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+  .comp-doc__import-box code {
+    font-size: 0.82rem;
+  }
+  .comp-doc__tab-bar {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 2px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .comp-doc__tab-btn {
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 0.95rem;
+  }
+  .comp-doc__examples-grid,
+  .comp-doc__guidelines-panel {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+  .comp-doc-card {
+    padding: 16px 14px;
+  }
+  .comp-doc__code-block {
+    padding: 14px 12px;
+    font-size: 0.82rem;
+  }
+  .comp-doc__table th,
+  .comp-doc__table td {
+    padding: 8px 10px;
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 440px) {
+  .comp-doc__title {
+    font-size: 1.6rem;
+  }
+  .comp-doc__desc {
+    font-size: 1.05rem;
+  }
+  .comp-doc-card__label {
+    font-size: 1rem;
+  }
+  .comp-doc__guideline-card {
+    padding: 16px 14px;
+  }
+}
+

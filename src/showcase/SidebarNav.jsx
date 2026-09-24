@@ -180,7 +180,9 @@ export function SidebarNav({
   onTriggerToast,
   totalComponents = 54,
   isForceDesktop = false,
-  onToggleForceDesktop = null
+  onToggleForceDesktop = null,
+  isOpenOnMobile = false,
+  onCloseMobile = null
 }) {
   const [collapsedGroups, setCollapsedGroups] = useState({});
   const [activeFilter, setActiveFilter] = useState('all');
@@ -240,6 +242,7 @@ export function SidebarNav({
     setTimeout(() => {
       setIsRollingDice(false);
       onSelectCategory(randomItem.id);
+      onCloseMobile?.();
       onTriggerToast?.(`🎲 ¡Sorpresa! Te tocó explorar: ${randomItem.label}`);
 
       // Asegurar que el grupo padre esté abierto
@@ -284,30 +287,55 @@ export function SidebarNav({
   }).filter((group) => group !== null && group.items.length > 0);
 
   return (
-    <aside className="sidebar-nav" aria-label="Navegación de componentes">
-      {/* 1. Anillas de Cuaderno Espiral Artesanal (Spine decorativo a la derecha) */}
-      <div className="sidebar-nav__spiral" aria-hidden="true">
-        {Array.from({ length: 18 }).map((_, i) => (
-          <div key={i} className="sidebar-nav__spiral-ring">
-            <div className="sidebar-nav__spiral-hole" />
-            <div className="sidebar-nav__spiral-wire" />
-          </div>
-        ))}
-      </div>
+    <>
+      {/* Backdrop overlay para pantallas móviles */}
+      <div
+        className={`sidebar-nav__backdrop ${isOpenOnMobile ? 'sidebar-nav__backdrop--open' : ''}`}
+        onClick={onCloseMobile}
+        aria-hidden="true"
+      />
 
-      {/* 2. Cabecera con Marca y Botón WOW "¡Sorpréndeme!" */}
-      <div className="sidebar-nav__brand">
-        <SketchLogo size="sm" />
-        <button
-          type="button"
-          className={`sidebar-nav__dice-btn ${isRollingDice ? 'sidebar-nav__dice-btn--rolling' : ''}`}
-          onClick={handleSurpriseMe}
-          title="Elige un componente al azar y sorpréndete"
-        >
-          <Dices size={16} className="sidebar-nav__dice-icon" />
-          <span className="sidebar-nav__dice-text">¡Sorpréndeme!</span>
-        </button>
-      </div>
+      <aside
+        className={`sidebar-nav ${isOpenOnMobile ? 'sidebar-nav--mobile-open' : ''}`}
+        aria-label="Navegación de componentes"
+      >
+        {/* 1. Anillas de Cuaderno Espiral Artesanal (Spine decorativo a la derecha) */}
+        <div className="sidebar-nav__spiral" aria-hidden="true">
+          {Array.from({ length: 18 }).map((_, i) => (
+            <div key={i} className="sidebar-nav__spiral-ring">
+              <div className="sidebar-nav__spiral-hole" />
+              <div className="sidebar-nav__spiral-wire" />
+            </div>
+          ))}
+        </div>
+
+        {/* 2. Cabecera con Marca, Botón WOW y Botón de Cierre Móvil */}
+        <div className="sidebar-nav__brand">
+          <div className="sidebar-nav__brand-left">
+            <SketchLogo size="sm" />
+          </div>
+          <div className="sidebar-nav__brand-actions">
+            <button
+              type="button"
+              className={`sidebar-nav__dice-btn ${isRollingDice ? 'sidebar-nav__dice-btn--rolling' : ''}`}
+              onClick={handleSurpriseMe}
+              title="Elige un componente al azar y sorpréndete"
+            >
+              <Dices size={16} className="sidebar-nav__dice-icon" />
+              <span className="sidebar-nav__dice-text">¡Sorpréndeme!</span>
+            </button>
+            {onCloseMobile && (
+              <SketchCloseButton
+                size="sm"
+                variant="badge"
+                className="sidebar-nav__mobile-close-btn"
+                onClick={onCloseMobile}
+                title="Cerrar índice"
+                ariaLabel="Cerrar índice de navegación"
+              />
+            )}
+          </div>
+        </div>
 
       {/* 3. Buscador Artesanal con Atajo ⌘K y Limpieza Rápida */}
       <div className="sidebar-nav__search-box">
@@ -409,7 +437,10 @@ export function SidebarNav({
                           className={`sidebar-nav__item-btn ${
                             isActive ? 'sidebar-nav__item-btn--active' : ''
                           }`}
-                          onClick={() => onSelectCategory(item.id)}
+                          onClick={() => {
+                            onSelectCategory(item.id);
+                            onCloseMobile?.();
+                          }}
                         >
                           {/* Lápiz indicador en tiempo real para el elemento activo */}
                           {isActive && (
@@ -504,6 +535,7 @@ export function SidebarNav({
         </div>
       </div>
     </aside>
+    </>
   );
 }
 

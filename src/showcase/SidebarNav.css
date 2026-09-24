@@ -91,6 +91,25 @@
   gap: 10px;
 }
 
+.sidebar-nav__brand-left {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-nav__brand-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebar-nav__mobile-close-btn {
+  display: none !important;
+}
+
+.sidebar-nav__backdrop {
+  display: none;
+}
+
 /* Botón Dado Mágico Sorpréndeme */
 .sidebar-nav__dice-btn {
   display: inline-flex;
@@ -611,24 +630,81 @@
 }
 
 @media (max-width: 860px) {
+  .sidebar-nav__backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 2400;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sidebar-nav__backdrop--open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .sidebar-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(326px, 86vw);
+    max-width: 350px;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 2500;
+    transform: translateX(-105%);
+    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    border-right: 2.5px solid var(--sketch-ink, #18181b);
+    border-bottom: none;
+    box-shadow: none;
+    padding-top: max(12px, env(safe-area-inset-top));
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+
+  .sidebar-nav--mobile-open {
+    transform: translateX(0);
+    box-shadow: 12px 0 40px rgba(0, 0, 0, 0.38);
+  }
+
+  .sidebar-nav__spiral {
+    display: flex;
+  }
+
+  .sidebar-nav__mobile-close-btn {
+    display: inline-flex !important;
+  }
+
   .showcase-layout-fixed {
     flex-direction: column;
-  }
-  .sidebar-nav {
     width: 100%;
-    position: static;
-    height: auto;
-    border-right: none;
-    border-bottom: 2.5px solid var(--sketch-ink, #18181b);
+    max-width: 100vw;
+    overflow-x: hidden;
   }
-  .sidebar-nav__spiral {
-    display: none;
-  }
+
   .showcase-main-expanded {
     margin-left: 0;
     width: 100%;
     max-width: 100%;
-    padding: 24px 20px 80px 20px;
+    padding: 20px 16px 80px 16px;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 440px) {
+  .showcase-main-expanded {
+    padding: 16px 12px 70px 12px;
+  }
+  .sidebar-nav__brand {
+    padding: 12px 14px 8px 14px;
+  }
+  .sidebar-nav__search-box {
+    padding: 8px 12px;
   }
 }
 
@@ -641,6 +717,14 @@
 .force-desktop .showcase-layout-fixed {
   flex-direction: row !important;
   min-width: 1000px !important;
+}
+
+.force-desktop .sidebar-nav__backdrop {
+  display: none !important;
+}
+
+.force-desktop .sidebar-nav__mobile-close-btn {
+  display: none !important;
 }
 
 .force-desktop .sidebar-nav {

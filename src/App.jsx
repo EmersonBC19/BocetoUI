@@ -20,7 +20,7 @@ import {
   DoodleDoc, IconDoc, CloseButtonDoc, ScrollAreaDoc
 } from './showcase/docs';
 
-import { PenTool, Palette, MousePointer, Monitor, Smartphone } from 'lucide-react';
+import { PenTool, Palette, MousePointer, Monitor, Smartphone, Menu } from 'lucide-react';
 
 const CANVAS_OPTIONS = [
   { id: 'paper-grid', label: 'Cuadrícula', Icon: SketchGridIcon },
@@ -44,6 +44,7 @@ export function App() {
   const [toast, setToast] = useState({ isOpen: false, message: '', type: 'success', key: 0 });
   const [isDoodleOpen, setIsDoodleOpen] = useState(false);
   const [isForceDesktop, setIsForceDesktop] = useState(false);
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   const toggleForceDesktop = () => {
     setIsForceDesktop((prev) => {
@@ -219,6 +220,10 @@ export function App() {
           onToggleDoodle={setIsDoodleOpen}
           isForceDesktop={isForceDesktop}
           onToggleForceDesktop={toggleForceDesktop}
+          onOpenMobileNav={() => {
+            setActiveCategory('all');
+            setIsMobileNavOpen(true);
+          }}
         />
 
         <SketchToast
@@ -247,15 +252,14 @@ export function App() {
     >
       <div className="showcase-layout-fixed">
         
-        {/* Menú Lateral Fijo a la Izquierda (100vh Full Height) */}
+        {/* Menú Lateral Fijo en Escritorio y Cajón Deslizante en Móviles */}
         <SidebarNav
           activeCategory={activeCategory}
           onSelectCategory={(catId) => {
             setActiveCategory(catId);
             setSearchTerm('');
-            if (window.innerWidth <= 860) {
-              window.scrollTo({ top: 400, behavior: 'smooth' });
-            }
+            setIsMobileNavOpen(false);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
           searchTerm={searchTerm}
           onSearchChange={setSearchTerm}
@@ -263,6 +267,8 @@ export function App() {
           totalComponents={54}
           isForceDesktop={isForceDesktop}
           onToggleForceDesktop={toggleForceDesktop}
+          isOpenOnMobile={isMobileNavOpen}
+          onCloseMobile={() => setIsMobileNavOpen(false)}
         />
 
         {/* Contenido Principal de Documentación */}
@@ -271,6 +277,18 @@ export function App() {
           {/* BARRA SUPERIOR COMPACTA DE DOCUMENTACIÓN */}
           <header className="docs-topbar">
             <div className="docs-topbar__left">
+              {/* Botón para abrir el Menú en pantallas móviles */}
+              <button
+                type="button"
+                className="docs-menu-trigger-btn"
+                onClick={() => setIsMobileNavOpen(true)}
+                title="Abrir índice de componentes"
+                aria-label="Abrir menú de componentes"
+              >
+                <Menu size={16} />
+                <span className="docs-menu-trigger-text">Índice (54)</span>
+              </button>
+
               <button
                 type="button"
                 className="docs-back-btn"
@@ -279,7 +297,7 @@ export function App() {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
               >
-                ← Presentación
+                ← <span className="docs-back-text">Presentación</span>
               </button>
               <span className="docs-topbar__divider">/</span>
               <div className="docs-topbar__badge">

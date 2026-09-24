@@ -163,6 +163,40 @@
   gap: 10px;
 }
 
+.docs-menu-trigger-btn {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  background: var(--sketch-pen-blue, #2563eb);
+  color: #ffffff;
+  border: 1.5px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-pill, 999px);
+  padding: 6px 14px;
+  font-family: var(--font-sketch-title, 'Patrick Hand', cursive);
+  font-size: 0.92rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px var(--sketch-ink, #18181b);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.docs-menu-trigger-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 2px 3px 0px var(--sketch-ink, #18181b);
+  background: #1d4ed8;
+}
+
+@media (max-width: 860px) {
+  .docs-menu-trigger-btn {
+    display: inline-flex;
+  }
+}
+
+.force-desktop .docs-menu-trigger-btn {
+  display: none !important;
+}
+
 .docs-back-btn {
   display: inline-flex;
   align-items: center;
@@ -219,9 +253,43 @@
   font-size: 0.86rem !important;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 760px) {
+  .docs-topbar {
+    padding: 8px 12px;
+    border-radius: var(--wobble-radius-2, 12px);
+    gap: 8px;
+  }
+  .docs-topbar__left {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .docs-topbar__tools {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+  .docs-topbar__divider {
+    display: none;
+  }
+}
+
+@media (max-width: 540px) {
   .docs-tool-label {
     display: none;
+  }
+  .docs-back-text {
+    display: none;
+  }
+  .canvas-selector-bar--compact,
+  .cursor-selector-bar--compact {
+    padding: 2px 4px !important;
+    gap: 2px !important;
+  }
+  .canvas-selector-bar--compact .canvas-btn,
+  .cursor-selector-bar--compact .cursor-btn {
+    padding: 4px 6px !important;
   }
 }
 
@@ -307,6 +375,32 @@
 @media (max-width: 860px) {
   .demo-board-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .component-grid,
+  .component-grid--3cols {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+  .section-title {
+    font-size: 1.6rem;
+  }
+  .section-desc {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 440px) {
+  .component-box {
+    padding: 18px 12px;
+    min-height: 130px;
+  }
+  .section-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
   }
 }
 

@@ -17,7 +17,7 @@ import {
   Terminal, Copy, Check, ArrowRight, Sparkles,
   MousePointer, Palette, Zap, ShieldCheck, PenTool,
   GraduationCap, Kanban, ShoppingBag, BookOpen,
-  Monitor, Smartphone
+  Monitor, Smartphone, Menu
 } from 'lucide-react';
 
 const CANVAS_OPTIONS = [
@@ -37,7 +37,8 @@ export function WelcomeDoc({
   isDoodleOpen,
   onToggleDoodle,
   isForceDesktop = false,
-  onToggleForceDesktop = null
+  onToggleForceDesktop = null,
+  onOpenMobileNav = null
 }) {
   const [copied, setCopied] = useState(false);
   const installCommand = 'npm install boceto-ui lucide-react';
@@ -126,6 +127,19 @@ export function WelcomeDoc({
             >
               {isForceDesktop ? <Smartphone size={14} /> : <Monitor size={14} />}
               <span>{isForceDesktop ? 'Móvil' : 'Escritorio'}</span>
+            </button>
+          )}
+
+          {/* Botón para abrir el Menú de 54 Componentes en Móviles */}
+          {onOpenMobileNav && (
+            <button
+              type="button"
+              className="welcome-nav__mobile-index-btn"
+              onClick={onOpenMobileNav}
+              title="Abrir índice completo de 54 componentes"
+            >
+              <Menu size={14} />
+              <span>Componentes (54)</span>
             </button>
           )}
 

@@ -737,6 +737,39 @@
   }
 }
 
+.welcome-nav__mobile-index-btn {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  background: var(--sketch-pen-blue, #2563eb);
+  color: #ffffff;
+  border: 1.5px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-pill, 999px);
+  padding: 5px 12px;
+  font-family: var(--font-sketch-title, 'Patrick Hand', cursive);
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px var(--sketch-ink, #18181b);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.welcome-nav__mobile-index-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 860px) {
+  .welcome-nav__mobile-index-btn {
+    display: inline-flex;
+  }
+}
+
+.force-desktop .welcome-nav__mobile-index-btn {
+  display: none !important;
+}
+
 @media (max-width: 520px) {
   .welcome-hero__title {
     font-size: 1.9rem;
@@ -751,6 +784,16 @@
   }
   .welcome-footer-title {
     font-size: 1.7rem;
+  }
+  .welcome-nav__canvas-btn span {
+    display: none;
+  }
+  .welcome-nav__tool-btn span {
+    display: none;
+  }
+  .welcome-features-grid,
+  .welcome-templates-grid {
+    grid-template-columns: 1fr !important;
   }
 }
 
