@@ -16,7 +16,8 @@ import {
 import {
   Terminal, Copy, Check, ArrowRight, Sparkles,
   MousePointer, Palette, Zap, ShieldCheck, PenTool,
-  GraduationCap, Kanban, ShoppingBag, BookOpen
+  GraduationCap, Kanban, ShoppingBag, BookOpen,
+  Monitor, Smartphone
 } from 'lucide-react';
 
 const CANVAS_OPTIONS = [
@@ -34,7 +35,9 @@ export function WelcomeDoc({
   cursorMode = 'comic',
   onSetCursorMode,
   isDoodleOpen,
-  onToggleDoodle
+  onToggleDoodle,
+  isForceDesktop = false,
+  onToggleForceDesktop = null
 }) {
   const [copied, setCopied] = useState(false);
   const installCommand = 'npm install boceto-ui lucide-react';
@@ -110,6 +113,19 @@ export function WelcomeDoc({
             >
               <PenTool size={14} />
               <span>Garabato</span>
+            </button>
+          )}
+
+          {/* Alternar Modo Escritorio / Móvil */}
+          {onToggleForceDesktop && (
+            <button
+              type="button"
+              className={`welcome-nav__tool-btn ${isForceDesktop ? 'welcome-nav__tool-btn--active' : ''}`}
+              onClick={onToggleForceDesktop}
+              title={isForceDesktop ? "Cambiar a vista móvil estándar" : "Forzar versión para ordenadores"}
+            >
+              {isForceDesktop ? <Smartphone size={14} /> : <Monitor size={14} />}
+              <span>{isForceDesktop ? 'Móvil' : 'Escritorio'}</span>
             </button>
           )}
 

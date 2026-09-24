@@ -11,9 +11,14 @@ html, body {
   margin: 0;
   padding: 0;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body:has(.force-desktop),
+.force-desktop {
+  overflow-x: auto !important;
 }
 
 button, input, textarea, select {

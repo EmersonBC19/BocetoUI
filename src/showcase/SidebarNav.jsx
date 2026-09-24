@@ -47,8 +47,9 @@ import {
   Dices,
   X,
   Filter,
-  Lightbulb,
-  Check
+  Check,
+  Monitor,
+  Smartphone
 } from 'lucide-react';
 
 export const NAV_GROUPS = [
@@ -177,7 +178,9 @@ export function SidebarNav({
   searchTerm = '',
   onSearchChange,
   onTriggerToast,
-  totalComponents = 54
+  totalComponents = 54,
+  isForceDesktop = false,
+  onToggleForceDesktop = null
 }) {
   const [collapsedGroups, setCollapsedGroups] = useState({});
   const [activeFilter, setActiveFilter] = useState('all');
@@ -486,6 +489,17 @@ export function SidebarNav({
           <span className="sidebar-nav__footer-tag">
             {totalComponents} Componentes Listos
           </span>
+          {onToggleForceDesktop && (
+            <button
+              type="button"
+              className={`sidebar-nav__view-toggle-btn ${isForceDesktop ? 'sidebar-nav__view-toggle-btn--active' : ''}`}
+              onClick={onToggleForceDesktop}
+              title={isForceDesktop ? "Volver a vista móvil adaptada" : "Forzar versión de escritorio completa"}
+            >
+              {isForceDesktop ? <Smartphone size={12} /> : <Monitor size={12} />}
+              <span>{isForceDesktop ? 'Móvil' : 'Escritorio'}</span>
+            </button>
+          )}
           <span className="sidebar-nav__footer-gpu">120 FPS GPU</span>
         </div>
       </div>

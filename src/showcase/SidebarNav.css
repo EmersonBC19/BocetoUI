@@ -564,6 +564,34 @@
   border-radius: 4px;
 }
 
+.sidebar-nav__view-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--sketch-accent-yellow, #fef08a);
+  border: 1.5px solid var(--sketch-ink, #18181b);
+  border-radius: var(--wobble-radius-pill, 999px);
+  padding: 2px 7px;
+  font-family: var(--font-sketch-code, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--sketch-ink, #18181b);
+  cursor: pointer;
+  box-shadow: 1.5px 1.5px 0px var(--sketch-ink, #18181b);
+  transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+.sidebar-nav__view-toggle-btn:hover {
+  transform: translateY(-1px);
+  background-color: var(--sketch-highlight-yellow, #fde047);
+}
+
+.sidebar-nav__view-toggle-btn--active {
+  background: var(--sketch-pen-blue, #2563eb);
+  color: #ffffff;
+  border-color: var(--sketch-ink, #18181b);
+}
+
 /* --------------------------------------------------------------------------
    6. CONTENIDO PRINCIPAL Y RESPONSIVIDAD
    -------------------------------------------------------------------------- */
@@ -576,7 +604,13 @@
   box-sizing: border-box;
 }
 
-@media (max-width: 1040px) {
+@media (min-width: 861px) and (max-width: 1040px) {
+  .showcase-main-expanded {
+    padding: 24px 28px 80px 28px;
+  }
+}
+
+@media (max-width: 860px) {
   .showcase-layout-fixed {
     flex-direction: column;
   }
@@ -596,6 +630,37 @@
     max-width: 100%;
     padding: 24px 20px 80px 20px;
   }
+}
+
+/* Soporte para Modo Escritorio Forzado en Móviles (In-app o Viewport solicitado) */
+.force-desktop {
+  min-width: 1000px !important;
+  overflow-x: auto !important;
+}
+
+.force-desktop .showcase-layout-fixed {
+  flex-direction: row !important;
+  min-width: 1000px !important;
+}
+
+.force-desktop .sidebar-nav {
+  width: 326px !important;
+  position: fixed !important;
+  height: 100vh !important;
+  border-right: 2.5px solid var(--sketch-ink, #18181b) !important;
+  border-bottom: none !important;
+}
+
+.force-desktop .sidebar-nav__spiral {
+  display: flex !important;
+}
+
+.force-desktop .showcase-main-expanded {
+  margin-left: 326px !important;
+  width: calc(100% - 326px) !important;
+  max-width: calc(100% - 326px) !important;
+  padding: 28px 32px 80px 32px !important;
+  min-width: 674px !important;
 }
 
 /* --------------------------------------------------------------------------

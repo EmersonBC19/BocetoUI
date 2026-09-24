@@ -20,7 +20,7 @@ import {
   DoodleDoc, IconDoc, CloseButtonDoc, ScrollAreaDoc
 } from './showcase/docs';
 
-import { PenTool, Palette, MousePointer } from 'lucide-react';
+import { PenTool, Palette, MousePointer, Monitor, Smartphone } from 'lucide-react';
 
 const CANVAS_OPTIONS = [
   { id: 'paper-grid', label: 'Cuadrícula', Icon: SketchGridIcon },
@@ -43,6 +43,23 @@ export function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [toast, setToast] = useState({ isOpen: false, message: '', type: 'success', key: 0 });
   const [isDoodleOpen, setIsDoodleOpen] = useState(false);
+  const [isForceDesktop, setIsForceDesktop] = useState(false);
+
+  const toggleForceDesktop = () => {
+    setIsForceDesktop((prev) => {
+      const next = !prev;
+      const meta = document.querySelector('meta[name="viewport"]');
+      if (meta) {
+        if (next) {
+          meta.setAttribute('content', 'width=1080, initial-scale=0.35, minimum-scale=0.2, maximum-scale=5.0, user-scalable=yes');
+        } else {
+          meta.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0.25, maximum-scale=5.0');
+        }
+      }
+      showToast(next ? '🖥️ Modo escritorio forzado activado' : '📱 Modo móvil adaptado reactivado');
+      return next;
+    });
+  };
 
   useEffect(() => {
     document.documentElement.setAttribute('data-cursor', cursorMode);
@@ -185,7 +202,7 @@ export function App() {
   if (activeCategory === 'welcome') {
     return (
       <div
-        className={`paper-canvas ${canvasType}`}
+        className={`paper-canvas ${canvasType} ${isForceDesktop ? 'force-desktop' : ''}`}
         data-theme={isDarkChalk ? 'chalkboard' : 'light'}
       >
         <WelcomeDoc
@@ -200,6 +217,8 @@ export function App() {
           onSetCursorMode={setCursorMode}
           isDoodleOpen={isDoodleOpen}
           onToggleDoodle={setIsDoodleOpen}
+          isForceDesktop={isForceDesktop}
+          onToggleForceDesktop={toggleForceDesktop}
         />
 
         <SketchToast
@@ -223,7 +242,7 @@ export function App() {
 
   return (
     <div
-      className={`paper-canvas ${canvasType}`}
+      className={`paper-canvas ${canvasType} ${isForceDesktop ? 'force-desktop' : ''}`}
       data-theme={isDarkChalk ? 'chalkboard' : 'light'}
     >
       <div className="showcase-layout-fixed">
@@ -234,7 +253,7 @@ export function App() {
           onSelectCategory={(catId) => {
             setActiveCategory(catId);
             setSearchTerm('');
-            if (window.innerWidth <= 1040) {
+            if (window.innerWidth <= 860) {
               window.scrollTo({ top: 400, behavior: 'smooth' });
             }
           }}
@@ -242,6 +261,8 @@ export function App() {
           onSearchChange={setSearchTerm}
           onTriggerToast={showToast}
           totalComponents={54}
+          isForceDesktop={isForceDesktop}
+          onToggleForceDesktop={toggleForceDesktop}
         />
 
         {/* Contenido Principal de Documentación */}
@@ -310,6 +331,17 @@ export function App() {
                   title="Activar estuche de garabatos y dibujo a mano alzada"
                 >
                   <PenTool size={14} /> <span className="docs-tool-label">Garabato</span>
+                </button>
+
+                {/* Alternar Vista Escritorio / Móvil */}
+                <button
+                  type="button"
+                  className={`cursor-btn ${isForceDesktop ? 'cursor-btn--active' : ''}`}
+                  onClick={toggleForceDesktop}
+                  title={isForceDesktop ? "Volver a vista móvil adaptada" : "Forzar versión de escritorio completa"}
+                >
+                  {isForceDesktop ? <Smartphone size={14} /> : <Monitor size={14} />}
+                  <span className="docs-tool-label">{isForceDesktop ? 'Móvil' : 'Escritorio'}</span>
                 </button>
               </div>
             </div>
