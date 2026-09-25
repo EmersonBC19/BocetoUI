@@ -32,7 +32,16 @@
   "author": "BocetoUI",
   "license": "MIT",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmersonBC19/BocetoUI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EmersonBC19/BocetoUI/issues"
+  },
+  "homepage": "https://github.com/EmersonBC19/BocetoUI#readme",
   "scripts": {
+    "prepare": "npm run build",
     "dev": "vite",
     "build": "vite build --mode lib && node -e \"import('node:fs').then(fs => fs.copyFileSync('src/components/sketch/index.d.ts', 'dist/index.d.ts'))\"",
     "build:demo": "vite build",

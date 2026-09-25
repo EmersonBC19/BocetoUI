@@ -6,20 +6,27 @@
 
 ## 🚀 Instalación
 
-Instala `boceto-ui` y su dependencia de iconos recomendada `lucide-react`:
+### Opción 1: Directo desde GitHub
+Puedes instalar la librería directamente desde este repositorio en cualquier proyecto:
+
+```bash
+npm install github:EmersonBC19/BocetoUI lucide-react
+```
+
+o con pnpm / yarn / bun:
+
+```bash
+pnpm add github:EmersonBC19/BocetoUI lucide-react
+# o
+yarn add https://github.com/EmersonBC19/BocetoUI.git lucide-react
+# o
+bun add github:EmersonBC19/BocetoUI lucide-react
+```
+
+### Opción 2: Desde registro npm (si está publicado)
 
 ```bash
 npm install boceto-ui lucide-react
-```
-
-o con yarn / pnpm / bun:
-
-```bash
-pnpm add boceto-ui lucide-react
-# o
-yarn add boceto-ui lucide-react
-# o
-bun add boceto-ui lucide-react
 ```
 
 ---
